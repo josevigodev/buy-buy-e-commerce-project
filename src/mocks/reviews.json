@@ -1,0 +1,88 @@
+{
+  "reviews": [
+    {
+      "id": 0,
+      "image": "/computer.png",
+      "user": "solia_reve",
+      "comment": "I never thought I'd care so much about how my console looked until I found ModManía. I chose a vibrant neon cyan and purple combo for my PS5, and now it looks like it belongs in a sci-fi movie.",
+      "rating": 4
+    },
+    {
+      "id": 1,
+      "image": "/modmania-landing-page/profile_pictures/man_1.jpg",
+      "user": "fede_a12",
+      "comment": "ModMania exceeded every expectation. I submitted a rough idea of what I wanted and they brought it to life better than I imagined.",
+      "rating": 4.5
+    },
+    {
+      "id": 2,
+      "image": "/modmania-landing-page/profile_pictures/woman_2.jpg",
+      "user": "marta_eche",
+      "comment": "At first I was skeptical about modding my console, but the moment I unboxed it, I knew I made the right choice. The colors pop, the lines are clean, and the build quality is solid. Even the controller feels different - in a good way.",
+      "rating": 5
+    },
+    {
+      "id": 3,
+      "image": "/modmania-landing-page/profile_pictures/man_2.jpg",
+      "user": "vigoJose",
+      "comment": "What impressed me most about ModManía was their professionalism. From order to delivery, everything was smooth. The packaging was secure, the mod was exactly as described, and the support team answered every question I had.",
+      "rating": 4
+    },
+    {
+      "id": 4,
+      "image": "/modmania-landing-page/profile_pictures/woman_3.jpg",
+      "user": "uni_reveca",
+      "comment": "I've been gaming for over a decade and I've never seen anything like what ModManía did to my console. It looks customized yet perfectly balanced, like it came straight from the factory that way.",
+      "rating": 4.5
+    },
+    {
+      "id": 5,
+      "image": "/modmania-landing-page/profile_pictures/man_3.jpg",
+      "user": "tony_rocky",
+      "comment": "I'm absolutely in love with my modded PS5. I chose the dual-tone with metallic accents, and it's breathtaking.",
+      "rating": 5
+    },
+    {
+      "id": 6,
+      "image": "/modmania-landing-page/profile_pictures/woman_4.jpg",
+      "user": "laura_mendez",
+      "comment": "Before ModManía, I didn't realize how boring my console looked. Now? People can't stop asking where I got it done. The mods are clean, the style is on point, and it's holding up great after months of daily use.",
+      "rating": 4
+    },
+    {
+      "id": 7,
+      "image": "/modmania-landing-page/profile_pictures/woman_5.jpg",
+      "user": "emily_reyes",
+      "comment": "My Xbox was just a black box in the corner. Now it's a conversation starter. The custom paint job and texture finish are top-notch, and it works flawlessly.",
+      "rating": 4.5
+    },
+    {
+      "id": 8,
+      "image": "/modmania-landing-page/profile_pictures/man_4.jpg",
+      "user": "dany_king",
+      "comment": "You can tell ModManía cares about the work they do. Every detail - from the engraving to the color scheme - feels intentional.",
+      "rating": 5
+    },
+    {
+      "id": 9,
+      "image": "/modmania-landing-page/profile_pictures/man_5.jpg",
+      "user": "andres_cuchy",
+      "comment": "Honestly, this mod has improved the whole gaming experience. It's not just about looks - the custom controller grips and lighting make long gaming sessions more immersive. Super impressed.",
+      "rating": 4
+    },
+    {
+      "id": 10,
+      "image": "/modmania-landing-page/profile_pictures/woman_6.jpg",
+      "user": "ana_mercy",
+      "comment": "This is the type of customization I didn't know I needed. The subtle mix of dark indigo with cyan highlights is pure art. My controller has a transparent shell and it looks futuristic. 10/10.",
+      "rating": 4.5
+    },
+    {
+      "id": 11,
+      "image": "/modmania-landing-page/profile_pictures/man_6.jpg",
+      "user": "yanka",
+      "comment": "I love when function meets aesthetics, and ModManía delivers both.",
+      "rating": 5
+    }
+  ]
+}
