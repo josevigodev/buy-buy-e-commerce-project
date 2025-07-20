@@ -4,7 +4,7 @@ import { ShoppingCartIcon } from './Icons';
 import PhoneAd from '../../public/phone-ad.webp';
 import MakAd from '../../public/mak-ad.webp';
 import LaptopAd from '../../public/laptop-ad.webp';
-import { useEffect, useState } from 'react';
+import { useIndex } from '@/hooks/useIndex';
 
 const heroImages = [
   {
@@ -22,21 +22,7 @@ const heroImages = [
 ];
 
 export function Hero() {
-  const [index, setIndex] = useState(0);
-
-  useEffect(() => {
-    const imageQuantity = heroImages.length;
-
-    const imageInterval = setInterval(() => {
-      setIndex((prevIndex) =>
-        prevIndex < imageQuantity - 1 ? prevIndex + 1 : 0
-      );
-    }, 2000);
-
-    return () => {
-      clearInterval(imageInterval);
-    };
-  }, []);
+  const { index } = useIndex({ length: heroImages.length });
 
   return (
     <section className='bg-amber-50 max-h-[500px] overflow-hidden relative'>
@@ -46,16 +32,15 @@ export function Hero() {
             key={i}
             src={image}
             alt={alt}
-            className={`shrink-0 object-cover object-center pointer-events-none select-none transition-transform duration-200 -translate-x-[${
-              index * 100
-            }%]`}
+            className={`shrink-0 object-cover object-center pointer-events-none select-none transition-transform duration-200`}
+            style={{ transform: `translateX(-${index * 100}%)` }}
           />
         ))}
       </div>
 
       <a
         href=''
-        className='absolute bg-amber-50 bottom-1/4 left-0 right-0 text-center mx-auto w-fit py-2 px-3 flex items-center gap-1 rounded-sm border-amber-600 border-2'
+        className='absolute bottom-1/4 left-0 right-0 text-center mx-auto w-fit px-4 py-2 bg-dark-gray text-white text-md font-semibold rounded-full shadow-xl hover:bg-white hover:text-dark-gray border-2 border-dark-gray transition duration-300 flex items-center gap-1.5 md:text-lg md:px-6 md-py-4'
       >
         <span>Shop now</span>
         <span>

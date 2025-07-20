@@ -10,7 +10,7 @@ interface Props {
 
 export const Review: React.FC<Props> = ({ user, comment, rating }) => {
   return (
-    <figure className='flex flex-col w-full shrink-0 bg-product-frame rounded-sm p-5 gap-2.5'>
+    <figure className='flex flex-col bg-product-frame rounded-sm p-5 gap-2.5'>
       <div className='flex flex-row items-center justify-between'>
         <div className='flex flex-row items-center gap-1.5'>
           <Image

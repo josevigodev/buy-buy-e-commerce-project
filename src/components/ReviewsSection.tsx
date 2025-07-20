@@ -1,16 +1,27 @@
+import { useIndex } from '@/hooks/useIndex';
 import { reviews } from '../mocks/reviews.json';
 import { Review } from './Review';
 
 export function ReviewsSection() {
-  return (
-    <section className='relative px-3 overflow-hidden max-w-2xl mx-auto mt-5 bg-light-text md:mt-9'>
-      <h2 className='text-2xl text-center mb-3.5'>Testimonials</h2>
+  const { index } = useIndex({ length: reviews.length });
 
-      <div className='flex justify-start gap-5'>
-        {reviews.map((review, index) => (
-          <Review key={`${review.id}-${index}`} {...review} />
+  return (
+    <section className='relative overflow-hidden max-w-2xl mx-auto mt-9 bg-light-text md:mt-13'>
+      <h2 className='text-2xl text-center mb-3.5 font-semibold text-dark-text'>
+        Testimonials
+      </h2>
+
+      <ul className='flex justify-start'>
+        {reviews.map((review, i) => (
+          <li
+            key={`${review.id}-${i}`}
+            className={`shrink-0 w-full transition-transform duration-200`}
+            style={{ transform: `translateX(-${index * 100}%)` }}
+          >
+            <Review {...review} />
+          </li>
         ))}
-      </div>
+      </ul>
     </section>
   );
 }

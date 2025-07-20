@@ -18,9 +18,10 @@ export function SideBar({ openSide, closeSideBarAction }: Props) {
         }`}
       >
         <aside className=' bg-light-text w-[300px] h-full p-2.5'>
-          <h5>Menu</h5>
+          <h2>Menu</h2>
         </aside>
         <button
+          aria-label='close menu'
           onClick={handleClick}
           className={`h-full flex-1 cursor-pointer text-light-text flex p-5 `}
         >

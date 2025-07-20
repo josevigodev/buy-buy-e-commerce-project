@@ -24,7 +24,7 @@ export function ProductCard() {
           <Rating size={18} rating={4.2} />
           <span>(13.1k)</span>
         </div>
-        <span className='text-amber-600 font-bold'>
+        <span className='text-amber-700 font-bold'>
           <strong className='font-normal text-sm mr-0.5'>$</strong>323
         </span>
       </div>
