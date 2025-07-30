@@ -14,10 +14,18 @@ export default function Home() {
         </h2>
         <div className='flex flex-col'>
           <div className='flex flex-col gap-1.5 lg:flex-row'>
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
+            <div className='border-1 border-product-frame'>
+              <ProductCard />
+            </div>
+            <div className='border-1 border-product-frame'>
+              <ProductCard />
+            </div>
+            <div className='border-1 border-product-frame'>
+              <ProductCard />
+            </div>
+            <div className='border-1 border-product-frame'>
+              <ProductCard />
+            </div>
           </div>
           <button className='self-end flex gap-1.5 items-center px-4 py-2 mt-1.5 bg-gray-600 text-white text-md font-semibold rounded-full shadow-xl hover:bg-white hover:text-dark-text border-2 border-gray-600 transition duration-300'>
             <span>See more</span>

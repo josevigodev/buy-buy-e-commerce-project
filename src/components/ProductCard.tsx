@@ -3,8 +3,8 @@ import { Rating } from './Rating';
 
 export function ProductCard() {
   return (
-    <article className='flex border-1 border-product-frame rounded-sm lg:flex-col'>
-      <div className='w-1/3 p-2 flex items-center justify-center bg-product-frame lg:w-full'>
+    <article className='flex rounded-sm lg:flex-col'>
+      <div className='w-1/3 p-2 pt-0 flex items-center justify-center bg-product-frame lg:w-full'>
         <Image
           width={200}
           height={200}
@@ -12,7 +12,7 @@ export function ProductCard() {
           alt='computer'
         ></Image>
       </div>
-      <div className='flex-1 p-2 flex flex-col text-dark-text gap-1 md:p-3'>
+      <div className='flex-1 p-2 pt-0 flex flex-col text-dark-text gap-1 md:p-3'>
         <p className='line-clamp-4 text-balance '>
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident in
           quis ducimus voluptatem nobis temporibus perspiciatis suscipit tempora
@@ -24,8 +24,8 @@ export function ProductCard() {
           <Rating size={18} rating={4.2} />
           <span>(13.1k)</span>
         </div>
-        <span className='text-amber-700 font-bold'>
-          <strong className='font-normal text-sm mr-0.5'>$</strong>323
+        <span className='text-amber-700 text-lg font-bold'>
+          <strong className='font-normal text-md mr-0.5'>$</strong>323
         </span>
       </div>
     </article>

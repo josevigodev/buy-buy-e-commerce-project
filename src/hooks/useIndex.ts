@@ -1,17 +1,23 @@
 import { useEffect, useState } from 'react';
 
-export function useIndex({ length }: { length: number }) {
+export function useIndex({
+  length,
+  delay = 2000,
+}: {
+  length: number;
+  delay?: number;
+}) {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
     const imageInterval = setInterval(() => {
       setIndex((prevIndex) => (prevIndex + 1) % length);
-    }, 2000);
+    }, delay);
 
     return () => {
       clearInterval(imageInterval);
     };
-  }, [length]);
+  }, [length, delay]);
 
   return { index };
 }

@@ -51,12 +51,16 @@ export function Header() {
               <span className='hidden md:inline'>Wishes</span>
               <HeartIcon />
             </button>
-            <button
+            <Link
+              href='/cart'
               aria-label='open cart'
-              className='text-light-text p-1 cursor-pointer px-3 rounded-sm hover:outline-1'
+              className='text-light-text p-1 cursor-pointer px-3 rounded-sm hover:outline-1 relative'
             >
               <ShoppingCartIcon />
-            </button>
+              <small className='absolute -top-1 right-1/9 bg-black px-1.5 scale-80 flex items-center justify-center rounded-full'>
+                1
+              </small>
+            </Link>
           </div>
         )}
         {isLogin || (

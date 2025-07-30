@@ -5,6 +5,7 @@ import PhoneAd from '../../public/phone-ad.webp';
 import MakAd from '../../public/mak-ad.webp';
 import LaptopAd from '../../public/laptop-ad.webp';
 import { useIndex } from '@/hooks/useIndex';
+import Link from 'next/link';
 
 const heroImages = [
   {
@@ -22,7 +23,7 @@ const heroImages = [
 ];
 
 export function Hero() {
-  const { index } = useIndex({ length: heroImages.length });
+  const { index } = useIndex({ length: heroImages.length, delay: 4000 });
 
   return (
     <section className='bg-amber-50 max-h-[500px] overflow-hidden relative'>
@@ -38,15 +39,15 @@ export function Hero() {
         ))}
       </div>
 
-      <a
-        href=''
+      <Link
+        href='/marcket'
         className='absolute bottom-1/4 left-0 right-0 text-center mx-auto w-fit px-4 py-2 bg-dark-gray text-white text-md font-semibold rounded-full shadow-xl hover:bg-white hover:text-dark-gray border-2 border-dark-gray transition duration-300 flex items-center gap-1.5 md:text-lg md:px-6 md-py-4'
       >
         <span>Shop now</span>
         <span>
           <ShoppingCartIcon className='stroke-2' />
         </span>
-      </a>
+      </Link>
     </section>
   );
 }

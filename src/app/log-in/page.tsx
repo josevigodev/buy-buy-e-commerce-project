@@ -38,7 +38,7 @@ export default function LogIn() {
     // </main>
     <main className='flex-1 min-h-dvh mx-auto max-w-lg p-6'>
       <div className='mb-4'>
-        <h2 className='font-semibold text-2xl'>So, your New!</h2>
+        <h2 className='font-semibold text-2xl text-dark-text'>So, your New!</h2>
         <small className='text-placeholder text-sm'>
           Set your password to create an account.
         </small>
