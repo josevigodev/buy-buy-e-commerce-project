@@ -1,6 +1,7 @@
 'use client';
 import { auth, signIn, signUp } from '@/firebase/client';
 import { updateProfile } from 'firebase/auth';
+import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 export function SignInUp() {
@@ -9,13 +10,14 @@ export function SignInUp() {
   const [password, setPassword] = useState('');
   const [showSignIn, setShowSignIn] = useState(true);
   const [text, setText] = useState('');
+  const router = useRouter();
   const user = auth.currentUser;
 
   const handleSignIn = (e: React.FormEvent) => {
     e.preventDefault();
     const cleanEmail = email.trim().toLowerCase();
     signIn(cleanEmail, password)
-      .then(() => setText('Succesfull'))
+      .then(() => router.push('/'))
       .catch(() => setText('Wrong'));
   };
 
@@ -23,7 +25,7 @@ export function SignInUp() {
     e.preventDefault();
     const cleanEmail = email.trim().toLowerCase();
     signUp(cleanEmail, password)
-      .then(() => setText('Succesfull'))
+      .then(() => router.push('/'))
       .catch((e) => {
         if (e) {
           setText('Account already exists');
@@ -43,6 +45,7 @@ export function SignInUp() {
       updateProfile(user, { displayName: name });
     }
   }, [user, name]);
+
   return (
     <>
       <form onSubmit={handleSignIn}>
