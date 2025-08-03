@@ -8,13 +8,26 @@ import {
   UserIcon,
   XIcon,
 } from './Icons';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { SideBar } from './SideBar';
 import { usePathname } from 'next/navigation';
+import { useUserStore } from '@/store/user';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '@/firebase/client';
 
 export function Header() {
+  const user = useUserStore((state) => state.user);
+  const setUser = useUserStore((state) => state.setUser);
   const [openSide, setOpenSide] = useState(false);
   const isLogin = usePathname() === '/log-in';
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user && user.displayName !== null) {
+        setUser(user.displayName);
+      }
+    });
+  }, [setUser]);
 
   const handleClick = () => {
     setOpenSide(true);
@@ -44,8 +57,10 @@ export function Header() {
               href='/log-in'
               className='flex items-center text-light-text p-1 cursor-pointer px-3 rounded-sm hover:outline-1 gap-1'
             >
-              <span className='hidden md:inline text-nowrap'>Sign in</span>
-              <UserIcon />
+              <span className='hidden md:inline text-nowrap'>
+                {user ? `Hello ${user}!` : 'Sign in'}
+              </span>
+              {user ? null : <UserIcon />}
             </Link>
             <button className='flex items-center text-light-text p-1 px-3 cursor-pointer rounded-sm hover:outline-1 gap-1'>
               <span className='hidden md:inline'>Wishes</span>
