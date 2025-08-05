@@ -21,17 +21,24 @@ export function Header() {
   const [openSide, setOpenSide] = useState(false);
   const isLogin = usePathname() === '/log-in';
 
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user && user.displayName !== null) {
-        setUser(user.displayName);
-      }
-    });
-  }, [setUser]);
-
   const handleClick = () => {
     setOpenSide(true);
   };
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user && user.email !== null) {
+        setUser(user.email);
+      } else {
+        const fakeUser = localStorage.getItem('testUser');
+        if (fakeUser) {
+          const parsed = JSON.parse(fakeUser);
+          setUser(parsed.email);
+        }
+      }
+    });
+  }, [user, setUser]);
+
   return (
     <header className='bg-gray-600 p-3'>
       <div className='grid grid-cols-2 gap-y-1 w-full lg:grid-cols-5'>
@@ -54,6 +61,7 @@ export function Header() {
         {isLogin || (
           <div className='flex items-center place-self-end lg:order-2'>
             <Link
+              data-test='signin-link'
               href='/log-in'
               className='flex items-center text-light-text p-1 cursor-pointer px-3 rounded-sm hover:outline-1 gap-1'
             >

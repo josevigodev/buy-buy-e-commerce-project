@@ -1,8 +1,7 @@
 'use client';
-import { auth, signIn, signUp } from '@/firebase/client';
-import { updateProfile } from 'firebase/auth';
+import { signIn, signUp } from '@/firebase/client';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 export function SignInUp() {
   const [name, setName] = useState('');
@@ -11,7 +10,6 @@ export function SignInUp() {
   const [showSignIn, setShowSignIn] = useState(true);
   const [text, setText] = useState('');
   const router = useRouter();
-  const user = auth.currentUser;
 
   const handleSignIn = (e: React.FormEvent) => {
     e.preventDefault();
@@ -40,12 +38,6 @@ export function SignInUp() {
     setText('');
   };
 
-  useEffect(() => {
-    if (user) {
-      updateProfile(user, { displayName: name });
-    }
-  }, [user, name]);
-
   return (
     <>
       <form onSubmit={handleSignIn}>
@@ -57,6 +49,7 @@ export function SignInUp() {
             <label htmlFor='name' className='flex-col flex text-gray-500'>
               Full name
               <input
+                data-test='name-input'
                 autoFocus
                 id='name'
                 type='text'
@@ -69,6 +62,7 @@ export function SignInUp() {
           <label htmlFor='email' className='flex-col flex text-gray-500'>
             Email
             <input
+              data-test='email-input'
               autoFocus
               id='email'
               type='email'
@@ -80,6 +74,7 @@ export function SignInUp() {
           <label htmlFor='password' className='text-placeholder flex flex-col'>
             Password
             <input
+              data-test='password-input'
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               id='password'
@@ -89,6 +84,7 @@ export function SignInUp() {
           </label>
           <span className='text-red-500'>{text}</span>
           <button
+            data-test='confirm-button'
             onClick={showSignIn ? handleSignIn : handleSignUp}
             type='submit'
             className='bg-dark-gray text-white p-3 font-semibold cursor-pointer rounded-sm'
@@ -98,6 +94,7 @@ export function SignInUp() {
         </div>
       </form>
       <button
+        data-test='change-mode-button'
         onClick={handleChandeMode}
         className='text-blue-600 block text-pretty text-center text-sm mt-10 mx-auto cursor-pointer'
       >
