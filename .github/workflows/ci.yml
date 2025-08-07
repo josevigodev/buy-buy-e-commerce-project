@@ -7,11 +7,12 @@ on:
     branches: [main]
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-
+  cypress-run:
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Install dependecies
-        run: npm install
+      - name: Checkout
+        uses: actions/checkout@v4
+      # Install npm dependencies, cache them correctly
+      # and run all Cypress tests
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
