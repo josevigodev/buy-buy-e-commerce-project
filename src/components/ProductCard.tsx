@@ -15,7 +15,7 @@ export const ProductCard: React.FC<Product> = function ({
   const addItem = useShoppingCartStore((state) => state.addItem);
 
   const handleAddToCart = () => {
-    addItem({ item: item });
+    addItem({ item });
   };
 
   return (
@@ -34,7 +34,7 @@ export const ProductCard: React.FC<Product> = function ({
           <strong className='font-normal text-md mr-0.5'>$</strong>
           {price}
         </span>
-        {isShoppingCart ?? (
+        {isShoppingCart || (
           <button
             className='className=absolute bottom-1/4 left-0 right-0 text-center mx-auto w-fit px-4 py-2 bg-dark-gray text-white text-md font-semibold rounded-full shadow-xl hover:bg-white hover:text-dark-gray border-2 border-dark-gray transition duration-300 flex items-center gap-1.5 md:text-lg md:px-6 md-py-4'
             onClick={handleAddToCart}
