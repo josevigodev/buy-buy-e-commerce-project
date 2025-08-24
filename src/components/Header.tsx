@@ -14,12 +14,19 @@ import { usePathname } from 'next/navigation';
 import { useUserStore } from '@/store/user';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '@/firebase/client';
+import { useShoppingCartStore } from '@/store/shoppingCart';
 
 export function Header() {
   const user = useUserStore((state) => state.user);
   const setUser = useUserStore((state) => state.setUser);
   const [openSide, setOpenSide] = useState(false);
   const isLogin = usePathname() === '/log-in';
+  const cart = useShoppingCartStore((state) => state.cart);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleClick = () => {
     setOpenSide(true);
@@ -81,7 +88,7 @@ export function Header() {
             >
               <ShoppingCartIcon />
               <small className='absolute -top-1 right-1/9 bg-black px-1.5 scale-80 flex items-center justify-center rounded-full'>
-                1
+                {mounted ? cart.length : null}
               </small>
             </Link>
           </div>
