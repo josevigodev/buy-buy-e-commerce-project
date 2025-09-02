@@ -2,29 +2,43 @@
 import Image from 'next/image';
 import { Rating } from './Rating';
 import { Product } from '@/types/fakeStoreApi';
-// import { useShoppingCartStore } from '@/store/shoppingCart';
+import { useShoppingCartStore } from '@/store/shoppingCart';
 import { usePathname } from 'next/navigation';
 
-export const ProductCard: React.FC<Product> = function ({
+interface Props {
+  title: string;
+  image: string;
+  price: number;
+  qty: number;
+  item: Product;
+}
+
+export const ProductCard: React.FC<Props> = function ({
   title = 'product',
   image = '/computer.png',
   price,
   item,
   qty,
 }) {
-  // const isShoppingCart = usePathname() === '/cart';
-  // const addItem = useShoppingCartStore((state) => state.addItem);
+  const isShoppingCart = usePathname() === '/cart';
+  const addItem = useShoppingCartStore((state) => state.addItem);
 
-  // const handleAddToCart = () => {
-  //   addItem({ item });
-  // };
+  const handleAddToCart = () => {
+    addItem({ item });
+  };
 
-  const isPlaceOrder = usePathname() === '/place-order';
+  const isCheckout = usePathname() === '/checkout';
+  const isPayment = usePathname() === '/payment';
+
   return (
-    <article className={`flex rounded-sm ${isPlaceOrder ? '' : 'lg:flex-col'}`}>
+    <article
+      className={`flex rounded-sm ${
+        isCheckout || isPayment ? '' : 'lg:flex-col'
+      }`}
+    >
       <div
         className={`w-1/3 p-2 pt-0 flex items-center justify-center bg-white ${
-          isPlaceOrder ? '' : 'lg:w-full'
+          isCheckout || isPayment ? '' : 'lg:w-full'
         }`}
       >
         <Image width={200} height={200} src={image} alt={title}></Image>
@@ -40,15 +54,15 @@ export const ProductCard: React.FC<Product> = function ({
           <strong className='font-normal text-md mr-0.5'>$</strong>
           {price}
         </span>
-        {/* {isShoppingCart || (
+        {isShoppingCart || (
           <button
             className='className=absolute bottom-1/4 left-0 right-0 text-center mx-auto w-fit px-4 py-2 bg-dark-gray text-white text-md font-semibold rounded-full shadow-xl hover:bg-white hover:text-dark-gray border-2 border-dark-gray transition duration-300 flex items-center gap-1.5 md:text-lg md:px-6 md-py-4'
             onClick={handleAddToCart}
           >
             add to cart
           </button>
-        )} */}
-        <span>x{qty}</span>
+        )}
+        {(isCheckout || isPayment) && <span>x{qty}</span>}
       </div>
     </article>
   );
