@@ -10,7 +10,7 @@ export default function CartPage() {
     <main className='flex-1 mb-20 px-3'>
       <section className='sticky top-0 flex flex-col border-b-1 border-b-gray-400 gap-5 py-2 bg-white lg:flex-row lg:justify-between'>
         <Link
-          href='/place-order'
+          href='/checkout'
           className='bg-dark-gray text-white rounded-sm p-2 cursor-pointer lg:order-2'
         >
           Checkout ({itemsQty} {itemsQty > 1 ? 'items' : 'item'})
