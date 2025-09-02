@@ -11,10 +11,13 @@
     "cypress:run": "cypress run"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.2.1",
     "firebase": "^12.0.0",
-    "next": "15.3.5",
+    "next": "^15.5.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-hook-form": "^7.62.0",
+    "zod": "^4.1.5",
     "zustand": "^5.0.7"
   },
   "devDependencies": {
