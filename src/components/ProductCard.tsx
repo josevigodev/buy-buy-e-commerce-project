@@ -20,25 +20,26 @@ export const ProductCard: React.FC<Props> = function ({
   item,
   qty,
 }) {
-  const isShoppingCart = usePathname() === '/cart';
+  // const isShoppingCart = usePathname() === '/cart';
   const addItem = useShoppingCartStore((state) => state.addItem);
 
-  const handleAddToCart = () => {
-    addItem({ item });
-  };
+  // const handleAddToCart = () => {
+  //   addItem({ item });
+  // };
 
   const isCheckout = usePathname() === '/checkout';
   const isPayment = usePathname() === '/payment';
+  const isOrderConfirmed = usePathname() === '/order-confirmed';
 
   return (
     <article
       className={`flex rounded-sm ${
-        isCheckout || isPayment ? '' : 'lg:flex-col'
+        isCheckout || isPayment || isOrderConfirmed ? '' : 'lg:flex-col'
       }`}
     >
       <div
         className={`w-1/3 p-2 pt-0 flex items-center justify-center bg-white ${
-          isCheckout || isPayment ? '' : 'lg:w-full'
+          isCheckout || isPayment || isOrderConfirmed ? '' : 'lg:w-full'
         }`}
       >
         <Image width={200} height={200} src={image} alt={title}></Image>
@@ -54,15 +55,17 @@ export const ProductCard: React.FC<Props> = function ({
           <strong className='font-normal text-md mr-0.5'>$</strong>
           {price}
         </span>
-        {isShoppingCart || (
+        {/* {isShoppingCart || (
           <button
             className='className=absolute bottom-1/4 left-0 right-0 text-center mx-auto w-fit px-4 py-2 bg-dark-gray text-white text-md font-semibold rounded-full shadow-xl hover:bg-white hover:text-dark-gray border-2 border-dark-gray transition duration-300 flex items-center gap-1.5 md:text-lg md:px-6 md-py-4'
             onClick={handleAddToCart}
           >
             add to cart
           </button>
+        )} */}
+        {(isCheckout || isPayment || isOrderConfirmed) && (
+          <span className='text-xl'>x{qty}</span>
         )}
-        {(isCheckout || isPayment) && <span>x{qty}</span>}
       </div>
     </article>
   );
