@@ -27,7 +27,7 @@ export default async function Marcket() {
       <Filters />
       <section className='grid gap-2 lg:grid-cols-4 flex-1 mt-5 lg:pl-3'>
         {mappedItems.map((item) => (
-          <div key={item.id} className='border-1 border-product-frame'>
+          <div key={item.id} className='border-1 border-product-frame flex'>
             <ProductCard {...item} item={item} />
           </div>
         ))}
