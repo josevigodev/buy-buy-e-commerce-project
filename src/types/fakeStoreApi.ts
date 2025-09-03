@@ -17,6 +17,4 @@ export interface Product {
   discount?: number;
   popular?: boolean;
   onSale?: boolean;
-  item: Product;
-  qty?: number;
 }
