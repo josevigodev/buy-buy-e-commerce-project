@@ -1,34 +1,10 @@
 'use client';
 
 import { ProductCard } from '@/components/ProductCard';
-import { useShoppingCartStore } from '@/store/shoppingCart';
+import { useOrderStore } from '@/store/order';
 
 export default function OrderConfirmedPage() {
-  // Ejemplo de datos simulados
-  const order = {
-    id: 'ORD-123456',
-    products: [
-      { id: 1, name: 'Gaming Mouse', price: 45, qty: 1, img: '/mouse.jpg' },
-      {
-        id: 2,
-        name: 'Mechanical Keyboard',
-        price: 120,
-        qty: 1,
-        img: '/keyboard.jpg',
-      },
-    ],
-    shipping: {
-      name: 'John Doe',
-      address: '123 Main St',
-      city: 'Miami',
-      country: 'USA',
-    },
-    payment: {
-      method: 'card',
-      last4: '4242',
-    },
-  };
-  const cart = useShoppingCartStore((state) => state.cart);
+  const order = useOrderStore((state) => state.order);
 
   return (
     <main className='mx-auto p-6 space-y-6'>
@@ -44,7 +20,7 @@ export default function OrderConfirmedPage() {
             Products
           </h2>
           <ul className='space-y-3'>
-            {cart.map((item) => (
+            {order.products.map((item) => (
               <ProductCard key={item.id} {...item} />
             ))}
           </ul>
