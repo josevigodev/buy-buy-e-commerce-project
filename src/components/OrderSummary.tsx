@@ -11,6 +11,7 @@ import { useOrderStore } from '@/store/order';
 
 export function OrderSummary() {
   const cart = useShoppingCartStore((state) => state.cart);
+  const clearCart = useShoppingCartStore((state) => state.clearCart);
   const { totalPrice } = useCartInfo();
   const shippingForm = useShippingForm((state) => state.shippingForm);
   const paymentForm = usePaymentForm((state) => state.paymentForm);
@@ -79,6 +80,7 @@ export function OrderSummary() {
 
     updatePayment({ payment });
     updateProducts({ products: cart });
+    clearCart();
   };
   return (
     <>
