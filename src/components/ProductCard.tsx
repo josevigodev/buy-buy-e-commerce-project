@@ -1,32 +1,21 @@
 'use client';
 import Image from 'next/image';
 import { Rating } from './Rating';
-import { Product } from '@/types/fakeStoreApi';
-import { useShoppingCartStore } from '@/store/shoppingCart';
 import { usePathname } from 'next/navigation';
 
 interface Props {
   title: string;
   image: string;
   price: number;
-  qty: number;
-  item: Product;
+  qty?: number;
 }
 
 export const ProductCard: React.FC<Props> = function ({
   title = 'product',
   image = '/computer.png',
   price,
-  item,
   qty,
 }) {
-  // const isShoppingCart = usePathname() === '/cart';
-  const addItem = useShoppingCartStore((state) => state.addItem);
-
-  // const handleAddToCart = () => {
-  //   addItem({ item });
-  // };
-
   const isCheckout = usePathname() === '/checkout';
   const isPayment = usePathname() === '/payment';
   const isOrderConfirmed = usePathname() === '/order-confirmed';
@@ -55,14 +44,6 @@ export const ProductCard: React.FC<Props> = function ({
           <strong className='font-normal text-md mr-0.5'>$</strong>
           {price}
         </span>
-        {/* {isShoppingCart || (
-          <button
-            className='className=absolute bottom-1/4 left-0 right-0 text-center mx-auto w-fit px-4 py-2 bg-dark-gray text-white text-md font-semibold rounded-full shadow-xl hover:bg-white hover:text-dark-gray border-2 border-dark-gray transition duration-300 flex items-center gap-1.5 md:text-lg md:px-6 md-py-4'
-            onClick={handleAddToCart}
-          >
-            add to cart
-          </button>
-        )} */}
         {(isCheckout || isPayment || isOrderConfirmed) && (
           <span className='text-xl'>x{qty}</span>
         )}
