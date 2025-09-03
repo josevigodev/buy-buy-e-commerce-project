@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import { usePaymentForm } from '@/store/paymentForm';
 import { usePathname } from 'next/navigation';
 import { useOrderStore } from '@/store/order';
+import { products } from '@/mocks/products.json';
 
 export function OrderSummary() {
   const cart = useShoppingCartStore((state) => state.cart);
@@ -79,7 +80,18 @@ export function OrderSummary() {
     };
 
     updatePayment({ payment });
-    updateProducts({ products: cart });
+
+    const orderItems = cart.map((item) => {
+      const product = products.find((product) => product.id === item.id);
+      if (!product) return null;
+
+      return {
+        ...product,
+        qty: item.qty,
+      };
+    });
+
+    updateProducts({ products: orderItems });
     clearCart();
   };
   return (
@@ -92,9 +104,11 @@ export function OrderSummary() {
         <span className='text-xl'>${totalPrice}</span>
       </article>
       <section className='flex flex-col items-center gap-3'>
-        {cart.map((item) => (
-          <ProductCard key={item.id} {...item} />
-        ))}
+        {cart.map((item) => {
+          const product = products.find((product) => product.id === item.id);
+          if (!product) return null;
+          return <ProductCard key={item.id} {...product} qty={item.qty} />;
+        })}
       </section>
       {isShippingForm ? (
         <Link
