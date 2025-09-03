@@ -7,12 +7,18 @@ import { useShippingForm } from '@/store/shippingForm';
 import { useEffect, useState } from 'react';
 import { usePaymentForm } from '@/store/paymentForm';
 import { usePathname } from 'next/navigation';
+import { useOrderStore } from '@/store/order';
 
 export function OrderSummary() {
   const cart = useShoppingCartStore((state) => state.cart);
   const { totalPrice } = useCartInfo();
   const shippingForm = useShippingForm((state) => state.shippingForm);
   const paymentForm = usePaymentForm((state) => state.paymentForm);
+
+  const updateShipping = useOrderStore((state) => state.updateShipping);
+  const updatePayment = useOrderStore((state) => state.updatePayment);
+  const updateProducts = useOrderStore((state) => state.updateProducts);
+
   const [isValid, setIsValid] = useState({
     shippingForm: false,
     paymentForm: false,
@@ -52,6 +58,28 @@ export function OrderSummary() {
       }
     });
   }, [paymentForm]);
+
+  const handlePlaceOrderClick = () => {
+    const shipping = {
+      name: `${shippingForm.firstName} ${shippingForm.lastName}`,
+      address: shippingForm.addressLine1,
+      city: shippingForm.city,
+      country: shippingForm.country,
+    };
+
+    updateShipping({ shipping });
+  };
+
+  const handleConfirmOrderClick = () => {
+    const last4 = paymentForm.cardNumber.slice(-4);
+    const payment = {
+      method: 'card',
+      last4,
+    };
+
+    updatePayment({ payment });
+    updateProducts({ products: cart });
+  };
   return (
     <>
       <h2 className='font-bold text-dark-text text-xl xl:text-2xl'>
@@ -68,6 +96,7 @@ export function OrderSummary() {
       </section>
       {isShippingForm ? (
         <Link
+          onClick={handlePlaceOrderClick}
           href={'/payment'}
           className={`bg-dark-gray text-white p-3 font-semibold rounded-sm mt-3 text-center ${
             isValid.shippingForm
@@ -79,6 +108,7 @@ export function OrderSummary() {
         </Link>
       ) : isPaymentForm ? (
         <Link
+          onClick={handleConfirmOrderClick}
           href={'/order-confirmed'}
           className={`bg-dark-gray text-white p-3 font-semibold rounded-sm mt-3 text-center ${
             isValid.paymentForm
