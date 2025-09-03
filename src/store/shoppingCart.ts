@@ -1,10 +1,14 @@
-import { Product } from '@/types/fakeStoreApi';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
+interface CartItem {
+  id: number;
+  qty: number;
+}
+
 interface ShoppingCart {
-  cart: Product[];
-  addItem: ({ item }: { item: Product }) => void;
+  cart: CartItem[];
+  addItem: ({ itemId }: { itemId: number }) => void;
   deleteItem: ({ itemId }: { itemId: number }) => void;
   clearCart: () => void;
   increaseItemQty: ({ itemId }: { itemId: number }) => void;
@@ -16,13 +20,23 @@ export const useShoppingCartStore = create<ShoppingCart>()(
     (set) => {
       return {
         cart: [],
-        addItem: ({ item }) => {
+        addItem: ({ itemId }) => {
           set((state) => {
-            const cart = [
-              ...state.cart,
-              { ...item, qty: 1, isSelected: false },
-            ];
-            return { cart };
+            const isItemInCart = state.cart.find((item) => item.id === itemId);
+            if (isItemInCart) {
+              return {
+                cart: state.cart.map((item) => {
+                  if (item.id === itemId) {
+                    return { ...item, qty: item.qty + 1 };
+                  } else {
+                    return item;
+                  }
+                }),
+              };
+            }
+            return {
+              cart: [...state.cart, { id: itemId, qty: 1 }],
+            };
           });
         },
         deleteItem: ({ itemId }) => {
