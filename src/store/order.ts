@@ -14,16 +14,20 @@ interface Shipping {
   country: string;
 }
 
+interface ProductsInOrder extends Product {
+  qty: number;
+}
+
 interface Order {
   id: string;
-  products: Product[];
+  products: ProductsInOrder[];
   shipping: Shipping;
   payment: Payment;
 }
 
 interface OrderStore {
   order: Order;
-  updateProducts: ({ products }: { products: Product[] }) => void;
+  updateProducts: ({ products }: { products: ProductsInOrder[] }) => void;
   updateShipping: ({ shipping }: { shipping: Shipping }) => void;
   updatePayment: ({ payment }: { payment: Payment }) => void;
 }
