@@ -13,14 +13,14 @@ export default function ProductPage() {
     addItem({ itemId: 1 });
   };
   return (
-    <main className='flex-1 min-h-screen mb-20 px-3 flex flex-col md:flex-row lg:px-15 bg-white pt-3'>
+    <main className='flex-1 min-h-screen mb-20 px-3 flex flex-col md:flex-row lg:px-5 bg-white pt-3'>
       <div className='flex flex-col items-center gap-5 lg:grid lg:grid-cols-4 lg:items-start'>
         <section className='lg:hidden'>
           <h2 className='font-normal text-dark-text text-xl'>
             {product.title}
           </h2>
         </section>
-        <section className='flex-auto'>
+        <section>
           <Image
             width={300}
             height={300}
@@ -34,31 +34,39 @@ export default function ProductPage() {
               {product.title}
             </h2>
           </section>
+          <section className='flex justify-center mb-3'>
+            <button
+              onClick={handleClick}
+              className='w-fit px-4 py-2 bg-dark-text text-white text-md font-semibold rounded-full shadow-xl hover:bg-white hover:text-dark-text border-2 border-dark-text transition duration-300 cursor-pointer md:text-lg md:px-6 md-py-4 lg:hidden'
+            >
+              Add to cart
+            </button>
+          </section>
           <section className='border-t-1 border-t-gray-400 pt-3'>
-            <h3 className='text-xl text-dark-text font-bold mb-3'>
+            <h3 className='text-xl lg:text-2xl text-dark-text font-bold mb-3'>
               Product information
             </h3>
-            <article className='grid grid-cols-2'>
+            <article className='grid grid-cols-2  max-w-sm'>
               <span className='font-bold text-dark-text'>Brand</span>
               <span>{product.brand}</span>
               <span className='font-bold text-dark-text'>Model</span>
               <span>{product.model}</span>
               <span className='font-bold text-dark-text'>Color</span>
               <span>{product.color}</span>
-              <ul className='col-span-2 mt-2'>
-                {descriptionList.map((item, index) => (
-                  <li className='list-inside list-disc text-pretty' key={index}>
-                    {item}.
-                  </li>
-                ))}
-              </ul>
             </article>
+            <ul className='col-span-2 mt-2 lg:text-lg'>
+              {descriptionList.map((item, index) => (
+                <li className='list-inside list-disc text-pretty' key={index}>
+                  {item}.
+                </li>
+              ))}
+            </ul>
           </section>
         </div>
         <section>
           <button
             onClick={handleClick}
-            className='text-center w-fit px-4 py-2 bg-dark-gray text-white text-md font-semibold rounded-full shadow-xl hover:bg-white hover:text-dark-gray border-2 border-dark-gray transition duration-300 cursor-pointer md:text-lg md:px-6 md-py-4'
+            className='w-fit px-4 py-2 bg-dark-text text-white text-md font-semibold rounded-full shadow-xl hover:bg-white hover:text-dark-text border-2 border-dark-text transition duration-300 cursor-pointer md:text-lg md:px-6 md-py-4 hidden lg:block'
           >
             Add to cart
           </button>
