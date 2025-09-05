@@ -77,10 +77,13 @@ export function Header() {
               </span>
               {user ? null : <UserIcon />}
             </Link>
-            <button className='flex items-center text-light-text p-1 px-3 cursor-pointer rounded-sm hover:outline-1 gap-1'>
+            <Link
+              href={'/wishes'}
+              className='flex items-center text-light-text p-1 px-3 cursor-pointer rounded-sm hover:outline-1 gap-1'
+            >
               <span className='hidden md:inline'>Wishes</span>
               <HeartIcon />
-            </button>
+            </Link>
             <Link
               href='/cart'
               aria-label='open cart'
