@@ -67,7 +67,7 @@ export function ShippingForm() {
         Shipping Address
       </h2>
       <form
-        className='flex flex-col border-t-1 border-t-gray-400 mt-1 pt-1 gap-2 xl:grid xl:grid-cols-2 xl:gap-4 xl:mt-3 xl:pt-3'
+        className='flex flex-col border-t-1 border-t-gray-400 mt-1 pt-1 gap-2 lg:grid lg:grid-cols-2 lg:gap-4 lg:mt-3 lg:pt-3'
         onSubmit={handleSubmit(onSubmit)}
       >
         <label htmlFor={ids.firtName} className='flex-col flex text-dark-text'>
