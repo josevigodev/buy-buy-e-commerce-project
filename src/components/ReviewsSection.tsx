@@ -3,7 +3,7 @@ import { reviews } from '../mocks/reviews.json';
 import { Review } from './Review';
 
 export function ReviewsSection() {
-  const { index } = useIndex({ length: reviews.length });
+  const { index } = useIndex({ length: reviews.length, delay: 5000 });
 
   return (
     <section className='relative overflow-hidden max-w-2xl mx-auto mt-9 bg-light-text md:mt-13'>
