@@ -4,6 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
+import { PopUp } from './PopUp';
 
 const schema = z.object({
   firstName: z
@@ -31,6 +32,7 @@ const schema = z.object({
 export type ShippingFormInputs = z.infer<typeof schema>;
 
 export function ShippingForm() {
+  const disabled = 'opacity-50 pointer-events-none';
   const updateShippingForm = useShippingForm(
     (state) => state.updateShippingForm
   );
@@ -41,7 +43,7 @@ export function ShippingForm() {
     handleSubmit,
     setError,
     reset,
-    formState: { errors, isSubmitting },
+    formState: { errors, isSubmitting, isDirty, isSubmitSuccessful },
   } = useForm<ShippingFormInputs>({
     defaultValues: shippingForm,
     resolver: zodResolver(schema),
@@ -55,14 +57,17 @@ export function ShippingForm() {
     try {
       await new Promise((resolve) => setTimeout(resolve, 1000));
       updateShippingForm({ data });
+      reset(data);
     } catch {
       setError('root', {
         message: 'Something went wrong',
       });
     }
   };
+
   return (
     <section className='min-h-dvh flex flex-col mt-4 flex-1 md:border-r-1 border-r-gray-400 md:pr-3 lg:pr-6 xl:pr-12'>
+      {isSubmitSuccessful && <PopUp text='Form saved successfully' />}
       <h2 className='font-bold text-dark-text text-xl xl:text-2xl'>
         Shipping Address
       </h2>
@@ -190,8 +195,8 @@ export function ShippingForm() {
         <button
           disabled={isSubmitting}
           type='submit'
-          className={`bg-dark-gray text-white py-3 px-20 font-semibold  rounded-sm mt-3 xl:self-center ${
-            isSubmitting ? 'cursor-default opacity-80' : 'cursor-pointer'
+          className={`bg-dark-gray text-white py-3 px-20 font-semibold  rounded-sm mt-3 xl:self-center cursor-pointer ${
+            (isSubmitting || !isDirty) && disabled
           }`}
         >
           {isSubmitting ? 'Saving...' : 'Save'}

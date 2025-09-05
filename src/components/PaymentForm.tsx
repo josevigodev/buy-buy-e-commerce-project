@@ -4,6 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
+import { PopUp } from './PopUp';
 
 const validateCardNumber = (cardNumber: string): boolean => {
   const sanitized = cardNumber.replace(/[\s-]/g, '');
@@ -47,6 +48,7 @@ const schema = z.object({
 export type PaymentFormInputs = z.infer<typeof schema>;
 
 export function PaymentForm() {
+  const disabled = 'opacity-50 pointer-events-none';
   const paymentForm = usePaymentForm((state) => state.paymentForm);
   const updatePaymentForm = usePaymentForm((state) => state.updatePaymentForm);
 
@@ -55,7 +57,7 @@ export function PaymentForm() {
     handleSubmit,
     setError,
     reset,
-    formState: { errors, isSubmitting },
+    formState: { errors, isSubmitting, isDirty, isSubmitSuccessful },
   } = useForm<PaymentFormInputs>({
     defaultValues: paymentForm,
     resolver: zodResolver(schema),
@@ -65,6 +67,7 @@ export function PaymentForm() {
     try {
       await new Promise((resolve) => setTimeout(resolve, 1000));
       updatePaymentForm({ data });
+      reset(data);
     } catch {
       setError('root', { message: 'Something went wrong' });
     }
@@ -76,6 +79,7 @@ export function PaymentForm() {
 
   return (
     <section className='min-h-dvh flex flex-col mt-4 flex-1 md:border-r-1 border-r-gray-400 md:pr-3 lg:pr-6 xl:pr-12'>
+      {isSubmitSuccessful && <PopUp text='Form saved successfully' />}
       <h2 className='font-bold text-dark-text text-xl xl:text-2xl'>
         Payment method
       </h2>
@@ -143,7 +147,7 @@ export function PaymentForm() {
         <button
           disabled={isSubmitting}
           className={`bg-dark-gray text-white py-3 px-20 font-semibold rounded-sm mt-3 xl:self-center ${
-            isSubmitting ? 'cursor-default opacity-80' : 'cursor-pointer'
+            (isSubmitting || !isDirty) && disabled
           }`}
         >
           {isSubmitting ? 'Saving...' : 'Save as default card'}
