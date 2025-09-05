@@ -31,19 +31,19 @@ export const ProductInCart: React.FC<Props> = ({
         <div className='flex rounded-sm border-1 border-gray-400'>
           <button
             onClick={() => decreaseItemQty({ itemId })}
-            className={`cursor-pointer py-1 px-3 flex items-center justify-center ${
+            className={`cursor-pointer py-1 px-3 flex items-center justify-center bg-product-frame ${
               oneItem && disabled
             }`}
           >
             -
           </button>
-          <span className='flex-1 flex items-center justify-center bg-white w-11 select-none'>
+          <span className='flex-1 flex items-center justify-center w-11 select-none'>
             {qty}
           </span>
 
           <button
             onClick={() => increaseItemQty({ itemId })}
-            className='cursor-pointer p-1 px-3 flex items-center justify-center'
+            className='cursor-pointer p-1 px-3 flex items-center justify-center bg-product-frame'
           >
             +
           </button>
