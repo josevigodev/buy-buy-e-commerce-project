@@ -6,15 +6,10 @@ interface Props {
   children: ReactNode;
   itemId: number;
   qty?: number;
-  handleDeleteItemAction: ({ itemId }: { itemId: number }) => void;
 }
 
-export const ProductInCart: React.FC<Props> = ({
-  children,
-  handleDeleteItemAction,
-  itemId,
-  qty,
-}) => {
+export const ProductInCart: React.FC<Props> = ({ children, itemId, qty }) => {
+  const deleteItem = useShoppingCartStore((state) => state.deleteItem);
   const increaseItemQty = useShoppingCartStore(
     (state) => state.increaseItemQty
   );
@@ -25,7 +20,7 @@ export const ProductInCart: React.FC<Props> = ({
   const disabled = 'opacity-50 pointer-events-none';
 
   return (
-    <div className='border-1 border-product-frame rounded-md bg-white pb-3 overflow-hidden'>
+    <div className='border-1 pt-1 border-product-frame rounded-md bg-white pb-3 overflow-hidden'>
       {children}
       <div className='flex items-center gap-2 px-3 text-dark-text justify-end lg:justify-center'>
         <div className='flex rounded-sm border-1 border-gray-400'>
@@ -52,7 +47,7 @@ export const ProductInCart: React.FC<Props> = ({
           See others
         </button>
         <button
-          onClick={() => handleDeleteItemAction({ itemId })}
+          onClick={() => deleteItem({ itemId })}
           className='cursor-pointer rounded-sm border-1 border-gray-400 bg-white p-1 px-3'
         >
           Delete
