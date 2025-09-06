@@ -29,7 +29,7 @@ export default function CartPage() {
       {itemsQty < 1 ? (
         <section className='flex items-center justify-center h-150'>
           <h2 className='text-2xl text-dark-gray font-semibold text-center pointer-events-none'>
-            Add products to the shopping cart so you{"'"}ll see them here
+            Add products to the shopping cart to see them here
           </h2>
         </section>
       ) : (
