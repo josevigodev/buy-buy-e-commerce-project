@@ -3,15 +3,30 @@
 import products from '@/mocks/products.json';
 import { useShoppingCartStore } from '@/store/shoppingCart';
 import Image from 'next/image';
+import { HeartIcon } from '../../components/Icons';
+import { useWishesStore } from '@/store/wishes';
 
 export default function ProductPage() {
   const product = products.products[0];
   const descriptionList = product.description.replace('\r', '').split('\n');
   const addItem = useShoppingCartStore((state) => state.addItem);
+  const addItemToWishes = useWishesStore((state) => state.addItemToWishes);
+  const deleteItemFromWishes = useWishesStore(
+    (state) => state.deleteItemFromWishes
+  );
+  const wishes = useWishesStore((state) => state.wishes);
 
-  const handleClick = () => {
+  const handleAddToCartClick = () => {
     addItem({ itemId: 1 });
   };
+
+  const isProductInWishes = wishes.find((item) => item.id === 1);
+
+  const handleAddItemToWishesClick = () => {
+    if (isProductInWishes) deleteItemFromWishes({ itemId: 1 });
+    if (!isProductInWishes) addItemToWishes({ itemId: 1 });
+  };
+
   return (
     <main className='flex-1 min-h-screen mb-20 px-3 flex flex-col md:flex-row lg:px-5 bg-white pt-3'>
       <div className='flex flex-col items-center gap-5 lg:grid lg:grid-cols-4 lg:items-start'>
@@ -20,13 +35,24 @@ export default function ProductPage() {
             {product.title}
           </h2>
         </section>
-        <section>
+        <section className='relative'>
           <Image
             width={300}
             height={300}
             src={product.image}
             alt={product.title}
           />
+          <button
+            aria-label='add to wishes'
+            onClick={handleAddItemToWishesClick}
+            className='absolute top-0 right-0 cursor-pointer'
+          >
+            <HeartIcon
+              className={`stroke-dark-gray w-8 h-8 ${
+                isProductInWishes && 'fill-red-500 stroke-red-500'
+              }`}
+            />
+          </button>
         </section>
         <div className='col-span-2'>
           <section>
@@ -36,7 +62,7 @@ export default function ProductPage() {
           </section>
           <section className='flex justify-center mb-3'>
             <button
-              onClick={handleClick}
+              onClick={handleAddToCartClick}
               className='w-fit px-4 py-2 bg-dark-text text-white text-md font-semibold rounded-full shadow-xl hover:bg-white hover:text-dark-text border-2 border-dark-text transition duration-300 cursor-pointer md:text-lg md:px-6 md-py-4 lg:hidden'
             >
               Add to cart
@@ -65,7 +91,7 @@ export default function ProductPage() {
         </div>
         <section>
           <button
-            onClick={handleClick}
+            onClick={handleAddToCartClick}
             className='w-fit px-4 py-2 bg-dark-text text-white text-md font-semibold rounded-full shadow-xl hover:bg-white hover:text-dark-text border-2 border-dark-text transition duration-300 cursor-pointer md:text-lg md:px-6 md-py-4 hidden lg:block'
           >
             Add to cart
