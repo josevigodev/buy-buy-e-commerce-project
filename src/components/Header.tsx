@@ -1,13 +1,6 @@
 'use client';
 import Link from 'next/link';
-import {
-  HeartIcon,
-  MenuIcon,
-  SearchIcon,
-  ShoppingCartIcon,
-  UserIcon,
-  XIcon,
-} from './Icons';
+import { HeartIcon, MenuIcon, ShoppingCartIcon, UserIcon } from './Icons';
 import { useEffect, useState } from 'react';
 import { SideBar } from './SideBar';
 import { usePathname } from 'next/navigation';
@@ -15,6 +8,7 @@ import { useUserStore } from '@/store/user';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '@/firebase/client';
 import { useShoppingCartStore } from '@/store/shoppingCart';
+import { SearchForm } from './SearchForm';
 
 export function Header() {
   const user = useUserStore((state) => state.user);
@@ -96,29 +90,7 @@ export function Header() {
             </Link>
           </div>
         )}
-        {isLogin || (
-          <form className='rounded-sm bg-amber-50 flex items-center overflow-hidden col-span-3 lg:order-1 lg:w-8/9 xl:w-full'>
-            <input
-              className='w-full p-1 px-2 focus-visible:outline-0 placeholder:text-placeholder'
-              type='text'
-              placeholder='Search'
-            />
-            <button
-              aria-label='empty input'
-              className='px-2 text-placeholder cursor-pointer'
-              type='button'
-            >
-              <XIcon className='size-4' />
-            </button>
-            <button
-              aria-label='search'
-              className='text-light-text p-1 bg-black cursor-pointer'
-              type='submit'
-            >
-              <SearchIcon />
-            </button>
-          </form>
-        )}
+        {isLogin || <SearchForm />}
       </div>
       {isLogin || (
         <SideBar openSide={openSide} closeSideBarAction={setOpenSide} />
