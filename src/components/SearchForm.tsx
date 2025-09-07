@@ -1,11 +1,13 @@
 import { EventHandler, FormEvent, useEffect, useState } from 'react';
 import { SearchIcon, XIcon } from './Icons';
 import { useFilterStore } from '@/store/filters';
+import { useRouter } from 'next/navigation';
 
 export function SearchForm() {
   const filters = useFilterStore((state) => state.filters);
   const setFilters = useFilterStore((state) => state.setFilters);
   const [search, setSearch] = useState(filters.search);
+  const router = useRouter();
 
   useEffect(() => {
     setSearch(filters.search);
@@ -18,6 +20,7 @@ export function SearchForm() {
   const handleSubmit: EventHandler<FormEvent> = (e) => {
     e.preventDefault();
     setFilters({ key: 'search', value: search });
+    router.push(`/marcket?search=${search}`);
   };
 
   return (
