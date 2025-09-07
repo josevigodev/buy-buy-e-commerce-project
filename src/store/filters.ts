@@ -14,7 +14,7 @@ interface FilterStore {
     value,
   }: {
     key: keyof Filters;
-    value: string | string[];
+    value: string | string[] | null;
   }) => void;
   resetFilters: () => void;
 }
