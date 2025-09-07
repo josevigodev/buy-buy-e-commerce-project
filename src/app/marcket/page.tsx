@@ -1,12 +1,14 @@
 'use client';
 import { Filters } from '@/components/Filters';
 import { ProductCard } from '@/components/ProductCard';
+import { useSyncFilters } from '@/hooks/useSyncFilters';
 import { products } from '@/mocks/products.json';
 import { useFilterStore } from '@/store/filters';
 import { slugify } from '@/utils/slugify';
 import Link from 'next/link';
 
 export default function Marcket() {
+  useSyncFilters();
   // const response = await fetch('https://fakestoreapi.in/api/products?limit=23');
   // const data = (await response.json()) as FakeStoreAPIResponse;
   // const products = data.products;
