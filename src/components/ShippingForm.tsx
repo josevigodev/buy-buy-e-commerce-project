@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { PopUp } from './PopUp';
+import { Loading } from './Loading';
 
 const schema = z.object({
   firstName: z
@@ -32,7 +33,7 @@ const schema = z.object({
 export type ShippingFormInputs = z.infer<typeof schema>;
 
 export function ShippingForm() {
-  const disabled = 'opacity-50 pointer-events-none';
+  const disabled = 'pointer-events-none';
   const updateShippingForm = useShippingForm(
     (state) => state.updateShippingForm
   );
@@ -195,11 +196,16 @@ export function ShippingForm() {
         <button
           disabled={isSubmitting}
           type='submit'
-          className={`bg-dark-gray text-white py-3 px-20 font-semibold  rounded-sm mt-3 xl:self-center cursor-pointer ${
+          className={`bg-dark-gray text-white py-3 px-20 font-semibold  rounded-sm mt-3 xl:self-center cursor-pointer relative ${
             (isSubmitting || !isDirty) && disabled
-          }`}
+          } ${!isDirty && 'opacity-70'}`}
         >
-          {isSubmitting ? 'Saving...' : 'Save'}
+          {isSubmitting ? 'Saving' : 'Save'}
+          {isSubmitting && (
+            <span className='absolute top-5 right-10'>
+              <Loading color='bg-white' />
+            </span>
+          )}
         </button>
       </form>
     </section>

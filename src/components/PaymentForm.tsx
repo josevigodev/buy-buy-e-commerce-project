@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { PopUp } from './PopUp';
+import { Loading } from './Loading';
 
 const validateCardNumber = (cardNumber: string): boolean => {
   const sanitized = cardNumber.replace(/[\s-]/g, '');
@@ -48,7 +49,7 @@ const schema = z.object({
 export type PaymentFormInputs = z.infer<typeof schema>;
 
 export function PaymentForm() {
-  const disabled = 'opacity-50 pointer-events-none';
+  const disabled = 'pointer-events-none';
   const paymentForm = usePaymentForm((state) => state.paymentForm);
   const updatePaymentForm = usePaymentForm((state) => state.updatePaymentForm);
 
@@ -146,11 +147,16 @@ export function PaymentForm() {
         </label>
         <button
           disabled={isSubmitting}
-          className={`bg-dark-gray text-white py-3 px-20 font-semibold rounded-sm mt-3 xl:self-center ${
+          className={`bg-dark-gray relative text-white py-3 px-20 font-semibold rounded-sm mt-3 xl:self-center ${
             (isSubmitting || !isDirty) && disabled
-          }`}
+          } ${!isDirty && 'opacity-70'}`}
         >
-          {isSubmitting ? 'Saving...' : 'Save as default card'}
+          {isSubmitting ? 'Saving' : 'Save as default card'}
+          {isSubmitting && (
+            <span className='absolute top-5 right-10'>
+              <Loading color='bg-white' />
+            </span>
+          )}
         </button>
       </form>
       {errors.root && (
