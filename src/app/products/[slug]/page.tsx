@@ -5,6 +5,8 @@ import React from 'react';
 import { AddToCartButton } from '../../../components/AddToCartButton';
 import { AddToWishListButton } from '../../../components/AddToWishListButton';
 import { slugify } from '@/utils/slugify';
+import Link from 'next/link';
+import { ProductCard } from '@/components/ProductCard';
 
 export default function ProductPage({ params }: { params: { slug: string } }) {
   const product = products.find((p) => slugify(p.title) === params.slug);
@@ -14,7 +16,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
   const descriptionList = product.description.replace('\r', '').split('\n');
 
   return (
-    <main className='flex-1 min-h-screen mb-20 px-3 flex flex-col md:flex-row lg:px-5 bg-white pt-3'>
+    <main className='flex-1 min-h-screen mb-20 px-3 lg:px-5 bg-white pt-3'>
       <div className='max-w-7xl mx-auto flex flex-col items-center gap-5 lg:grid lg:grid-cols-5 lg:items-start'>
         <section className='lg:hidden'>
           <h2 className='font-normal text-dark-text text-xl'>
@@ -65,6 +67,26 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
           <AddToCartButton itemId={product.id} />
         </section>
       </div>
+      <section className='max-w-7xl mx-auto border-t-1 border-t-gray-400 pt-3 mt-20'>
+        <h3 className='text-2xl font-bold text-dark-text'>Related products</h3>
+        <ul className='grid gap-2 lg:grid-cols-4 flex-1 mt-5 lg:pl-3'>
+          {products.map((item) => {
+            if (product.category !== item.category || product.id === item.id)
+              return null;
+
+            return (
+              <li key={item.id}>
+                <Link
+                  href={`/products/${slugify(item.title)}`}
+                  className='border-1 border-product-frame rounded-md overflow-hidden flex h-fit'
+                >
+                  <ProductCard {...item} />
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
     </main>
   );
 }
