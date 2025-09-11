@@ -1,4 +1,5 @@
 import { XIcon } from './Icons';
+import { LogInButton } from './LogInButton';
 
 interface Props {
   openSide: boolean;
@@ -18,7 +19,8 @@ export function SideBar({ openSide, closeSideBarAction }: Props) {
         }`}
       >
         <aside className=' bg-light-text w-[300px] h-full p-2.5'>
-          <h2>Menu</h2>
+          <h2 className='text-2xl font-bold text-dark-text'>Menu</h2>
+          <LogInButton />
         </aside>
         <button
           aria-label='close menu'
