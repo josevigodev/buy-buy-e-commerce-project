@@ -1,12 +1,15 @@
 'use client';
+import { useAuthStore } from '@/store/user';
 import { HeartIcon } from './Icons';
 import { useWishesStore } from '@/store/wishes';
+import { redirect } from 'next/navigation';
 
 interface Props {
   itemId: number;
 }
 
 export const AddToWishListButton: React.FC<Props> = ({ itemId }) => {
+  const { user, loading } = useAuthStore();
   const addItemToWishes = useWishesStore((state) => state.addItemToWishes);
   const deleteItemFromWishes = useWishesStore(
     (state) => state.deleteItemFromWishes
@@ -16,6 +19,9 @@ export const AddToWishListButton: React.FC<Props> = ({ itemId }) => {
   const isProductInWishes = wishes.find((item) => item.id === itemId);
 
   const handleAddItemToWishesClick = () => {
+    if (!user && !loading) {
+      redirect('/log-in');
+    }
     if (isProductInWishes) deleteItemFromWishes({ itemId });
     if (!isProductInWishes) addItemToWishes({ itemId });
   };
