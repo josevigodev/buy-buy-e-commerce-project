@@ -1,11 +1,16 @@
 import { create } from 'zustand';
+import { onAuthStateChanged, User } from 'firebase/auth';
+import { auth } from '@/firebase/client';
 
-interface User {
-  user: string;
-  setUser: (user: string) => void;
+interface AuthState {
+  user: User | null;
+  loading: boolean;
 }
 
-export const useUserStore = create<User>((set) => ({
-  user: '',
-  setUser: (user) => set({ user }),
-}));
+export const useAuthStore = create<AuthState>((set) => {
+  onAuthStateChanged(auth, (user) => {
+    set({ user, loading: false });
+  });
+
+  return { user: null, loading: true };
+});
