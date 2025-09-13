@@ -4,15 +4,12 @@ import { HeartIcon, MenuIcon, ShoppingCartIcon, UserIcon } from './Icons';
 import { useEffect, useState } from 'react';
 import { SideBar } from './SideBar';
 import { usePathname } from 'next/navigation';
-import { useUserStore } from '@/store/user';
-import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from '@/firebase/client';
+import { useAuthStore } from '@/store/user';
 import { useShoppingCartStore } from '@/store/shoppingCart';
 import { SearchForm } from './SearchForm';
 
 export function Header() {
-  const user = useUserStore((state) => state.user);
-  const setUser = useUserStore((state) => state.setUser);
+  const user = useAuthStore((state) => state.user);
   const [openSide, setOpenSide] = useState(false);
   const isLogin = usePathname() === '/log-in';
   const cart = useShoppingCartStore((state) => state.cart);
@@ -26,19 +23,19 @@ export function Header() {
     setOpenSide(true);
   };
 
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user && user.email !== null) {
-        setUser(user.email);
-      } else {
-        const fakeUser = localStorage.getItem('testUser');
-        if (fakeUser) {
-          const parsed = JSON.parse(fakeUser);
-          setUser(parsed.email);
-        }
-      }
-    });
-  }, [user, setUser]);
+  // useEffect(() => {
+  //   onAuthStateChanged(auth, (user) => {
+  //     if (user && user.email !== null) {
+  //       setUser(user.email);
+  //     } else {
+  //       const fakeUser = localStorage.getItem('testUser');
+  //       if (fakeUser) {
+  //         const parsed = JSON.parse(fakeUser);
+  //         setUser(parsed.email);
+  //       }
+  //     }
+  //   });
+  // }, [user, setUser]);
 
   return (
     <header className='bg-gray-600 p-3'>
@@ -63,11 +60,11 @@ export function Header() {
           <div className='flex items-center place-self-end lg:order-2'>
             <Link
               data-test='signin-link'
-              href='/log-in'
+              href={user ? '/my-account' : '/log-in'}
               className='flex items-center text-light-text p-1 cursor-pointer px-3 rounded-sm hover:outline-1 gap-1'
             >
-              <span className='hidden md:inline text-nowrap'>
-                {user ? `Hello ${user}!` : 'Sign in'}
+              <span className='hidden md:flex text-nowrap'>
+                {user ? `Hello!` : 'Sign in'}
               </span>
               {user ? null : <UserIcon />}
             </Link>
