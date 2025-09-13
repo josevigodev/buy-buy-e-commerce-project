@@ -9,6 +9,9 @@ import { usePaymentForm } from '@/store/paymentForm';
 import { usePathname } from 'next/navigation';
 import { useOrderStore } from '@/store/order';
 import { products } from '@/mocks/products.json';
+import { useAuthStore } from '@/store/user';
+import { saveOrder } from '@/services/order';
+import { Product } from '@/types/fakeStoreApi';
 
 export function OrderSummary() {
   const cart = useShoppingCartStore((state) => state.cart);
@@ -16,7 +19,9 @@ export function OrderSummary() {
   const { totalPrice } = useCartInfo();
   const shippingForm = useShippingForm((state) => state.shippingForm);
   const paymentForm = usePaymentForm((state) => state.paymentForm);
+  const user = useAuthStore((state) => state.user);
 
+  const order = useOrderStore((state) => state.order);
   const updateShipping = useOrderStore((state) => state.updateShipping);
   const updatePayment = useOrderStore((state) => state.updatePayment);
   const updateProducts = useOrderStore((state) => state.updateProducts);
@@ -81,7 +86,7 @@ export function OrderSummary() {
 
     updatePayment({ payment });
 
-    const orderItems = cart.map((item) => {
+    const orderItems: Product[] = cart.map((item) => {
       const product = products.find((product) => product.id === item.id);
       if (!product) return null;
 
@@ -92,6 +97,18 @@ export function OrderSummary() {
     });
 
     updateProducts({ products: orderItems });
+
+    if (user) {
+      const userOrder = {
+        userId: user.uid,
+        items: orderItems,
+        total: totalPrice,
+        address: order.shipping,
+        createdAt: new Date().toISOString(),
+        status: 'confirmed',
+      };
+      saveOrder(userOrder);
+    }
     clearCart();
   };
   return (
