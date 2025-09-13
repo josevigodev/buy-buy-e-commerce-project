@@ -7,7 +7,7 @@ interface Payment {
   last4: string;
 }
 
-interface Shipping {
+export interface Shipping {
   name: string;
   address: string;
   city: string;
@@ -34,6 +34,7 @@ interface OrderStore {
 
 const emptyOrder = {
   id: 'ORD-123456',
+  userId: '',
   products: [],
   shipping: {
     name: 'John Doe',
