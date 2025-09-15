@@ -7,10 +7,6 @@ Cypress.Commands.add('getByData', (selector, timeout = 0) => {
 Cypress.Commands.add('loginByFirebase', () => {
   cy.intercept('**/identitytoolkit.googleapis.com/**').as('loginReq');
   cy.visit('/');
-  cy.wait('@loginReq').then((interception) => {
-    cy.log('Status code:', interception.response?.statusCode);
-    cy.log('Response body:', JSON.stringify(interception.response?.body));
-  });
   cy.getByData('signin-link', 50000).should('exist').click();
   cy.getByData('email-input', 50000).focus().type('josevigodev@gmail.com');
   cy.getByData('password-input').focus().type('Pro2800*');
