@@ -19,6 +19,7 @@ export default function CartPage() {
             </span>
           </div>
           <Link
+            data-test='checkout'
             href='/checkout'
             aria-disabled={itemsQty < 1}
             className={`bg-dark-gray text-white rounded-sm p-2 ${
