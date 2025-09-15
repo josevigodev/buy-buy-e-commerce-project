@@ -5,7 +5,7 @@ Cypress.Commands.add('getByData', (selector, timeout = 0) => {
 });
 
 Cypress.Commands.add('loginByFirebase', () => {
-  cy.visit('http://localhost:3000/log-in');
+  cy.visit('/log-in');
   cy.getByData('email-input').focus().type('josevigodev@gmail.com');
   cy.getByData('password-input').focus().type('Pro2800*');
   cy.getByData('confirm-button').click();

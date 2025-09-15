@@ -30,7 +30,7 @@ describe('user login journey', () => {
     cy.getByData('add-to-cart-button', 10000).first().click();
 
     // 3. Ir al carrito y hacer checkout
-    cy.visit('http://localhost:3000/cart');
+    cy.visit('/cart');
     cy.getByData('checkout', 10000).click();
 
     // 4. Llenar shipping info
