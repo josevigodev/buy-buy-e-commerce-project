@@ -79,6 +79,7 @@ export function ShippingForm() {
         <label htmlFor={ids.firtName} className='flex-col flex text-dark-text'>
           *First Name
           <input
+            data-test='first-name'
             className='border-1 border-gray-400 text-dark-text p-2 px-3 focus-visible:outline-dark-gray focus-visible:outline-1 rounded-sm'
             type='text'
             id={ids.firtName}
@@ -91,6 +92,7 @@ export function ShippingForm() {
         <label className='flex-col flex text-dark-text' htmlFor={ids.lastName}>
           *Last Name
           <input
+            data-test='last-name'
             className='border-1 border-gray-400 text-dark-text p-2 px-3 focus-visible:outline-dark-gray focus-visible:outline-1 rounded-sm'
             type='text'
             id={ids.lastName}
@@ -103,6 +105,7 @@ export function ShippingForm() {
         <label htmlFor={ids.location} className='flex-col flex text-dark-text'>
           *Location
           <select
+            data-test='location'
             className='border-1 border-gray-400 text-dark-text p-2 px-3 focus-visible:outline-dark-gray focus-visible:outline-1 rounded-sm'
             id={ids.location}
             {...register('country')}
@@ -121,6 +124,7 @@ export function ShippingForm() {
         <label className='flex-col flex text-dark-text' htmlFor={ids.phone}>
           *Phone Number
           <input
+            data-test='phone'
             className='border-1 border-gray-400 text-dark-text p-2 px-3 focus-visible:outline-dark-gray focus-visible:outline-1 rounded-sm'
             type='text'
             id={ids.phone}
@@ -133,6 +137,7 @@ export function ShippingForm() {
         <label className='flex-col flex text-dark-text' htmlFor={ids.city}>
           *City
           <input
+            data-test='city'
             className='border-1 border-gray-400 text-dark-text p-2 px-3 focus-visible:outline-dark-gray focus-visible:outline-1 rounded-sm'
             type='text'
             id={ids.city}
@@ -145,6 +150,7 @@ export function ShippingForm() {
         <label className='flex-col flex text-dark-text' htmlFor={ids.state}>
           State (Optional)
           <input
+            data-test='state'
             className='border-1 border-gray-400 text-dark-text p-2 px-3 focus-visible:outline-dark-gray focus-visible:outline-1 rounded-sm'
             type='text'
             id={ids.state}
@@ -157,6 +163,7 @@ export function ShippingForm() {
         >
           *Post/Zip Code
           <input
+            data-test='post-code'
             className='border-1 border-gray-400 text-dark-text p-2 px-3 focus-visible:outline-dark-gray focus-visible:outline-1 rounded-sm'
             type='text'
             id={ids.postCode}
@@ -172,6 +179,7 @@ export function ShippingForm() {
         >
           *Address Line 1
           <input
+            data-test='address'
             className='border-1 border-gray-400 text-dark-text p-2 px-3 focus-visible:outline-dark-gray focus-visible:outline-1 rounded-sm'
             type='text'
             id={ids.addressLine1}
@@ -194,6 +202,7 @@ export function ShippingForm() {
           />
         </label>
         <button
+          data-test='save-button'
           disabled={isSubmitting}
           type='submit'
           className={`bg-dark-gray text-white py-3 px-20 font-semibold  rounded-sm mt-3 xl:self-center cursor-pointer relative ${

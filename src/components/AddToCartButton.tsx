@@ -35,6 +35,7 @@ export const AddToCartButton: React.FC<Props> = ({ itemId, isMobile }) => {
       {showPopUp && <PopUp text='Product added to shopping cart' />}
       {user ? (
         <button
+          data-test='add-to-cart-button'
           onClick={handleAddToCartClick}
           className={`w-fit px-4 py-2 bg-dark-text text-white text-md font-semibold rounded-full shadow-xl hover:bg-white hover:text-dark-text border-2 border-dark-text transition duration-300 cursor-pointer md:text-lg ${
             isMobile ? 'lg:hidden' : 'hidden lg:block'

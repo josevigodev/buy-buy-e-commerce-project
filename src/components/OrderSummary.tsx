@@ -129,6 +129,7 @@ export function OrderSummary() {
       </section>
       {isShippingForm ? (
         <Link
+          data-test='place-order'
           onClick={handlePlaceOrderClick}
           href={'/payment'}
           className={`bg-dark-gray text-white p-3 font-semibold rounded-sm mt-3 text-center ${
@@ -141,6 +142,7 @@ export function OrderSummary() {
         </Link>
       ) : isPaymentForm ? (
         <Link
+          data-test='confirm-order'
           onClick={handleConfirmOrderClick}
           href={'/order-confirmed'}
           className={`bg-dark-gray text-white p-3 font-semibold rounded-sm mt-3 text-center ${

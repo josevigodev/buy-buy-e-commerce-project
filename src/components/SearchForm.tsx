@@ -29,6 +29,7 @@ export function SearchForm() {
       className='rounded-sm bg-amber-50 flex items-center overflow-hidden col-span-3 lg:order-1 lg:w-8/9 xl:w-full'
     >
       <input
+        data-test='search-input'
         className='w-full p-1 px-2 focus-visible:outline-0 placeholder:text-placeholder'
         type='text'
         placeholder='Search'

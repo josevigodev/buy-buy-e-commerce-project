@@ -91,6 +91,7 @@ export function PaymentForm() {
         <label htmlFor={ids.name} className='flex-col flex text-dark-text'>
           Name
           <input
+            data-test='name'
             className='border-1 border-gray-400 text-dark-text p-2 px-3 focus-visible:outline-dark-gray focus-visible:outline-1 rounded-sm'
             type='text'
             id={ids.name}
@@ -106,6 +107,7 @@ export function PaymentForm() {
         >
           Card Number
           <input
+            data-test='card-number'
             className='border-1 border-gray-400 text-dark-text p-2 px-3 focus-visible:outline-dark-gray focus-visible:outline-1 rounded-sm'
             type='text'
             id={ids.cardNumber}
@@ -118,6 +120,7 @@ export function PaymentForm() {
         <label htmlFor={ids.cvv} className='flex-col flex text-dark-text'>
           CVV
           <input
+            data-test='cvv'
             className='border-1 border-gray-400 text-dark-text p-2 px-3 focus-visible:outline-dark-gray focus-visible:outline-1 rounded-sm'
             type='password'
             id={ids.cvv}
@@ -133,6 +136,7 @@ export function PaymentForm() {
         >
           Expiration Date
           <input
+            data-test='expiration-date'
             className='border-1 border-gray-400 text-dark-text p-2 px-3 focus-visible:outline-dark-gray focus-visible:outline-1 rounded-sm'
             placeholder='MM/YY'
             type='text'
@@ -146,6 +150,7 @@ export function PaymentForm() {
           )}
         </label>
         <button
+          data-test='save-button'
           disabled={isSubmitting}
           className={`bg-dark-gray relative text-white py-3 px-20 font-semibold rounded-sm mt-3 xl:self-center ${
             (isSubmitting || !isDirty) && disabled
