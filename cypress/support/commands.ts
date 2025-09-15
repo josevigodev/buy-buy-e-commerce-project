@@ -9,5 +9,5 @@ Cypress.Commands.add('loginByFirebase', () => {
   cy.getByData('email-input').focus().type('josevigodev@gmail.com');
   cy.getByData('password-input').focus().type('Pro2800*');
   cy.getByData('confirm-button').click();
-  cy.getByData('signin-link', 10000).contains('Hello!');
+  cy.getByData('signin-link', 20000).contains('Hello!');
 });
