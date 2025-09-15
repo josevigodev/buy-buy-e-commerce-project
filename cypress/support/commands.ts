@@ -5,10 +5,10 @@ Cypress.Commands.add('getByData', (selector, timeout = 0) => {
 });
 
 Cypress.Commands.add('loginByFirebase', () => {
-  cy.visit('/log-in');
-  cy.getByData('email-input').focus().type('josevigodev@gmail.com');
+  cy.visit('/');
+  cy.getByData('signin-link', 50000).should('exist').click();
+  cy.getByData('email-input', 50000).focus().type('josevigodev@gmail.com');
   cy.getByData('password-input').focus().type('Pro2800*');
   cy.getByData('confirm-button').click();
-  cy.contains('BUY-BUY', { timeout: 50000 }).should('exist');
   cy.getByData('signin-link', 50000).contains('Hello!');
 });
