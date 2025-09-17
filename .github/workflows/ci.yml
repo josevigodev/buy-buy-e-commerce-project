@@ -19,8 +19,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install pnpm
-        run: npm install -g pnpm
+      - name: Install dependencies
+        run: pnpm install
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -28,13 +28,12 @@ jobs:
           node-version: 20
           cache: 'pnpm'
 
-      - name: Install dependencies
-        run: pnpm install
+      - name: Install pnpm
+        run: npm install -g pnpm
 
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          build: pnpm build
-          start: pnpm start
-          wait-on: 'http://localhost:3000'
+          start: pnpm dev
+          wait-on: http://localhost:3000
           wait-on-timeout: 120
