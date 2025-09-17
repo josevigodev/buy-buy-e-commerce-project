@@ -8,7 +8,12 @@ import { slugify } from '@/utils/slugify';
 import Link from 'next/link';
 import { ProductCard } from '@/components/ProductCard';
 
-export default function ProductPage({ params }: { params: { slug: string } }) {
+export interface PageProps {
+  params: { slug: string };
+  searchParams?: Record<string, string | string[] | undefined>;
+}
+
+const ProductPage: React.FC<PageProps> = ({ params }) => {
   const product = products.find((p) => slugify(p.title) === params.slug);
 
   if (!product) return notFound();
@@ -89,4 +94,6 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
       </section>
     </main>
   );
-}
+};
+
+export default ProductPage;
