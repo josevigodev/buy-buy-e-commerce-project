@@ -20,14 +20,16 @@
     ],
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "types": ["node"]
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "cypress/support/index.d.ts"
+    "cypress/support/index.d.ts",
+    "src/types"
   ],
   "exclude": ["node_modules"]
 }

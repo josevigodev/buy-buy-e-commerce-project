@@ -11,7 +11,6 @@ import { useOrderStore } from '@/store/order';
 import { products } from '@/mocks/products.json';
 import { useAuthStore } from '@/store/user';
 import { saveOrder } from '@/services/order';
-import { Product } from '@/types/fakeStoreApi';
 
 export function OrderSummary() {
   const cart = useShoppingCartStore((state) => state.cart);
@@ -86,15 +85,18 @@ export function OrderSummary() {
 
     updatePayment({ payment });
 
-    const orderItems: Product[] = cart.map((item) => {
-      const product = products.find((product) => product.id === item.id);
-      if (!product) return null;
-
-      return {
-        ...product,
-        qty: item.qty,
-      };
-    });
+    const orderItems = cart
+      .map((item) => {
+        const product = products.find((product) => product.id === item.id);
+        if (product) {
+          return {
+            ...product,
+            qty: item.qty,
+          };
+        }
+        return undefined;
+      })
+      .filter((item) => item !== undefined);
 
     updateProducts({ products: orderItems });
 

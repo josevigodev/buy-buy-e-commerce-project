@@ -5,12 +5,12 @@ import { collection, addDoc } from 'firebase/firestore';
 import { query, where, getDocs } from 'firebase/firestore';
 
 export interface UserOrder {
-  userId: string;
-  items: Product[];
-  total: number;
-  address: Shipping;
-  createdAt: string;
-  status: string;
+  userId?: string;
+  items?: Product[];
+  total?: number;
+  address?: Shipping;
+  createdAt?: string;
+  status?: string;
 }
 
 export const saveOrder = async (order: UserOrder) => {

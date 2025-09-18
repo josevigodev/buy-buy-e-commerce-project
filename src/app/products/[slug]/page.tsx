@@ -7,13 +7,33 @@ import { AddToWishListButton } from '../../../components/AddToWishListButton';
 import { slugify } from '@/utils/slugify';
 import Link from 'next/link';
 import { ProductCard } from '@/components/ProductCard';
+// import type { Metadata } from 'next';
 
 export interface PageProps {
   params: { slug: string };
-  searchParams?: Record<string, string | string[] | undefined>;
 }
 
-const ProductPage: React.FC<PageProps> = ({ params }) => {
+// export async function generateStaticParams() {
+//   // Retorna un array de objetos con los slugs
+//   return products.map((p) => ({
+//     slug: slugify(p.title),
+//   }));
+// }
+
+// export async function generateMetadata({
+//   params,
+// }: PageProps): Promise<Metadata> {
+//   const product = products.find((p) => slugify(p.title) === params.slug);
+//   if (!product) return { title: 'Product not found' };
+
+//   return {
+//     title: product.title + ' | Buy-Buy',
+//     description: product.description.slice(0, 150),
+//   };
+// }
+
+export default function ProductPage(props: any) {
+  const { params } = props as { params: { slug: string } };
   const product = products.find((p) => slugify(p.title) === params.slug);
 
   if (!product) return notFound();
@@ -94,6 +114,4 @@ const ProductPage: React.FC<PageProps> = ({ params }) => {
       </section>
     </main>
   );
-};
-
-export default ProductPage;
+}

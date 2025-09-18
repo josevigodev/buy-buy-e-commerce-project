@@ -43,7 +43,7 @@ export default function MyAccountPage() {
                       Status: {order.status}
                     </p>
                     <div className='mt-2 space-y-1'>
-                      {order.items.map((item) => (
+                      {order.items?.map((item) => (
                         <div
                           key={item.id}
                           className='flex gap-2 justify-between text-sm'

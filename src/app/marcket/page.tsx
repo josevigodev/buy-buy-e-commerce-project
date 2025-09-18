@@ -1,14 +1,11 @@
 'use client';
 import { Filters } from '@/components/Filters';
-import { ProductCard } from '@/components/ProductCard';
-import { useSyncFilters } from '@/hooks/useSyncFilters';
 import { products } from '@/mocks/products.json';
 import { useFilterStore } from '@/store/filters';
-import { slugify } from '@/utils/slugify';
-import Link from 'next/link';
+import { ProductCase } from '../../components/ProductCase';
+import { Suspense } from 'react';
 
 export default function Marcket() {
-  useSyncFilters();
   // const response = await fetch('https://fakestoreapi.in/api/products?limit=23');
   // const data = (await response.json()) as FakeStoreAPIResponse;
   // const products = data.products;
@@ -48,17 +45,9 @@ export default function Marcket() {
           No matched products found
         </h2>
       )}
-      <section className='grid gap-2 lg:grid-cols-4 flex-1 mt-5 lg:pl-3'>
-        {filteredProducts.map((item) => (
-          <Link
-            href={`/products/${slugify(item.title)}`}
-            key={item.id}
-            className='border-1 border-product-frame flex h-fit'
-          >
-            <ProductCard {...item} />
-          </Link>
-        ))}
-      </section>
+      <Suspense>
+        <ProductCase filteredProducts={filteredProducts} />
+      </Suspense>
     </main>
   );
 }

@@ -14,20 +14,20 @@ export interface Shipping {
   country: string;
 }
 
-interface ProductsInOrder extends Product {
-  qty: number;
-}
+// interface ProductsInOrder extends Product {
+//   qty?: number;
+// }
 
 interface Order {
   id: string;
-  products: ProductsInOrder[];
+  products: Product[];
   shipping: Shipping;
   payment: Payment;
 }
 
 interface OrderStore {
   order: Order;
-  updateProducts: ({ products }: { products: ProductsInOrder[] }) => void;
+  updateProducts: ({ products }: { products: Product[] }) => void;
   updateShipping: ({ shipping }: { shipping: Shipping }) => void;
   updatePayment: ({ payment }: { payment: Payment }) => void;
 }

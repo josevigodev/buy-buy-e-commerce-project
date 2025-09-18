@@ -29,7 +29,7 @@ export function BrandFilters() {
               const isSelected = filters.brand?.includes(field);
               return (
                 <li
-                  onClick={() => handleFilterClick(field)}
+                  // onClick={() => handleFilterClick(field)}
                   key={i + field}
                   className={`cursor-pointer py-1 px-2 ${
                     isSelected
