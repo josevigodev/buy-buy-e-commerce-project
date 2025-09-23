@@ -12,6 +12,7 @@ export function Header() {
   const user = useAuthStore((state) => state.user);
   const [openSide, setOpenSide] = useState(false);
   const isLogin = usePathname() === '/log-in';
+  const isSignUp = usePathname() === '/sign-up';
   const cart = useShoppingCartStore((state) => state.cart);
   const [mounted, setMounted] = useState(false);
 
@@ -41,7 +42,7 @@ export function Header() {
     <header className='bg-gray-600 p-3'>
       <div className='grid grid-cols-2 gap-y-1 w-full lg:grid-cols-5'>
         <div className='flex items-center gap-3'>
-          {isLogin || (
+          {isLogin || isSignUp || (
             <button
               aria-label='open menu'
               className='text-light-text p-1 cursor-pointer rounded-sm hover:outline-1 w-fit'
@@ -56,7 +57,7 @@ export function Header() {
             </h1>
           </Link>
         </div>
-        {isLogin || (
+        {isLogin || isSignUp || (
           <div className='flex items-center place-self-end lg:order-2'>
             <Link
               data-test='signin-link'
@@ -87,9 +88,9 @@ export function Header() {
             </Link>
           </div>
         )}
-        {isLogin || <SearchForm />}
+        {isLogin || isSignUp || <SearchForm />}
       </div>
-      {isLogin || (
+      {isLogin || isSignUp || (
         <SideBar openSide={openSide} closeSideBarAction={setOpenSide} />
       )}
     </header>
