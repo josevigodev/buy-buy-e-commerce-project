@@ -95,7 +95,7 @@ export function SignIn() {
         data-test='change-mode-button'
         className='text-blue-600 block text-pretty text-center text-md mt-10 mx-auto cursor-pointer w-fit'
       >
-        You're new? - Register
+        Are you new? - Register
       </Link>
     </>
   );

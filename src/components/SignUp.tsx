@@ -48,7 +48,7 @@ export function SignUp() {
     const cleanEmail = email.trim().toLowerCase();
     signUp(cleanEmail, password)
       .then(() => router.push('/'))
-      .catch((e) =>
+      .catch(() =>
         setErrors((prev) => ({ ...prev, root: 'Email already in use' }))
       );
   };
