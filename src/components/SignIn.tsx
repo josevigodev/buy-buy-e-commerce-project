@@ -36,7 +36,7 @@ export function SignIn() {
         <p className='text-center mb-10 text-xl font-semibold text-gray-500'>
           Welcome back
         </p>
-        <div className='flex flex-col gap-9'>
+        <div className='flex flex-col gap-5'>
           <label htmlFor='email' className='text-xl font-bold text-gray-600'>
             Email
             <div className='mt-2 flex items-center gap-2 bg-gray-100 text-gray-700 border-1 border-gray-300 p-2 px-3 transition-all duration-250 outline-transparent focus-within:border-gray-500 rounded-sm group text-lg font-normal'>
@@ -86,7 +86,7 @@ export function SignIn() {
             type='submit'
             className='bg-dark-gray text-white p-3 font-semibold cursor-pointer rounded-sm'
           >
-            Sign up
+            Log in
           </button>
         </div>
       </form>
