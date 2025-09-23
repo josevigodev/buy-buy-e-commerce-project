@@ -23,6 +23,10 @@ body {
   animation: showPopUp 2s both;
 }
 
+.form {
+  animation: show 0.3s forwards;
+}
+
 .loadingFrame {
   animation: pulsar infinite 1s alternate;
 
@@ -49,6 +53,17 @@ body {
   }
   100% {
     opacity: 0;
+  }
+}
+
+@keyframes show {
+  from {
+    transform: translateY(-20%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0%);
+    opacity: 1;
   }
 }
 
