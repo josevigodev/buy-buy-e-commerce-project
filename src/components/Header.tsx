@@ -64,10 +64,8 @@ export function Header() {
               href={user ? '/my-account' : '/log-in'}
               className='flex items-center text-light-text p-1 cursor-pointer px-3 rounded-sm hover:outline-1 gap-1'
             >
-              <span className='hidden md:flex text-nowrap'>
-                {user ? `Hello!` : 'Sign in'}
-              </span>
-              {user ? null : <UserIcon />}
+              <span className='text-nowrap'>{user ? `Hello!` : 'Sign in'}</span>
+              <UserIcon />
             </Link>
             <Link
               href={'/wishes'}
