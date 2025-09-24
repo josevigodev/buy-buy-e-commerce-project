@@ -1,5 +1,4 @@
 @import 'tailwindcss';
-
 @theme inline {
   /* colors */
   --color-light-text: #fffcfb;
