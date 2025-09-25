@@ -40,8 +40,8 @@ export const ProductCard: React.FC<Props> = function ({
           <Rating size={18} rating={4.2} />
           <span>(13.1k)</span>
         </div>
-        <span className='text-amber-700 text-lg font-bold'>
-          <strong className='font-normal text-md mr-0.5'>$</strong>
+        <span className='font-bold text-dark-text text-xl'>
+          <strong className='font-normal text-sm'>$</strong>
           {price}
         </span>
         {(isCheckout || isPayment || isOrderConfirmed) && (
