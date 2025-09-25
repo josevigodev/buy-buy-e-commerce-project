@@ -37,16 +37,14 @@ export const AddToCartButton: React.FC<Props> = ({ itemId, isMobile }) => {
         <button
           data-test='add-to-cart-button'
           onClick={handleAddToCartClick}
-          className={`w-fit px-4 py-2 bg-dark-text text-white text-md font-semibold rounded-full shadow-xl hover:bg-white hover:text-dark-text border-2 border-dark-text transition duration-300 cursor-pointer md:text-lg ${
-            isMobile ? 'lg:hidden' : 'hidden lg:block'
-          }`}
+          className={`items-center gap-2 px-3 py-2 rounded-lg font-bold bg-gradient-to-r from-[#000] to-[#fdc700] text-white shadow-sm hover:scale-105 active:scale-100 transition `}
         >
           Add to cart
         </button>
       ) : (
         <Link
           href='/log-in'
-          className={`w-fit px-4 py-2 bg-dark-text text-white text-md font-semibold rounded-full shadow-xl hover:bg-white hover:text-dark-text border-2 border-dark-text transition duration-300 cursor-pointer md:text-lg ${
+          className={`inline-flex items-center gap-2 px-3 py-2 rounded-lg font-bold bg-gradient-to-r from-[#000] to-[#fdc700] text-white shadow-sm hover:scale-105 active:scale-100 transition ${
             isMobile ? 'lg:hidden' : 'hidden lg:block'
           }`}
         >
