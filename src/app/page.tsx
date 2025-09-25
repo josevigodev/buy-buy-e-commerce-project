@@ -83,6 +83,3 @@ export default function Home() {
     </main>
   );
 }
-
-const sadf =
-  ' hover:border-gray-600 hover:text-dark-text hover:shadow-md transition duration-200';
