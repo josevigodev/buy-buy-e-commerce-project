@@ -16,11 +16,11 @@ export function FiltersAside({ openFilter, onOpenFilterAction }: Props) {
   return (
     <>
       <div
-        className={`fixed top-0 left-0 w-full h-dvh z-40 flex transition-transform duration-500 ease-out lg:w-fit lg:sticky lg:z-10 lg:border-r-1 lg:border-r-gray-400 ${
+        className={`fixed top-0 left-0 w-full h-dvh z-40 flex transition-transform duration-500 ease-out lg:w-fit lg:z-0 lg:border-r-1 lg:border-r-gray-400 lg:static ${
           openFilter ? 'translate-x' : '-translate-x-full lg:translate-x-0'
         }`}
       >
-        <aside className=' bg-light-text w-[300px] h-full p-2.5'>
+        <aside className=' w-[300px] h-full p-2.5 bg-white'>
           <h2 className='text-center text-xl mb-4 font-semibold text-dark-text'>
             Filters
           </h2>
