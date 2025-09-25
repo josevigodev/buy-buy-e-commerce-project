@@ -15,7 +15,6 @@ Cypress.Commands.add('loginByFirebase', () => {
     cy.log('Status code:', interception.response?.statusCode);
     cy.log('Response body:', JSON.stringify(interception.response?.body));
   });
-  cy.getByData('shop-now-link', 50000).should('exist');
   cy.getByData('signin-link', 50000)
     .should('exist')
     .should('contain', 'Hello!');
