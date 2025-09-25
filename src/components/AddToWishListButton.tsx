@@ -29,10 +29,10 @@ export const AddToWishListButton: React.FC<Props> = ({ itemId }) => {
     <button
       aria-label='add to wishes'
       onClick={handleAddItemToWishesClick}
-      className='absolute top-0 right-0 cursor-pointer'
+      className='absolute top-4 right-4 p-1 rounded-full flex items-center justify-center bg-white/20 hover:bg-white/30 transition'
     >
       <HeartIcon
-        className={`stroke-dark-gray w-8 h-8 ${
+        className={`size-7 text-white ${
           isProductInWishes && 'fill-red-500 stroke-red-500'
         }`}
       />
