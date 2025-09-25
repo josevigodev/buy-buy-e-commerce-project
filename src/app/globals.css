@@ -53,19 +53,6 @@ body {
   &:hover {
     animation-play-state: paused;
   }
-
-  /* &:nth-child(2) {
-    background: linear-gradient(270deg, #ffc371, #ff5f6d, #ffc371, #ff5f6d);
-    background-size: 400% 400%;
-  }
-  &:nth-child(3) {
-    background: linear-gradient(270deg, #16bffd, #cb3066, #16bffd, #cb3066);
-    background-size: 400% 400%;
-  }
-  &:nth-child(4) {
-    background: linear-gradient(270deg, #f7ff00, #db36a4, #f7ff00, #db36a4);
-    background-size: 400% 400%;
-  } */
 }
 
 @keyframes bg-move {
