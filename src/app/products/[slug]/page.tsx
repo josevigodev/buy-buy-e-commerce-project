@@ -5,7 +5,6 @@ import React from 'react';
 import { AddToCartButton } from '../../../components/AddToCartButton';
 import { AddToWishListButton } from '../../../components/AddToWishListButton';
 import { slugify } from '@/utils/slugify';
-import Link from 'next/link';
 import { ProductCard } from '@/components/ProductCard';
 // import type { Metadata } from 'next';
 

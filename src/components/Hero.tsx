@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { motion } from 'motion/react';
+import Image from 'next/image';
 
 export function Hero() {
   return (
@@ -43,7 +44,7 @@ export function Hero() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <img
+          <Image
             src='/hero-product.png'
             alt='Featured Product'
             className='w-[350px] lg:w-[450px] drop-shadow-2xl'
