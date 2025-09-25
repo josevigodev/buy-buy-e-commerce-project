@@ -20,7 +20,7 @@ export const ProductInCart: React.FC<Props> = ({ children, itemId, qty }) => {
   const disabled = 'opacity-50 pointer-events-none';
 
   return (
-    <div className='border-1 pt-1 border-product-frame rounded-md bg-white pb-3 overflow-hidden'>
+    <div className='pt-1 w-fit h-fit pb-3 overflow-hidden rounded-2xl shadow-lg transform transition-all hover:-translate-y-2 hover:shadow-2xl'>
       {children}
       <div className='flex items-center gap-2 px-3 text-dark-text justify-end lg:justify-center'>
         <div className='flex rounded-sm border-1 border-gray-400'>

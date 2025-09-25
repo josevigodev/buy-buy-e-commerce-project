@@ -23,7 +23,7 @@ export const ProductInWishes: React.FC<Props> = ({ children, itemId }) => {
     deleteItemFromWishes({ itemId });
   };
   return (
-    <div className='border-1 h-fit pt-1 border-product-frame rounded-md bg-white pb-3 overflow-hidden'>
+    <div className=' bg-white pb-3 rounded-2xl overflow-hidden shadow-lg transform transition-all hover:-translate-y-2 hover:shadow-2xl'>
       {children}
       <div className='flex items-center gap-2 px-3 text-dark-text justify-end lg:justify-center'>
         <div className='flex rounded-sm border-1 border-gray-400'></div>
