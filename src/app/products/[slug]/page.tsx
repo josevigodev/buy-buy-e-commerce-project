@@ -13,25 +13,6 @@ export interface PageProps {
   params: { slug: string };
 }
 
-// export async function generateStaticParams() {
-//   // Retorna un array de objetos con los slugs
-//   return products.map((p) => ({
-//     slug: slugify(p.title),
-//   }));
-// }
-
-// export async function generateMetadata({
-//   params,
-// }: PageProps): Promise<Metadata> {
-//   const product = products.find((p) => slugify(p.title) === params.slug);
-//   if (!product) return { title: 'Product not found' };
-
-//   return {
-//     title: product.title + ' | Buy-Buy',
-//     description: product.description.slice(0, 150),
-//   };
-// }
-
 export default function ProductPage(props: any) {
   const { params } = props as { params: { slug: string } };
   const product = products.find((p) => slugify(p.title) === params.slug);
@@ -60,7 +41,7 @@ export default function ProductPage(props: any) {
         </section>
         <div className='col-span-2'>
           <section>
-            <h2 className='font-bold text-dark-text text-2xl hidden lg:block'>
+            <h2 className='text-dark-text text-2xl hidden lg:block'>
               {product.title}
             </h2>
           </section>
@@ -68,9 +49,10 @@ export default function ProductPage(props: any) {
             <AddToCartButton itemId={product.id} isMobile />
           </section>
           <section className='border-t-1 border-t-gray-400 pt-3'>
-            <h3 className='text-xl lg:text-2xl text-dark-text font-bold mb-3'>
-              Product information
-            </h3>
+            <p className='font-bold mb-4 text-dark-text text-2xl lg:text-3xl'>
+              <strong className='font-normal text-sm lg:text-lg'>$</strong>
+              {product.price}
+            </p>
             <article className='grid grid-cols-2  max-w-sm'>
               <span className='font-bold text-dark-text'>Brand</span>
               <span>{product.brand}</span>
