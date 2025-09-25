@@ -38,27 +38,28 @@ export default function Home() {
   };
 
   return (
-    <main className='flex-1 mb-20'>
+    <main className='flex-1'>
       <Hero />
-      <section className='px-3 max-w-[1500px] mx-auto grid grid-cols-1  sm:grid-cols-2 xl:grid-cols-4 gap-4 mt-10'>
-        {categories.map((article) => (
-          <article
-            key={article.category}
-            onMouseOver={() => handleMouseOver(article.category)}
-            onMouseLeave={() => handleMouseOver('')}
-            className={`animated-background w-full flex flex-col gap-4 bg-gradient-to-br from-blue-200 to-white rounded-lg p-4 pb-30 relative transition-transform duration-150 ${
-              article.category === hover ? 'md:scale-105' : ''
-            }`}
-          >
-            <h2 className='text-2xl font-semibold mb-4 select-none'>
-              {article.title}
-            </h2>
-            <div className='grid grid-cols-2 gap-4'>
-              {productsByCategory(article.category)
-                .slice(1, 5)
-                .map((product) => (
-                  <div key={product.id} className='bg-white p-2 rounded-lg'>
-                    <Link href={`/products/${slugify(product.title)}`}>
+      <div className='bg-gradient-to-b from-black to-dark-gray'>
+        <section className='px-3 max-w-[1500px] mx-auto grid grid-cols-1  sm:grid-cols-2 xl:grid-cols-4 gap-4 '>
+          {categories.map((article) => (
+            <article
+              key={article.category}
+              onMouseOver={() => handleMouseOver(article.category)}
+              onMouseLeave={() => handleMouseOver('')}
+              className={`animated-background w-full flex flex-col gap-4 bg-gradient-to-br from-blue-200 to-white rounded-lg p-4 pb-30 relative transition-transform duration-150 ${
+                article.category === hover ? 'md:scale-105' : ''
+              }`}
+            >
+              <div className='grid grid-cols-2 gap-4'>
+                {productsByCategory(article.category)
+                  .slice(1, 5)
+                  .map((product) => (
+                    <Link
+                      key={product.id}
+                      href={`/products/${slugify(product.title)}`}
+                      className='bg-white p-2 rounded-lg'
+                    >
                       <Image
                         src={product.image}
                         alt={product.title}
@@ -67,19 +68,19 @@ export default function Home() {
                         className='w-full object-cover object-center'
                       />
                     </Link>
-                  </div>
-                ))}
-            </div>
-            <Link
-              href={`/marcket?category=${article.category}`}
-              className=' w-fit px-4 py-2 backdrop-brightness-200 text-black text-md transition-colors duration-150 cursor-pointer md:text-lg absolute bottom-4 right-4 rounded-full flex items-center gap-1 hover:bg-white'
-            >
-              See more of this <ArrowRightIcon />
-            </Link>
-          </article>
-        ))}
-      </section>
-      <ReviewsSection />
+                  ))}
+              </div>
+              <Link
+                href={`/marcket?category=${article.category}`}
+                className=' bg-yellow-400 text-black font-bold px-6 py-3 rounded-2xl hover:bg-yellow-300 transition absolute bottom-4 self-end flex'
+              >
+                {article.title} <ArrowRightIcon />
+              </Link>
+            </article>
+          ))}
+        </section>
+        <ReviewsSection />
+      </div>
     </main>
   );
 }
