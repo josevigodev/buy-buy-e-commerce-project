@@ -3,9 +3,9 @@ import { Review } from './Review';
 
 export function ReviewsSection() {
   return (
-    <section className='relative overflow-hidden mx-auto mt-20 md:mt-28 mb-20'>
-      <h2 className='text-3xl text-center mb-10 font-semibold text-dark-text'>
-        Testimonials
+    <section className='relative py-10 overflow-hidden mx-auto mt-20 md:mt-28 pb-40'>
+      <h2 className='text-2xl lg:text-3xl text-center mb-10 font-semibold text-gray-100'>
+        What people think about us
       </h2>
 
       <ul className='flex gap-3.5 reviews-scroll'>
@@ -15,8 +15,6 @@ export function ReviewsSection() {
           </li>
         ))}
       </ul>
-      <div className='pointer-events-none absolute inset-y-0 left-0 z-10 w-1/8 bg-gradient-to-r from-[#fff]'></div>
-      <div className='pointer-events-none absolute inset-y-0 right-0 z-10 w-1/8 bg-gradient-to-l from-[#fff]'></div>
     </section>
   );
 }

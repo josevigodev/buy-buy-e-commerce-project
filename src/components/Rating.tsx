@@ -12,12 +12,18 @@ export const Rating: React.FC<Props> = ({ rating, totalStars = 5, size }) => {
       {Array.from({ length: totalStars }).map((_, i) => {
         const starNumber = i + 1;
         if (rating >= starNumber) {
-          return <Star key={i} className='fill-yellow-500' size={size} />;
+          return (
+            <Star
+              key={i}
+              className='fill-yellow-500 drop-shadow-md drop-shadow-yellow-500'
+              size={size}
+            />
+          );
         } else if (rating >= starNumber - 0.5) {
           return (
             <StarHalf
               key={i}
-              className='text-gray-300 fill-yellow-500'
+              className='text-gray-300 fill-yellow-500 drop-shadow-sm drop-shadow-yellow-500'
               size={size}
             />
           );

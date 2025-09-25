@@ -10,7 +10,7 @@ interface Props {
 
 export const Review: React.FC<Props> = ({ user, comment, rating }) => {
   return (
-    <figure className='flex flex-col shrink-0 w-sm bg-[#48e2] rounded-2xl p-5 gap-2.5'>
+    <figure className='flex flex-col w-md shrink-0 bg-[#48e2] rounded-2xl p-5 gap-2.5 hover:scale-105 hover:shadow-lg hover:shadow-yellow-300 transition-all duration-150 select-none'>
       <div className='flex flex-row items-center justify-between'>
         <div className='flex flex-row items-center gap-1.5'>
           <Image
@@ -21,37 +21,16 @@ export const Review: React.FC<Props> = ({ user, comment, rating }) => {
             src={Profile}
           />
           <div className='flex flex-col'>
-            <figcaption className='text-sm font-medium text-dark-text'>
+            <figcaption className='text-sm font-medium text-white'>
               {user}
             </figcaption>
-            <p className='text-xs font-medium text-medium-text'>@{user}</p>
+            <p className='text-xs font-medium text-gray-200'>@{user}</p>
           </div>
         </div>
 
         <Rating size={18} rating={rating} />
       </div>
-      <blockquote className='mt-2 text-md text-dark-text'>{comment}</blockquote>
+      <blockquote className='mt-2 text-md text-white'>{comment}</blockquote>
     </figure>
   );
 };
-
-{
-  /* <figure className='flex flex-col shrink-0 w-3xs bg-[#48e2] rounded-2xl p-5 gap-2.5'>
-      <div className='flex flex-row items-center gap-1.5'>
-        <img
-          className='rounded-full'
-          width='32'
-          height='32'
-          alt={`${user}'s profile picture`}
-          src={image}
-        />
-        <div className='flex flex-col'>
-          <figcaption className='text-sm font-medium dark:text-white'>
-            {user}
-          </figcaption>
-          <p className='text-xs font-medium dark:text-white/40'>@{user}</p>
-        </div>
-      </div>
-      <blockquote className='mt-2 text-md'>{comment}</blockquote>
-    </figure> */
-}
