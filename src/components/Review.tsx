@@ -10,7 +10,7 @@ interface Props {
 
 export const Review: React.FC<Props> = ({ user, comment, rating }) => {
   return (
-    <figure className='flex flex-col bg-gray-200 rounded-sm p-5 gap-2.5'>
+    <figure className='flex flex-col shrink-0 w-sm bg-[#48e2] rounded-2xl p-5 gap-2.5'>
       <div className='flex flex-row items-center justify-between'>
         <div className='flex flex-row items-center gap-1.5'>
           <Image
@@ -34,3 +34,24 @@ export const Review: React.FC<Props> = ({ user, comment, rating }) => {
     </figure>
   );
 };
+
+{
+  /* <figure className='flex flex-col shrink-0 w-3xs bg-[#48e2] rounded-2xl p-5 gap-2.5'>
+      <div className='flex flex-row items-center gap-1.5'>
+        <img
+          className='rounded-full'
+          width='32'
+          height='32'
+          alt={`${user}'s profile picture`}
+          src={image}
+        />
+        <div className='flex flex-col'>
+          <figcaption className='text-sm font-medium dark:text-white'>
+            {user}
+          </figcaption>
+          <p className='text-xs font-medium dark:text-white/40'>@{user}</p>
+        </div>
+      </div>
+      <blockquote className='mt-2 text-md'>{comment}</blockquote>
+    </figure> */
+}

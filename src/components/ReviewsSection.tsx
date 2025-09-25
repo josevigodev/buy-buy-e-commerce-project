@@ -1,27 +1,22 @@
-import { useIndex } from '@/hooks/useIndex';
 import { reviews } from '../mocks/reviews.json';
 import { Review } from './Review';
 
 export function ReviewsSection() {
-  const { index } = useIndex({ length: reviews.length, delay: 5000 });
-
   return (
-    <section className='relative overflow-hidden max-w-2xl mx-auto mt-9 bg-light-text md:mt-13'>
-      <h2 className='text-2xl text-center mb-3.5 font-semibold text-dark-text'>
+    <section className='relative overflow-hidden mx-auto mt-20 md:mt-28 mb-20'>
+      <h2 className='text-3xl text-center mb-10 font-semibold text-dark-text'>
         Testimonials
       </h2>
 
-      <ul className='flex justify-start'>
-        {reviews.map((review, i) => (
-          <li
-            key={`${review.id}-${i}`}
-            className={`shrink-0 w-full transition-transform duration-200`}
-            style={{ transform: `translateX(-${index * 100}%)` }}
-          >
+      <ul className='flex gap-3.5 reviews-scroll'>
+        {[...reviews, ...reviews].map((review, i) => (
+          <li key={`${review.id}-${i}`} className={`w-full`}>
             <Review {...review} />
           </li>
         ))}
       </ul>
+      <div className='pointer-events-none absolute inset-y-0 left-0 z-10 w-1/8 bg-gradient-to-r from-[#fff]'></div>
+      <div className='pointer-events-none absolute inset-y-0 right-0 z-10 w-1/8 bg-gradient-to-l from-[#fff]'></div>
     </section>
   );
 }
