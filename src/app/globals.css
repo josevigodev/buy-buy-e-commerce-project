@@ -26,6 +26,57 @@ body {
   animation: show 0.3s forwards;
 }
 
+.search {
+  animation: swipe-down 0.5s forwards;
+}
+
+.branch {
+  animation: swipe-right 0.5s both 0.5s;
+}
+
+.header-button {
+  animation: swipe-down both 0.5s 0.5s;
+
+  &:nth-child(2) {
+    animation-delay: 1s;
+  }
+  &:nth-child(3) {
+    animation-delay: 1.5s;
+  }
+}
+
+.animated-background {
+  background: linear-gradient(270deg, #ff4b1f, #1fddff, #ff4b1f, #1fddff);
+  background-size: 400% 400%;
+  animation: bg-move 6s linear infinite;
+
+  &:hover {
+    animation-play-state: paused;
+  }
+
+  &:nth-child(2) {
+    background: linear-gradient(270deg, #ffc371, #ff5f6d, #ffc371, #ff5f6d);
+    background-size: 400% 400%;
+  }
+  &:nth-child(3) {
+    background: linear-gradient(270deg, #16bffd, #cb3066, #16bffd, #cb3066);
+    background-size: 400% 400%;
+  }
+  &:nth-child(4) {
+    background: linear-gradient(270deg, #f7ff00, #db36a4, #f7ff00, #db36a4);
+    background-size: 400% 400%;
+  }
+}
+
+@keyframes bg-move {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 90% 50%;
+  }
+}
+
 .loadingFrame {
   animation: pulsar infinite 1s alternate;
 
@@ -34,6 +85,19 @@ body {
   }
   &:nth-child(3) {
     animation-delay: 200ms;
+  }
+}
+
+.reviews-scroll {
+  animation: run-left 40s linear infinite;
+}
+
+@keyframes run-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-314%);
   }
 }
 
@@ -81,5 +145,27 @@ body {
 
   100% {
     scale: 1.2;
+  }
+}
+
+@keyframes swipe-down {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes swipe-right {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0%);
+    opacity: 1;
   }
 }
