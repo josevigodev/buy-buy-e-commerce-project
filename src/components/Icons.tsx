@@ -72,8 +72,15 @@ export const ArrowUpIcon: React.FC<Props> = ({ className }) => {
 
 export const HeartIcon: React.FC<Props> = ({ className }) => {
   return (
+    <svg className={className} viewBox='0 0 24 24' fill='currentColor'>
+      <path d='M12 21s-7-4.35-9-7a5 5 0 0 1 8-6 5 5 0 0 1 8 6c-2 2.65-9 7-9 7z' />
+    </svg>
+  );
+};
+
+export const HeaderHeartIcon: React.FC<Props> = ({ className }) => {
+  return (
     <svg
-      xmlns='http://www.w3.org/2000/svg'
       width='24'
       height='24'
       viewBox='0 0 24 24'
