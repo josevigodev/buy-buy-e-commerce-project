@@ -45,8 +45,8 @@ export default function ProductPage(props: any) {
               {product.title}
             </h2>
           </section>
-          <section className='flex justify-center mb-3'>
-            <AddToCartButton itemId={product.id} isMobile />
+          <section className='flex justify-center mb-3 lg:hidden'>
+            <AddToCartButton itemId={product.id} />
           </section>
           <section className='border-t-1 border-t-gray-400 pt-3'>
             <p className='font-bold mb-4 text-dark-text text-2xl lg:text-3xl'>
@@ -70,25 +70,20 @@ export default function ProductPage(props: any) {
             </ul>
           </section>
         </div>
-        <section>
+        <section className='hidden lg:block'>
           <AddToCartButton itemId={product.id} />
         </section>
       </div>
       <section className='max-w-7xl mx-auto border-t-1 border-t-gray-400 pt-3 mt-20'>
         <h3 className='text-2xl font-bold text-dark-text'>Related products</h3>
-        <ul className='grid gap-2 lg:grid-cols-4 flex-1 mt-5 lg:pl-3'>
+        <ul className='grid gap-2 grid-cols-2 lg:grid-cols-4 flex-1 mt-5 lg:pl-3'>
           {products.map((item) => {
             if (product.category !== item.category || product.id === item.id)
               return null;
 
             return (
               <li key={item.id}>
-                <Link
-                  href={`/products/${slugify(item.title)}`}
-                  className='border-1 border-product-frame rounded-md overflow-hidden flex h-fit'
-                >
-                  <ProductCard {...item} />
-                </Link>
+                <ProductCard {...item} />
               </li>
             );
           })}
