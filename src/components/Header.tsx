@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import { HeartIcon, MenuIcon, ShoppingCartIcon, UserIcon } from './Icons';
+import { HeaderHeartIcon, MenuIcon, ShoppingCartIcon, UserIcon } from './Icons';
 import { useEffect, useState } from 'react';
 import { SideBar } from './SideBar';
 import { usePathname } from 'next/navigation';
@@ -72,7 +72,7 @@ export function Header() {
               className='flex items-center header-button text-light-text p-1 px-3 cursor-pointer rounded-sm transition-colors duration-200 ease-out hover:bg-gray-800 gap-1'
             >
               <span className='hidden md:inline'>Wishes</span>
-              <HeartIcon />
+              <HeaderHeartIcon />
             </Link>
             <Link
               href='/cart'
@@ -80,9 +80,11 @@ export function Header() {
               className='text-light-text p-1 header-button cursor-pointer px-3 rounded-sm transition-colors duration-200 ease-out hover:bg-gray-800 relative'
             >
               <ShoppingCartIcon />
-              <small className='absolute -top-1 right-1/9 bg-black px-1.5 scale-80 flex items-center justify-center rounded-full'>
-                {mounted ? cart.length : null}
-              </small>
+              {cart.length > 0 && (
+                <small className='absolute -top-1 right-1/9 bg-yellow-400 text-black font-bold text-md px-1.5 scale-80 flex items-center justify-center rounded-full'>
+                  {mounted ? cart.length : null}
+                </small>
+              )}
             </Link>
           </div>
         )}
