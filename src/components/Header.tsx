@@ -39,37 +39,37 @@ export function Header() {
   // }, [user, setUser]);
 
   return (
-    <header className='bg-gray-600 p-3'>
-      <div className='grid grid-cols-2 gap-y-1 w-full lg:grid-cols-5'>
+    <header className='bg-gray-600 p-3 sticky top-0 left-0 w-full z-10'>
+      <div className='grid grid-cols-2 items-center gap-y-1 w-full lg:grid-cols-5'>
         <div className='flex items-center gap-3'>
           {isLogin || isSignUp || (
             <button
               aria-label='open menu'
-              className='text-light-text p-1 cursor-pointer rounded-sm hover:outline-1 w-fit'
+              className='text-light-text p-1 cursor-pointer rounded-sm hover:bg-gray-800 w-fit'
               onClick={handleClick}
             >
               <MenuIcon />
             </button>
           )}
           <Link href='/'>
-            <h1 className='text-2xl font-bold text-light-text select-none'>
+            <h1 className='text-2xl font-bold text-light-text select-none branch'>
               BUY-BUY
             </h1>
           </Link>
         </div>
         {isLogin || isSignUp || (
-          <div className='flex items-center place-self-end lg:order-2'>
+          <div className='flex items-center justify-end lg:order-2'>
             <Link
               data-test='signin-link'
               href={user ? '/my-account' : '/log-in'}
-              className='flex items-center text-light-text p-1 cursor-pointer px-3 rounded-sm hover:outline-1 gap-1'
+              className='flex items-center header-button text-light-text p-1 cursor-pointer px-3 rounded-sm transition-colors duration-200 ease-out hover:bg-gray-800 gap-1'
             >
               <span className='text-nowrap'>{user ? `Hello!` : 'Sign in'}</span>
               <UserIcon />
             </Link>
             <Link
               href={'/wishes'}
-              className='flex items-center text-light-text p-1 px-3 cursor-pointer rounded-sm hover:outline-1 gap-1'
+              className='flex items-center header-button text-light-text p-1 px-3 cursor-pointer rounded-sm transition-colors duration-200 ease-out hover:bg-gray-800 gap-1'
             >
               <span className='hidden md:inline'>Wishes</span>
               <HeartIcon />
@@ -77,7 +77,7 @@ export function Header() {
             <Link
               href='/cart'
               aria-label='open cart'
-              className='text-light-text p-1 cursor-pointer px-3 rounded-sm hover:outline-1 relative'
+              className='text-light-text p-1 header-button cursor-pointer px-3 rounded-sm transition-colors duration-200 ease-out hover:bg-gray-800 relative'
             >
               <ShoppingCartIcon />
               <small className='absolute -top-1 right-1/9 bg-black px-1.5 scale-80 flex items-center justify-center rounded-full'>
