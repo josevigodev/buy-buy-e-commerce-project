@@ -46,7 +46,7 @@ body {
 }
 
 .animated-background {
-  background: linear-gradient(270deg, #ff4b1f, #1fddff, #ff4b1f, #1fddff);
+  background: linear-gradient(270deg, #000, #4a5565, #000, #4a5565);
   background-size: 400% 400%;
   animation: bg-move 6s linear infinite;
 
@@ -54,7 +54,7 @@ body {
     animation-play-state: paused;
   }
 
-  &:nth-child(2) {
+  /* &:nth-child(2) {
     background: linear-gradient(270deg, #ffc371, #ff5f6d, #ffc371, #ff5f6d);
     background-size: 400% 400%;
   }
@@ -65,7 +65,7 @@ body {
   &:nth-child(4) {
     background: linear-gradient(270deg, #f7ff00, #db36a4, #f7ff00, #db36a4);
     background-size: 400% 400%;
-  }
+  } */
 }
 
 @keyframes bg-move {
