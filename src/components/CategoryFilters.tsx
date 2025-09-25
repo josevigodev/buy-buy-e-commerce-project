@@ -1,4 +1,5 @@
 import { useFilterStore } from '@/store/filters';
+
 export function CategoryFilters() {
   const filterOptions = {
     Category: ['audio', 'gaming', 'mobile', 'tv'],
