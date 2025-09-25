@@ -4,6 +4,7 @@ import ProtectedClient from '@/components/ProtectedClient';
 import { SignOutButton } from '@/components/SignOutButton';
 import { useAuthStore } from '@/store/user';
 import { getOrders, UserOrder } from '@/services/order';
+import { Loading } from '@/components/Loading';
 
 interface DBOrder extends UserOrder {
   id: string;
@@ -23,7 +24,10 @@ export default function MyAccountPage() {
   return (
     <main className='flex-1 min-h-screen mb-20 px-3 lg:px-5 bg-white pt-3'>
       <ProtectedClient>
-        <h1 className='text-3xl font-bold mb-6'>My Account</h1>
+        <div className='flex justify-between items-center mb-6 max-w-7xl mx-auto'>
+          <h1 className='text-3xl font-bold'>My Account</h1>
+          <SignOutButton />
+        </div>
         <div className='flex flex-col md:flex-row gap-3.5 mx-auto max-w-7xl'>
           <section className='mb-8 bg-gray-100 p-4 rounded-xl h-fit md:order-1'>
             <h2 className='text-xl font-semibold mb-2'>Account Info</h2>
@@ -31,7 +35,9 @@ export default function MyAccountPage() {
           </section>
           <section className='bg-gray-100 p-4 rounded-xl max-w-2xl flex-1'>
             <h2 className='text-xl font-semibold mb-4'>My Orders</h2>
-            {orders && orders.length > 0 ? (
+            {!orders ? (
+              <Loading color='bg-blue-500' />
+            ) : orders.length > 0 ? (
               <ul className='space-y-4'>
                 {orders.map((order) => (
                   <li key={order.id} className='border p-4 rounded-lg bg-white'>
@@ -63,7 +69,6 @@ export default function MyAccountPage() {
             )}
           </section>
         </div>
-        <SignOutButton />
       </ProtectedClient>
     </main>
   );
