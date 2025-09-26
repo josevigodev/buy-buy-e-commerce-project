@@ -43,14 +43,14 @@ export const ProductCard: React.FC<Props> = function ({
       } ${isCheckout || isPayment || isOrderConfirmed ? 'flex' : ''}`}
     >
       <div
-        className={`relative p-2 pt-0 flex items-center justify-center bg-white ${
+        className={`relative p-2 pt-0 min-h-45 flex items-center justify-center bg-white ${
           isCheckout || isPayment || isOrderConfirmed ? 'w-1/3 p-0' : ''
         }`}
         style={{
           background:
             isCheckout || isPayment || isOrderConfirmed
               ? ''
-              : 'linear-gradient(135deg, #0007 0%, #4a556577 50%, #fdc70077 100%)',
+              : 'linear-gradient(135deg, #0003 0%, #4a556533 50%, #fdc70077 100%)',
         }}
       >
         <Image
@@ -58,7 +58,7 @@ export const ProductCard: React.FC<Props> = function ({
           alt={title}
           width={200}
           height={200}
-          className='object-cover mix-blend-multiply opacity-95'
+          className='object-cover mix-blend-multiply h-h-auto opacity-95'
         />
         {isCheckout || isPayment || isOrderConfirmed || (
           <AddToWishListButton itemId={id} />
@@ -84,7 +84,7 @@ export const ProductCard: React.FC<Props> = function ({
             isCart ||
             isWishes || (
               <div className='absolute bottom-4 right-4'>
-                <AddToCartButton itemId={id} />
+                <AddToCartButton itemId={id} text='Add' />
               </div>
             )}
         </div>
