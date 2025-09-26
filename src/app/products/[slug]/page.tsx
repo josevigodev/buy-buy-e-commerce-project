@@ -45,7 +45,7 @@ export default function ProductPage(props: any) {
             </h2>
           </section>
           <section className='flex justify-center mb-3 lg:hidden'>
-            <AddToCartButton itemId={product.id} />
+            <AddToCartButton itemId={product.id} text='Add' />
           </section>
           <section className='border-t-1 border-t-gray-400 pt-3'>
             <p className='font-bold mb-4 text-dark-text text-2xl lg:text-3xl'>
@@ -70,7 +70,7 @@ export default function ProductPage(props: any) {
           </section>
         </div>
         <section className='hidden lg:block'>
-          <AddToCartButton itemId={product.id} />
+          <AddToCartButton itemId={product.id} text='Add to cart' />
         </section>
       </div>
       <section className='max-w-7xl mx-auto border-t-1 border-t-gray-400 pt-3 mt-20'>
