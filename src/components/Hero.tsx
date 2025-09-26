@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 export function Hero() {
   return (
-    <section className='relative bg-gradient-to-b from-gray-900 to-black text-white'>
+    <section className='relative bg-gradient-to-b from-gray-900 to-black text-white pb-20'>
       <div className='max-w-7xl mx-auto px-6 lg:px-10 flex flex-col lg:flex-row items-center lg:justify-between min-h-[85vh]'>
         {/* Left Side - Text */}
         <motion.div
@@ -39,15 +39,16 @@ export function Hero() {
 
         {/* Right Side - Image */}
         <motion.div
-          className='mt-10 lg:mt-0'
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           <Image
-            src='/hero-product.png'
+            width={500}
+            height={500}
+            src='/photo.webp'
             alt='Featured Product'
-            className='w-[350px] lg:w-[450px] drop-shadow-2xl'
+            className='w-[450px] lg:w-[600px] drop-shadow-2xl drop-shadow-yellow-300 z-10'
           />
         </motion.div>
       </div>
