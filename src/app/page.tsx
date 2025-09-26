@@ -41,7 +41,7 @@ export default function Home() {
     <main className='flex-1'>
       <Hero />
       <div className='bg-gradient-to-b from-black to-dark-gray'>
-        <section className='px-3 max-w-[1500px] mx-auto grid grid-cols-1  sm:grid-cols-2 xl:grid-cols-4 gap-4 '>
+        <section className='px-3 max-w-[1500px] mx-auto grid grid-cols-1  sm:grid-cols-2 xl:grid-cols-4 gap-4'>
           {categories.map((article) => (
             <article
               key={article.category}
