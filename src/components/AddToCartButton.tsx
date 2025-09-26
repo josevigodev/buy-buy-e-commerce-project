@@ -4,13 +4,14 @@ import { PopUp } from './PopUp';
 import { useEffect, useState } from 'react';
 import { useAuthStore } from '@/store/user';
 import Link from 'next/link';
+import { ShoppingCartIcon, UserIcon } from './Icons';
 
 interface Props {
   itemId: number;
-  isMobile?: boolean;
+  text: string;
 }
 
-export const AddToCartButton: React.FC<Props> = ({ itemId, isMobile }) => {
+export const AddToCartButton: React.FC<Props> = ({ itemId, text }) => {
   const user = useAuthStore((state) => state.user);
   const [showPopUp, setShowPopUp] = useState(false);
   const addItem = useShoppingCartStore((state) => state.addItem);
@@ -37,18 +38,17 @@ export const AddToCartButton: React.FC<Props> = ({ itemId, isMobile }) => {
         <button
           data-test='add-to-cart-button'
           onClick={handleAddToCartClick}
-          className={`items-center gap-2 px-3 py-2 rounded-lg font-bold bg-gradient-to-r from-[#000] to-[#fdc700] text-white shadow-sm hover:scale-105 active:scale-100 transition `}
+          className={`items-center flex gap-2 px-3 py-2 rounded-lg font-bold bg-[#fdc700] text-black shadow-sm hover:scale-105 active:scale-100 transition `}
         >
-          Add to cart
+          <ShoppingCartIcon /> {text}
         </button>
       ) : (
         <Link
           href='/log-in'
-          className={`inline-flex items-center gap-2 px-3 py-2 rounded-lg font-bold bg-gradient-to-r from-[#000] to-[#fdc700] text-white shadow-sm hover:scale-105 active:scale-100 transition ${
-            isMobile ? 'lg:hidden' : 'hidden lg:block'
-          }`}
+          className='inline-flex items-center gap-2 px-3 py-2 rounded-lg font-bold bg-[#fdc700] text-black shadow-sm hover:shadow-lg hover:brightness-110 active:brightness-100 transition'
         >
-          Log in to buy
+          <UserIcon />
+          Log in
         </Link>
       )}
     </>
