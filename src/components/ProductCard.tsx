@@ -33,13 +33,13 @@ export const ProductCard: React.FC<Props> = function ({
 
   return (
     <article
-      className={`max-w-sm w-full relative bg-white rounded-2xl overflow-hidden h-fit ${
+      className={`max-w-sm w-full relative form bg-white rounded-2xl overflow-hidden h-fit ${
         isCheckout ||
         isPayment ||
         isOrderConfirmed ||
         isCart ||
         isWishes ||
-        'shadow-lg pb-10 transform transition-all hover:-translate-y-2 hover:shadow-2xl'
+        'shadow-sm pb-10 transform transition-all hover:-translate-y-2 hover:shadow-lg'
       } ${isCheckout || isPayment || isOrderConfirmed ? 'flex' : ''}`}
     >
       <div
