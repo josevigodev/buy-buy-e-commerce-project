@@ -52,7 +52,7 @@ export function Header() {
             </button>
           )}
           <Link href='/'>
-            <h1 className='text-2xl font-bold text-light-text select-none branch'>
+            <h1 className='text-2xl font-bold text-light-text branch select-none'>
               BUY-BUY
             </h1>
           </Link>
