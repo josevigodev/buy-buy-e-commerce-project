@@ -1,17 +1,12 @@
-import { EventHandler, FormEvent, useEffect, useState } from 'react';
+import { EventHandler, FormEvent, useState } from 'react';
 import { SearchIcon, XIcon } from './Icons';
 import { useFilterStore } from '@/store/filters';
 import { useRouter } from 'next/navigation';
 
 export function SearchForm() {
-  const filters = useFilterStore((state) => state.filters);
   const setFilters = useFilterStore((state) => state.setFilters);
-  const [search, setSearch] = useState(filters.search);
+  const [search, setSearch] = useState('');
   const router = useRouter();
-
-  useEffect(() => {
-    setSearch(filters.search);
-  }, [filters.search]);
 
   const handleClearSearch = () => {
     setSearch('');
