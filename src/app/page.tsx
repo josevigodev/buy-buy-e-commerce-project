@@ -1,12 +1,10 @@
-'use client';
 import { Hero } from '@/components/Hero';
 import { ReviewsSection } from '@/components/ReviewsSection';
-import { products } from '@/mocks/products.json';
 import { slugify } from '@/utils/slugify';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRightIcon } from '../components/Icons';
-import { useState } from 'react';
+import { getProductsByCategory } from '@/utils/getProductsByCategory';
 
 const categories = [
   {
@@ -28,15 +26,6 @@ const categories = [
 ];
 
 export default function Home() {
-  const [hover, setHover] = useState('');
-  const productsByCategory = (category: string) => {
-    return products.filter((product) => product.category === category);
-  };
-
-  const handleMouseOver = (category: string) => {
-    setHover(category);
-  };
-
   return (
     <main className='flex-1'>
       <Hero />
@@ -45,14 +34,10 @@ export default function Home() {
           {categories.map((article) => (
             <article
               key={article.category}
-              onMouseOver={() => handleMouseOver(article.category)}
-              onMouseLeave={() => handleMouseOver('')}
-              className={`animated-background w-full flex flex-col gap-4 bg-gradient-to-br from-blue-200 to-white rounded-lg p-4 pb-30 relative transition-transform duration-150 ${
-                article.category === hover ? 'md:scale-105' : ''
-              }`}
+              className={`animated-background w-full flex flex-col gap-4 bg-gradient-to-br from-blue-200 to-white rounded-lg p-4 pb-30 relative transition-all duration-150 md:hover:scale-105 md:hover:shadow-lg md:hover:shadow-yellow-400`}
             >
               <div className='grid grid-cols-2 gap-4'>
-                {productsByCategory(article.category)
+                {getProductsByCategory(article.category)
                   .slice(1, 5)
                   .map((product) => (
                     <Link
