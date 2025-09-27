@@ -1,49 +1,37 @@
 import { useFilterStore } from '@/store/filters';
+import { getFilterOptions } from '@/utils/getFilterOptions';
 
 export function BrandFilters() {
-  const filterOptions = {
-    Brand: ['sony', 'microsoft', 'logitech G', 'urbanista', 'boat'],
-  };
+  const filterOptions = getFilterOptions('brand');
 
   const filters = useFilterStore((state) => state.filters);
-  // const setFilters = useFilterStore((state) => state.setFilters);
-
-  // const handleFilterClick = (field: string) => {
-  //   const index = filters.brand?.findIndex((b) => b === field);
-  //   if (index) {
-  //     filters.brand?.slice(index);
-  //   } else {
-  //     filters.brand?.push(field);
-  //   }
-  // };
+  const setBrand = useFilterStore((state) => state.setBrand);
 
   return (
-    <>
-      {Object.entries(filterOptions).map(([key, fields]) => (
-        <div key={key}>
-          <h3 className='relative text-lg p-2 w-full text-dark-text text-start'>
-            {key}
-          </h3>
-          <ul className='flex flex-wrap gap-2 text-sm'>
-            {fields.map((field, i) => {
-              const isSelected = filters.brand?.includes(field);
-              return (
-                <li
-                  // onClick={() => handleFilterClick(field)}
-                  key={i + field}
-                  className={`cursor-pointer py-1 px-2 ${
-                    isSelected
-                      ? 'text-dark-text font-bold border-2 border-dark-text'
-                      : 'text-medium-text border-1 border-medium-text'
-                  }`}
-                >
-                  {field}
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      ))}
-    </>
+    <article className='select-none'>
+      <h3 className='font-bold uppercase mb-2 text-lg px-2 w-full text-dark-text text-start'>
+        Brand
+      </h3>
+      <ul className='flex flex-wrap gap-2 text-sm'>
+        {filterOptions.map((field, i) => {
+          const isSelected = filters.brand?.includes(field);
+          return (
+            <li
+              onClick={() => setBrand(field)}
+              key={i + field}
+              title={`${isSelected ? 'remove' : 'add'} ${field}`}
+              aria-label={`${isSelected ? 'remove' : 'add'} ${field}`}
+              className={`cursor-pointer rounded-md bg-gray-200 py-2 px-3 transition-colors duration-200 ${
+                isSelected
+                  ? 'text-white bg-yellow-500 hover:bg-yellow-600'
+                  : 'text-black hover:bg-gray-300'
+              }`}
+            >
+              {field}
+            </li>
+          );
+        })}
+      </ul>
+    </article>
   );
 }
