@@ -4,7 +4,9 @@ import './globals.css';
 import Footer from '../components/Footer';
 import { Header } from '@/components/Header';
 
-const cantumruyPro = Kantumruy_Pro();
+const cantumruyPro = Kantumruy_Pro({
+  subsets: ['latin'],
+});
 
 export const metadata: Metadata = {
   title: 'BUY-BUY',
