@@ -12,9 +12,11 @@ export function useSyncFilters() {
   useEffect(() => {
     const search = searchParams.get('search') || '';
     const category = searchParams.get('category');
+    const color = searchParams.get('color');
 
     setFilters({ key: 'search', value: search });
     setFilters({ key: 'category', value: category || null });
+    setFilters({ key: 'color', value: color || null });
   }, [searchParams, setFilters]);
 
   // Update url when filters change
@@ -22,6 +24,7 @@ export function useSyncFilters() {
     const params = new URLSearchParams();
     if (filters.search) params.set('search', filters.search);
     if (filters.category) params.set('category', filters.category);
+    if (filters.color) params.set('color', filters.color);
 
     router.replace(`?${params.toString()}`);
   }, [filters, router]);

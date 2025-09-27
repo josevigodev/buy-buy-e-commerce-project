@@ -3,7 +3,9 @@ import { persist } from 'zustand/middleware';
 
 interface Filters {
   category: string | null;
+  color: string | null;
   brand: string[];
+  minPrice: number;
   search: string;
 }
 
@@ -16,6 +18,7 @@ interface FilterStore {
     key: keyof Filters;
     value: string | string[] | null;
   }) => void;
+  setBrand: (value: string) => void;
   resetFilters: () => void;
 }
 
@@ -25,7 +28,9 @@ export const useFilterStore = create<FilterStore>()(
       return {
         filters: {
           category: null,
+          color: null,
           brand: [],
+          minPrice: 0,
           search: '',
         },
         setFilters: ({ key, value }) => {
@@ -38,10 +43,31 @@ export const useFilterStore = create<FilterStore>()(
             };
           });
         },
+        setBrand: (value) => {
+          set((state) => {
+            if (state.filters.brand.includes(value)) {
+              return {
+                filters: {
+                  ...state.filters,
+                  brand: state.filters.brand.filter((b) => b !== value),
+                },
+              };
+            } else {
+              return {
+                filters: {
+                  ...state.filters,
+                  brand: [...state.filters.brand, value],
+                },
+              };
+            }
+          });
+        },
         resetFilters: () => {
           set(() => ({
             filters: {
               category: null,
+              color: null,
+              minPrice: 0,
               brand: [],
               search: '',
             },
