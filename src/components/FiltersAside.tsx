@@ -55,7 +55,7 @@ export function FiltersAside({ openFilter, onOpenFilterAction }: Props) {
                   min={0}
                   max={1000}
                   type='range'
-                  value={filters.minPrice}
+                  value={price}
                 />
                 <small className='text-lg'>${filters.minPrice}</small>
               </div>
