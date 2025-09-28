@@ -1,6 +1,6 @@
 import { useFilterStore } from '@/store/filters';
 import { XIcon } from './Icons';
-import { MouseEvent, useRef } from 'react';
+import { MouseEvent, TouchEvent, useRef } from 'react';
 
 export function ActiveFilters() {
   const filters = useFilterStore((state) => state.filters);
@@ -19,6 +19,14 @@ export function ActiveFilters() {
     }
   };
 
+  const handleTouchStart = (e: TouchEvent) => {
+    isDown = true;
+    if (ul.current) {
+      startX = e.touches[0].pageX - ul.current.offsetLeft;
+      scrollLeft = ul.current.scrollLeft;
+    }
+  };
+
   const handleMouseLeave = () => {
     isDown = false;
   };
@@ -30,13 +38,24 @@ export function ActiveFilters() {
     const walk = x - startX;
     ul.current.scrollLeft = scrollLeft - walk;
   };
+
+  const handleTouchMove = (e: TouchEvent) => {
+    if (!isDown || !ul.current) return;
+    const x = e.touches[0].pageX - ul.current.offsetLeft;
+    const walk = x - startX;
+    ul.current.scrollLeft = scrollLeft - walk;
+  };
   return (
     <ul
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseLeave}
       onMouseLeave={handleMouseLeave}
       onMouseMove={handleMouseMove}
-      className='flex gap-2 items-center overflow-hidden cursor-grab'
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleMouseLeave}
+      onTouchCancel={handleMouseLeave}
+      onTouchMove={handleTouchMove}
+      className='flex gap-2 items-center mt-2 overflow-hidden cursor-grab'
       ref={ul}
     >
       {Object.entries(filters).map(([key, value]) => {
