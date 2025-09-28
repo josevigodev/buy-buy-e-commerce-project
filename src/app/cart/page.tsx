@@ -9,20 +9,24 @@ export default function CartPage() {
   const disabled = 'opacity-50 pointer-events-none';
 
   return (
-    <main className='flex-1 mb-20 px-3 min-h-dvh'>
+    <main className='flex-1 mb-20 min-h-dvh'>
       <ProtectedClient>
-        <section className='sticky top-0 flex border-b-1 border-b-gray-400 gap-5 py-2 bg-white lg:flex-row lg:justify-between'>
+        <section className='sticky top-26 lg:top-16.5 z-5 flex items-center shadow-md gap-5 px-3 py-2 bg-white lg:flex-row lg:justify-between'>
           <div className='flex items-center justify-between flex-1'>
-            <span className='text-dark-text text-lg'>
-              <strong>Total</strong>: ${totalPrice || '0'} ({itemsQty}{' '}
-              {itemsQty > 1 ? 'items' : 'item'})
-            </span>
+            <article className='text-dark-text flex gap-1 flex-wrap text-lg'>
+              <span>
+                <strong>Total</strong>: ${totalPrice || '0'}
+              </span>
+              <span>
+                ({itemsQty} {itemsQty > 1 ? 'items' : 'item'})
+              </span>
+            </article>
           </div>
           <Link
             data-test='checkout'
             href='/checkout'
             aria-disabled={itemsQty < 1}
-            className={`bg-dark-gray text-white rounded-sm p-2 ${
+            className={`items-center flex gap-2 px-3 py-2 rounded-lg font-bold bg-[#fdc700] text-black shadow-sm hover:scale-105 active:scale-100 transition  ${
               itemsQty < 1 && disabled
             }`}
           >

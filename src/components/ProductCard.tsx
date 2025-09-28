@@ -60,7 +60,7 @@ export const ProductCard: React.FC<Props> = function ({
           height={200}
           className='object-cover mix-blend-multiply h-h-auto opacity-95'
         />
-        {isCheckout || isPayment || isOrderConfirmed || (
+        {isCheckout || isPayment || isOrderConfirmed || isWishes || (
           <AddToWishListButton itemId={id} />
         )}
       </div>

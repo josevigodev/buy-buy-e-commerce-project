@@ -38,7 +38,7 @@ export const AddToCartButton: React.FC<Props> = ({ itemId, text }) => {
         <button
           data-test='add-to-cart-button'
           onClick={handleAddToCartClick}
-          className={`items-center flex gap-2 px-3 py-2 rounded-lg font-bold bg-[#fdc700] text-black shadow-sm hover:scale-105 active:scale-100 transition `}
+          className='items-center flex gap-2 px-3 py-2 rounded-lg font-bold bg-[#fdc700] text-black shadow-sm hover:scale-105 active:scale-100 transition '
         >
           <ShoppingCartIcon /> {text}
         </button>
