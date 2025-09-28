@@ -28,7 +28,7 @@ export default function ProductPage(props: any) {
             {product.title}
           </h2>
         </section>
-        <section className='relative h-auto lg:col-span-2 lg:sticky lg:top-0'>
+        <section className='relative h-auto lg:col-span-2 lg:sticky lg:top-15'>
           <Image
             width={300}
             height={300}
