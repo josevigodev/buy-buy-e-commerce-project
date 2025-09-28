@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-interface Filters {
+export interface Filters {
   category: string | null;
   color: string | null;
   brand: string[];
