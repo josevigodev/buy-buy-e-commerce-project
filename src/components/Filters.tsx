@@ -1,7 +1,6 @@
 import { useFilterStore } from '@/store/filters';
 import { ActiveFilters } from './ActiveFilters';
-import { FilterIcon } from './Icons';
-import { XIcon } from 'lucide-react';
+import { FilterIcon, XIcon } from './Icons';
 interface Props {
   productsFound: number;
   onOpenFilterAction: (value: boolean) => void;

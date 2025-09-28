@@ -1,10 +1,9 @@
 'use client';
 import { signUp } from '@/firebase/client';
-import { Eye, EyeOff } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { Lock, Mail } from './Icons';
+import { EyeClosed, EyeOpen, Lock, Mail } from './Icons';
 
 interface Errors {
   email?: string;
@@ -108,7 +107,11 @@ export function SignUp() {
                   onClick={() => setShowPassword((prev) => !prev)}
                   className='absolute rounded-full -top-1 -right-1 hover:bg-gray-300 transition-colors duration-250 text-gray-600 p-2 cursor-pointer'
                 >
-                  {showPassword ? <EyeOff size={22} /> : <Eye size={22} />}
+                  {showPassword ? (
+                    <EyeClosed size={22} />
+                  ) : (
+                    <EyeOpen size={22} />
+                  )}
                 </button>
               </div>
             </div>
