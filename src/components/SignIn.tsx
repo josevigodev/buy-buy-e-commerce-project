@@ -54,9 +54,9 @@ export function SignIn() {
           </label>
           <label htmlFor='password' className='text-xl font-bold text-gray-500'>
             Password
-            <div className='mt-2 flex items-center gap-2 bg-gray-100 text-gray-700 border-1 border-gray-300 p-2 px-3 transition-all duration-250 outline-transparent focus-within:border-yellow-500 rounded-sm group text-lg font-normal'>
+            <div className='mt-2 flex items-center gap-2 bg-gray-100 text-gray-700 border-1 border-gray-300 py-1 px-3 transition-all duration-250 outline-transparent focus-within:border-yellow-500 rounded-sm group text-lg font-normal'>
               <Lock className='group-hover:fill-yellow-500 group-focus-within:fill-yellow-500 transition-all duration-200 cursor-text text-yellow-600' />
-              <div className='relative w-full'>
+              <div className='flex w-full'>
                 <input
                   required
                   data-test='password-input'
@@ -70,12 +70,12 @@ export function SignIn() {
                   type='button'
                   title={showPassword ? 'Hide password' : 'Show password'}
                   onClick={() => setShowPassword((prev) => !prev)}
-                  className='absolute -top-1 -right-1 rounded-full text-gray-800 p-2 cursor-pointer hover:bg-gray-300 transition-colors duration-250'
+                  className='rounded-full text-gray-800 p-2 cursor-pointer hover:bg-gray-300 transition-colors duration-250'
                 >
                   {showPassword ? (
-                    <EyeClosed size={22} />
+                    <EyeClosed className='size-6 text-gray-600' />
                   ) : (
-                    <EyeOpen size={22} />
+                    <EyeOpen className='size-6 text-gray-600' />
                   )}
                 </button>
               </div>
