@@ -1,8 +1,10 @@
-import { useFilterStore } from '@/store/filters';
+import { Filters, useFilterStore } from '@/store/filters';
 import { XIcon } from './Icons';
-import { MouseEvent, TouchEvent, useRef } from 'react';
+import { MouseEvent, TouchEvent, useRef, useState } from 'react';
 
 export function ActiveFilters() {
+  const [closed, setClosed] = useState('');
+
   const filters = useFilterStore((state) => state.filters);
   const setFilters = useFilterStore((state) => state.setFilters);
   const setBrand = useFilterStore((state) => state.setBrand);
@@ -45,6 +47,26 @@ export function ActiveFilters() {
     const walk = x - startX;
     ul.current.scrollLeft = scrollLeft - walk;
   };
+
+  const handleBrandClick = (brand: string) => {
+    setTimeout(() => {
+      setBrand(brand);
+    }, 150);
+    setClosed(brand);
+    setTimeout(() => {
+      setClosed('');
+    }, 200);
+  };
+
+  const handleOtherClick = (filter: string, key: keyof Filters) => {
+    setTimeout(() => {
+      setFilters({ key, value: '' });
+    }, 150);
+    setClosed(filter);
+    setTimeout(() => {
+      setClosed('');
+    }, 200);
+  };
   return (
     <ul
       onMouseDown={handleMouseDown}
@@ -55,7 +77,7 @@ export function ActiveFilters() {
       onTouchEnd={handleMouseLeave}
       onTouchCancel={handleMouseLeave}
       onTouchMove={handleTouchMove}
-      className='flex gap-2 items-center mt-2 overflow-hidden cursor-grab'
+      className='flex gap-2 items-center overflow-hidden cursor-grab'
       ref={ul}
     >
       {Object.entries(filters).map(([key, value]) => {
@@ -63,10 +85,12 @@ export function ActiveFilters() {
           return value.map((filter: string) => (
             <li
               key={filter}
-              className='select-none text-nowrap form flex items-center gap-2  rounded-md bg-gray-200 px-3 py-1 transition-colors duration-200 '
+              className={`select-none mt-2 text-nowrap form flex items-center gap-2  rounded-md bg-gray-200 px-3 py-1 transition-all duration-200 ${
+                closed === filter ? 'opacity-0 scale-0' : ''
+              }`}
             >
               {filter}
-              <span onClick={() => setBrand(filter)}>
+              <span onClick={() => handleBrandClick(filter)}>
                 <XIcon className='size-5 stroke-3 p-1 text-white transition-colors duration-200 bg-gray-400 rounded-full cursor-pointer hover:bg-gray-950' />
               </span>
             </li>
@@ -78,10 +102,12 @@ export function ActiveFilters() {
           return (
             <li
               key={value}
-              className='select-none form text-nowrap flex items-center justify-center gap-2  rounded-md bg-gray-200 px-3 py-1 transition-colors duration-200 '
+              className={`select-none mt-2 text-nowrap form flex items-center gap-2  rounded-md bg-gray-200 px-3 py-1 transition-all duration-200 ${
+                closed === value ? 'opacity-0 scale-0' : ''
+              }`}
             >
               {value}
-              <span onClick={() => setFilters({ key, value: '' })}>
+              <span onClick={() => handleOtherClick(value, key)}>
                 <XIcon className='size-5 stroke-3 p-1 cursor-pointer text-white transition-colors duration-200 bg-gray-400 rounded-full hover:bg-gray-950' />
               </span>
             </li>
