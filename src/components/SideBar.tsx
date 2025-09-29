@@ -3,7 +3,6 @@ import {
   Game,
   HeaderHeartIcon,
   Headset,
-  HeartIcon,
   Home,
   Market,
   Phone,
@@ -12,7 +11,6 @@ import {
   UserIcon,
   XIcon,
 } from './Icons';
-import { LogInButton } from './LogInButton';
 import { useAuthStore } from '@/store/user';
 import { usePathname } from 'next/navigation';
 
