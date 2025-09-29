@@ -62,14 +62,14 @@ export function Header() {
             <Link
               data-test='signin-link'
               href={user ? '/my-account' : '/log-in'}
-              className='flex items-center header-button text-light-text p-1 cursor-pointer px-2 rounded-sm transition-colors duration-200 ease-out hover:bg-gray-800 gap-1'
+              className='flex items-center header-button text-light-text p-1 cursor-pointer px-2 rounded-sm transition-colors duration-150 ease-out hover:bg-gray-800 gap-1'
             >
               <span className='text-nowrap'>{user ? `Hello!` : 'Sign in'}</span>
               <UserIcon />
             </Link>
             <Link
               href={'/wishes'}
-              className='flex items-center header-button text-light-text p-1 px-2 cursor-pointer rounded-sm transition-colors duration-200 ease-out hover:bg-gray-800 gap-1'
+              className='flex items-center header-button text-light-text p-1 px-2 cursor-pointer rounded-sm transition-colors duration-150 ease-out hover:bg-gray-800 gap-1'
             >
               <span className='hidden md:inline'>Wishes</span>
               <HeaderHeartIcon />
@@ -77,7 +77,7 @@ export function Header() {
             <Link
               href='/cart'
               aria-label='open cart'
-              className='text-light-text p-1 header-button cursor-pointer px-3 rounded-sm transition-colors duration-200 ease-out hover:bg-gray-800 relative'
+              className='text-light-text p-1 header-button cursor-pointer px-3 rounded-sm transition-colors duration-150 ease-out hover:bg-gray-800 relative'
             >
               <ShoppingCartIcon />
               {cart.length > 0 && (
