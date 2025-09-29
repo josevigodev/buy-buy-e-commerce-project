@@ -23,18 +23,16 @@ export function Filters({ onOpenFilterAction, productsFound }: Props) {
           <div className='flex items-center gap-1 text-black'>
             <button
               onClick={() => resetFilters()}
-              className='flex items-center rounded-md bg-gray-200 cursor-pointer justify-center gap-1 py-1 px-2 sm:py-2 sm:px-4 font-bold hover:bg-gray-300 transition-colors duration-200'
+              className='flex items-center rounded-md bg-gray-200 cursor-pointer justify-center gap-1 py-1 px-2 sm:py-2 sm:px-4 hover:bg-gray-300 transition-colors duration-200'
             >
               <span>Clear all</span>
-              <XIcon className='size-5' />
             </button>
             <button
               aria-label='open filters'
               onClick={handleOpenClick}
-              className='flex bg-yellow-300 rounded-md cursor-pointer items-center justify-center gap-1 py-1 px-2 sm:py-2 sm:px-4 font-bold lg:hidden transition-colors duration-200 hover:bg-yellow-400'
+              className='flex bg-yellow-300 rounded-md cursor-pointer items-center justify-center gap-1 py-1 px-2 sm:py-2 sm:px-4 lg:hidden transition-colors duration-200 hover:bg-yellow-400'
             >
-              <span className='hidden sm:inline'>Filter</span>
-              <FilterIcon className='size-6' />
+              <span className='hidden sm:inline'>Filters</span>
             </button>
           </div>
         </div>
