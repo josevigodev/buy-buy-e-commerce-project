@@ -33,6 +33,7 @@ export function Filters({ onOpenFilterAction, productsFound }: Props) {
               className='flex bg-yellow-300 rounded-md cursor-pointer items-center justify-center gap-1 py-1 px-2 sm:py-2 sm:px-4 lg:hidden transition-colors duration-200 hover:bg-yellow-400'
             >
               <span className='hidden sm:inline'>Filters</span>
+              <FilterIcon className='stroke-1' />
             </button>
           </div>
         </div>
