@@ -161,11 +161,11 @@ export function SideBar({ openSide, closeSideBarAction }: Props) {
               ))}
             </ul>
           </nav>
-          <footer className='border-t-1 border-t-gray-300 pt-3'>
-            <h2 className='text-4xl lg:text-6xl font-bold text-dark-text select-none'>
+          <footer className='border-t-1 border-t-gray-300 pt-3 flex flex-col'>
+            <h2 className='text-4xl font-bold text-dark-text select-none'>
               BUY-BUY.
             </h2>
-            <p className='mb-4 text-center font-normal text-blue-gray-900 md:mb-0'>
+            <p className='mb-4 text-blue-gray-900'>
               &copy; 2025 . All Rights Reserved.
             </p>
           </footer>
