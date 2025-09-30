@@ -13,6 +13,7 @@ import { useAuthStore } from '@/store/user';
 import { saveOrder } from '@/services/order';
 
 export function OrderSummary() {
+  const [showMore, setShowMore] = useState(false);
   const cart = useShoppingCartStore((state) => state.cart);
   const clearCart = useShoppingCartStore((state) => state.clearCart);
   const { totalPrice } = useCartInfo();
@@ -122,13 +123,31 @@ export function OrderSummary() {
         <span>Total:</span>
         <span className='text-xl'>${totalPrice}</span>
       </article>
-      <section className='flex flex-col items-center gap-3'>
-        {cart.map((item) => {
-          const product = products.find((product) => product.id === item.id);
-          if (!product) return null;
-          return <ProductCard key={item.id} {...product} qty={item.qty} />;
-        })}
+      <section
+        className={`flex flex-col items-center overflow-hidden flex-nowrap gap-3 ${
+          showMore ? 'h-auto' : 'h-110'
+        }`}
+      >
+        <ul>
+          {cart.map((item) => {
+            const product = products.find((product) => product.id === item.id);
+            if (!product) return null;
+            return (
+              <li key={item.id}>
+                <ProductCard {...product} qty={item.qty} />
+              </li>
+            );
+          })}
+        </ul>
       </section>
+      {cart.length > 2 && (
+        <button
+          className='text-dark-gray underline cursor-pointer mt-2'
+          onClick={() => setShowMore((prev) => !prev)}
+        >
+          {showMore ? 'Show less' : 'Show more'}
+        </button>
+      )}
       {isShippingForm ? (
         <Link
           data-test='place-order'

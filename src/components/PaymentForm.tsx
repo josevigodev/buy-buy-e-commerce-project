@@ -79,7 +79,7 @@ export function PaymentForm() {
   }, [paymentForm, reset]);
 
   return (
-    <section className='min-h-dvh flex flex-col mt-4 flex-1 md:border-r-1 border-r-gray-400 md:pr-3 lg:pr-6 xl:pr-12'>
+    <section className='md:min-h-dvh mb-10 flex flex-col mt-4 flex-1 md:border-r-1 border-r-gray-400 md:pr-3 lg:pr-6 xl:pr-12'>
       {isSubmitSuccessful && <PopUp text='Form saved successfully' />}
       <h2 className='font-bold text-dark-text text-xl xl:text-2xl'>
         Payment method
@@ -88,63 +88,99 @@ export function PaymentForm() {
         onSubmit={handleSubmit(onSubmit)}
         className='flex flex-col border-t-1 border-t-gray-400 mt-1 pt-1 gap-2 xl:grid xl:grid-cols-2 xl:gap-4 xl:mt-3 xl:pt-3'
       >
-        <label htmlFor={ids.name} className='flex-col flex text-dark-text'>
+        <label
+          htmlFor={ids.name}
+          className={`text-md lg:text-lg font-bold transition-all duration-300 ${
+            errors.name ? 'text-red-400' : 'text-gray-500'
+          }`}
+        >
           Name
           <input
             data-test='name'
-            className='border-1 border-gray-400 text-dark-text p-2 px-3 focus-visible:outline-dark-gray focus-visible:outline-1 rounded-sm'
+            className={`w-full flex items-center gap-2 text-gray-600 border-1 p-2 transition-all duration-250 outline-none rounded-sm group text-lg font-normal ${
+              errors.name
+                ? 'bg-red-200 border-red-500 focus:border-red-500'
+                : 'border-gray-300 bg-gray-100 focus:border-yellow-500'
+            }`}
             type='text'
             id={ids.name}
             {...register('name')}
           />
           {errors.name && (
-            <span className='text-red-800'>{errors.name.message}</span>
+            <span className='text-red-500 font-normal'>
+              {errors.name.message}
+            </span>
           )}
         </label>
         <label
           htmlFor={ids.cardNumber}
-          className='flex-col flex text-dark-text'
+          className={`text-md lg:text-lg font-bold transition-all duration-300 ${
+            errors.cardNumber ? 'text-red-400' : 'text-gray-500'
+          }`}
         >
           Card Number
           <input
             data-test='card-number'
-            className='border-1 border-gray-400 text-dark-text p-2 px-3 focus-visible:outline-dark-gray focus-visible:outline-1 rounded-sm'
+            className={`w-full flex items-center gap-2 text-gray-600 border-1 p-2 transition-all duration-250 outline-none rounded-sm group text-lg font-normal ${
+              errors.cardNumber
+                ? 'bg-red-200 border-red-500 focus:border-red-500'
+                : 'border-gray-300 bg-gray-100 focus:border-yellow-500'
+            }`}
             type='text'
             id={ids.cardNumber}
             {...register('cardNumber')}
           />
           {errors.cardNumber && (
-            <span className='text-red-800'>{errors.cardNumber.message}</span>
+            <span className='text-red-500 font-normal'>
+              {errors.cardNumber.message}
+            </span>
           )}
         </label>
-        <label htmlFor={ids.cvv} className='flex-col flex text-dark-text'>
+        <label
+          htmlFor={ids.cvv}
+          className={`text-md lg:text-lg font-bold transition-all duration-300 ${
+            errors.cvv ? 'text-red-400' : 'text-gray-500'
+          }`}
+        >
           CVV
           <input
             data-test='cvv'
-            className='border-1 border-gray-400 text-dark-text p-2 px-3 focus-visible:outline-dark-gray focus-visible:outline-1 rounded-sm'
+            className={`w-full flex items-center gap-2 text-gray-600 border-1 p-2 transition-all duration-250 outline-none rounded-sm group text-lg font-normal ${
+              errors.cvv
+                ? 'bg-red-200 border-red-500 focus:border-red-500'
+                : 'border-gray-300 bg-gray-100 focus:border-yellow-500'
+            }`}
             type='password'
             id={ids.cvv}
             {...register('cvv')}
           />
           {errors.cvv && (
-            <span className='text-red-800'>{errors.cvv.message}</span>
+            <span className='text-red-500 font-normal'>
+              {errors.cvv.message}
+            </span>
           )}
         </label>
         <label
           htmlFor={ids.expirationDate}
-          className='flex-col flex text-dark-text'
+          className={`text-md lg:text-lg font-bold transition-all duration-300 ${
+            errors.expirationDate ? 'text-red-400' : 'text-gray-500'
+          }`}
         >
           Expiration Date
           <input
             data-test='expiration-date'
-            className='border-1 border-gray-400 text-dark-text p-2 px-3 focus-visible:outline-dark-gray focus-visible:outline-1 rounded-sm'
+            className={`w-full flex items-center gap-2 text-gray-600 border-1 p-2 transition-all duration-250 outline-none rounded-sm group text-lg font-normal ${
+              errors.expirationDate
+                ? 'bg-red-200 border-red-500 focus:border-red-500'
+                : 'border-gray-300 bg-gray-100 focus:border-yellow-500'
+            }`}
             placeholder='MM/YY'
             type='text'
             id={ids.expirationDate}
             {...register('expirationDate')}
           />
           {errors.expirationDate && (
-            <span className='text-red-800'>
+            <span className='text-red-500 font-normal'>
               {errors.expirationDate.message}
             </span>
           )}
@@ -165,7 +201,7 @@ export function PaymentForm() {
         </button>
       </form>
       {errors.root && (
-        <span className='text-red-800'>{errors.root.message}</span>
+        <span className='text-red-500 font-normal'>{errors.root.message}</span>
       )}
     </section>
   );

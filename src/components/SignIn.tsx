@@ -38,7 +38,7 @@ export function SignIn() {
         <div className='flex flex-col gap-5'>
           <label htmlFor='email' className='text-xl font-bold text-gray-500'>
             Email
-            <div className='mt-2 flex items-center gap-2 bg-gray-100 text-gray-700 border-1 border-gray-300 p-2 px-3 transition-all duration-250 outline-transparent focus-within:border-yellow-500 rounded-sm group text-lg font-normal'>
+            <div className='mt-2 flex items-center gap-2 bg-gray-100 text-gray-700 border-1 border-gray-300 p-3 transition-all duration-250 outline-transparent focus-within:border-yellow-500 rounded-sm group text-lg font-normal'>
               <Mail className='group-hover:fill-yellow-500 group-focus-within:fill-yellow-500 transition-all duration-200 cursor-text text-yellow-600' />
               <input
                 data-test='email-input'
@@ -54,7 +54,7 @@ export function SignIn() {
           </label>
           <label htmlFor='password' className='text-xl font-bold text-gray-500'>
             Password
-            <div className='mt-2 flex items-center gap-2 bg-gray-100 text-gray-700 border-1 border-gray-300 py-1 px-3 transition-all duration-250 outline-transparent focus-within:border-yellow-500 rounded-sm group text-lg font-normal'>
+            <div className='mt-2 flex items-center gap-2 bg-gray-100 text-gray-700 border-1 border-gray-300 py-1.5 px-3 transition-all duration-250 outline-transparent focus-within:border-yellow-500 rounded-sm group text-lg font-normal'>
               <Lock className='group-hover:fill-yellow-500 group-focus-within:fill-yellow-500 transition-all duration-200 cursor-text text-yellow-600' />
               <div className='flex w-full'>
                 <input

@@ -64,17 +64,31 @@ export function SignUp() {
         <div className='flex flex-col gap-5'>
           <label
             htmlFor='email'
-            className='text-xl font-bold text-gray-500 transition-all duration-300'
+            className={`text-xl font-bold transition-all duration-300 ${
+              errors.email ? 'text-red-400' : 'text-gray-500'
+            }`}
           >
             Email
-            <div className='mt-2 flex items-center gap-2 bg-gray-100 text-gray-600 border-1 border-gray-300 p-2 px-3 transition-all duration-250 outline-transparent focus-within:border-yellow-500 rounded-sm group text-lg font-normal'>
-              <Mail className='group-hover:fill-yellow-500 group-focus-within:fill-yellow-500 transition-all duration-200 text-yellow-600' />
+            <div
+              className={`mt-2 flex items-center gap-2 text-gray-600 border-1 p-3 transition-all duration-250 outline-transparent rounded-sm group text-lg font-normal ${
+                errors.email
+                  ? 'bg-red-200 border-red-500'
+                  : 'border-gray-300 bg-gray-100 focus-within:border-yellow-500'
+              }`}
+            >
+              <Mail
+                className={`transition-all duration-200  ${
+                  errors.email
+                    ? 'text-red-600'
+                    : 'group-hover:text-yellow-500 text-yellow-600 group-focus-within:text-yellow-500'
+                }`}
+              />
               <input
                 data-test='email-input'
                 autoFocus
                 id='email'
                 type='email'
-                className=' text-gray-700 focus-visible:outline-0 w-full peer'
+                className=' text-gray-700 focus-visible:outline-0 w-full'
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -87,11 +101,25 @@ export function SignUp() {
           </label>
           <label
             htmlFor='password'
-            className='text-xl font-bold text-gray-500 transition-all duration-300'
+            className={`text-xl font-bold text-gray-500 transition-all duration-300 ${
+              errors.password ? 'text-red-400' : 'text-gray-500'
+            }`}
           >
             Password
-            <div className='mt-2 flex items-center gap-2 bg-gray-100 text-gray-700 border-1 border-gray-300 py-1 px-3 transition-all duration-250 outline-transparent focus-within:border-yellow-500 rounded-sm group text-lg font-normal'>
-              <Lock className='group-hover:fill-yellow-500 group-focus-within:fill-yellow-500 transition-all duration-200 text-yellow-600' />
+            <div
+              className={`mt-2 flex items-center gap-2 text-gray-700 border-1 py-1.5 px-3 transition-all duration-250 outline-transparent rounded-sm group text-lg font-normal ${
+                errors.password
+                  ? 'bg-red-200 border-red-500'
+                  : 'border-gray-300 bg-gray-100 focus-within:border-yellow-500'
+              }`}
+            >
+              <Lock
+                className={`transition-all duration-200 ${
+                  errors.password
+                    ? 'text-red-600'
+                    : 'group-hover:text-yellow-500 text-yellow-600 group-focus-within:text-yellow-500'
+                }`}
+              />
               <div className='flex w-full'>
                 <input
                   data-test='password-input'
@@ -99,7 +127,7 @@ export function SignUp() {
                   onChange={(e) => setPassword(e.target.value)}
                   id='password'
                   type={showPassword ? 'text' : 'password'}
-                  className='text-gray-700 focus-visible:outline-0 w-full peer'
+                  className='text-gray-700 focus-visible:outline-0 w-full'
                 />
                 <button
                   type='button'

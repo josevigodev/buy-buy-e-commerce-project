@@ -40,11 +40,11 @@ export const ProductCard: React.FC<Props> = function ({
         isCart ||
         isWishes ||
         'shadow-sm pb-10 transform transition-all hover:-translate-y-2 hover:shadow-lg'
-      } ${isCheckout || isPayment || isOrderConfirmed ? 'flex' : ''}`}
+      } ${isCheckout || isPayment ? 'flex' : ''}`}
     >
       <div
         className={`relative p-2 pt-0 min-h-45 flex items-center justify-center bg-white ${
-          isCheckout || isPayment || isOrderConfirmed ? 'w-1/3 p-0' : ''
+          isCheckout || isPayment ? 'w-1/3 p-0' : ''
         }`}
         style={{
           background:

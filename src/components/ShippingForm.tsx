@@ -20,13 +20,14 @@ const schema = z.object({
     .regex(/^[\d ]+$/, 'This field must contain only numbers')
     .min(8, 'The phone number must contain at least 8 numbers'),
   city: z.string().regex(/^[a-zA-Z]+/, 'This field must contain only letters'),
-  state: z
-    .string()
-    .regex(/^[a-zA-Z]+$/, 'This field must contain only letters'),
+  state: z.string().optional(),
   postCode: z
     .string()
-    .regex(/^[a-zA-Z0-9]*/, 'This field must contain only letters and numbers'),
-  addressLine1: z.string(),
+    .regex(/^[a-zA-Z0-9]*/, 'This field must contain only letters and numbers')
+    .min(4, 'The post/zip code must contain at least 4 characters'),
+  addressLine1: z
+    .string()
+    .min(5, 'The address must contain at least 5 characters'),
   addressLine2: z.string(),
 });
 
@@ -67,7 +68,7 @@ export function ShippingForm() {
   };
 
   return (
-    <section className='min-h-dvh flex flex-col mt-4 flex-1 md:border-r-1 border-r-gray-400 md:pr-3 lg:pr-6 xl:pr-12'>
+    <section className='min-h-dvh flex flex-col mt-4 mb-10 flex-1 md:border-r-1 border-r-gray-400 md:pr-3 lg:pr-6 xl:pr-12'>
       {isSubmitSuccessful && <PopUp text='Form saved successfully' />}
       <h2 className='font-bold text-dark-text text-xl xl:text-2xl'>
         Shipping Address
@@ -76,37 +77,68 @@ export function ShippingForm() {
         className='flex flex-col border-t-1 border-t-gray-400 mt-1 pt-1 gap-2 lg:grid lg:grid-cols-2 lg:gap-4 lg:mt-3 lg:pt-3'
         onSubmit={handleSubmit(onSubmit)}
       >
-        <label htmlFor={ids.firtName} className='flex-col flex text-dark-text'>
+        <label
+          htmlFor={ids.firtName}
+          className={`text-md lg:text-lg font-bold transition-all duration-300 ${
+            errors.firstName ? 'text-red-400' : 'text-gray-500'
+          }`}
+        >
           *First Name
           <input
             data-test='first-name'
-            className='border-1 border-gray-400 text-dark-text p-2 px-3 focus-visible:outline-dark-gray focus-visible:outline-1 rounded-sm'
+            className={`w-full flex items-center gap-2 text-gray-600 border-1 p-2 transition-all duration-250 outline-none rounded-sm group text-lg font-normal ${
+              errors.firstName
+                ? 'bg-red-200 border-red-500 focus:border-red-500'
+                : 'border-gray-300 bg-gray-100 focus:border-yellow-500'
+            }`}
             type='text'
             id={ids.firtName}
             {...register('firstName')}
           />
           {errors.firstName && (
-            <span className='text-red-800'>{errors.firstName.message}</span>
+            <span className='text-red-500 font-normal'>
+              {errors.firstName.message}
+            </span>
           )}
         </label>
-        <label className='flex-col flex text-dark-text' htmlFor={ids.lastName}>
+        <label
+          className={`text-lg font-bold transition-all duration-300 ${
+            errors.lastName ? 'text-red-400' : 'text-gray-500'
+          }`}
+          htmlFor={ids.lastName}
+        >
           *Last Name
           <input
             data-test='last-name'
-            className='border-1 border-gray-400 text-dark-text p-2 px-3 focus-visible:outline-dark-gray focus-visible:outline-1 rounded-sm'
+            className={`w-full flex items-center gap-2 text-gray-600 border-1 p-3 transition-all duration-250 outline-none rounded-sm group text-lg font-normal ${
+              errors.lastName
+                ? 'bg-red-200 border-red-500 focus:border-red-500'
+                : 'border-gray-300 bg-gray-100 focus:border-yellow-500'
+            }`}
             type='text'
             id={ids.lastName}
             {...register('lastName')}
           />
           {errors.lastName && (
-            <span className='text-red-800'>{errors.lastName.message}</span>
+            <span className='text-red-500 font-normal'>
+              {errors.lastName.message}
+            </span>
           )}
         </label>
-        <label htmlFor={ids.location} className='flex-col flex text-dark-text'>
+        <label
+          htmlFor={ids.location}
+          className={`text-lg font-bold transition-all duration-300 ${
+            errors.country ? 'text-red-400' : 'text-gray-500'
+          }`}
+        >
           *Location
           <select
             data-test='location'
-            className='border-1 border-gray-400 text-dark-text p-2 px-3 focus-visible:outline-dark-gray focus-visible:outline-1 rounded-sm'
+            className={`w-full flex items-center gap-2 text-gray-600 border-1 p-3 transition-all duration-250 outline-none rounded-sm group text-lg font-normal ${
+              errors.country
+                ? 'bg-red-200 border-red-500 focus:border-red-500'
+                : 'border-gray-300 bg-gray-100 focus:border-yellow-500'
+            }`}
             id={ids.location}
             {...register('country')}
           >
@@ -118,84 +150,127 @@ export function ShippingForm() {
             ))}
           </select>
           {errors.country && (
-            <span className='text-red-800'>{errors.country.message}</span>
+            <span className='text-red-500 font-normal'>
+              {errors.country.message}
+            </span>
           )}
         </label>
-        <label className='flex-col flex text-dark-text' htmlFor={ids.phone}>
+        <label
+          className={`text-md lg:text-lg font-bold transition-all duration-300 ${
+            errors.phoneNumber ? 'text-red-400' : 'text-gray-500'
+          }`}
+          htmlFor={ids.phone}
+        >
           *Phone Number
           <input
             data-test='phone'
-            className='border-1 border-gray-400 text-dark-text p-2 px-3 focus-visible:outline-dark-gray focus-visible:outline-1 rounded-sm'
+            className={`w-full flex items-center gap-2 text-gray-600 border-1 p-3 transition-all duration-250 outline-none rounded-sm group text-lg font-normal ${
+              errors.phoneNumber
+                ? 'bg-red-200 border-red-500 focus:border-red-500'
+                : 'border-gray-300 bg-gray-100 focus:border-yellow-500'
+            }`}
             type='text'
             id={ids.phone}
             {...register('phoneNumber')}
           />
           {errors.phoneNumber && (
-            <span className='text-red-800'>{errors.phoneNumber.message}</span>
+            <span className='text-red-500 font-normal'>
+              {errors.phoneNumber.message}
+            </span>
           )}
         </label>
-        <label className='flex-col flex text-dark-text' htmlFor={ids.city}>
+        <label
+          className={`text-md lg:text-lg font-bold transition-all duration-300 ${
+            errors.city ? 'text-red-400' : 'text-gray-500'
+          }`}
+          htmlFor={ids.city}
+        >
           *City
           <input
             data-test='city'
-            className='border-1 border-gray-400 text-dark-text p-2 px-3 focus-visible:outline-dark-gray focus-visible:outline-1 rounded-sm'
+            className={`w-full flex items-center gap-2 text-gray-600 border-1 p-3 transition-all duration-250 outline-none rounded-sm group text-lg font-normal ${
+              errors.city
+                ? 'bg-red-200 border-red-500 focus:border-red-500'
+                : 'border-gray-300 bg-gray-100 focus:border-yellow-500'
+            }`}
             type='text'
             id={ids.city}
             {...register('city')}
           />
           {errors.city && (
-            <span className='text-red-800'>{errors.city.message}</span>
+            <span className='text-red-500 font-normal'>
+              {errors.city.message}
+            </span>
           )}
         </label>
-        <label className='flex-col flex text-dark-text' htmlFor={ids.state}>
+        <label
+          className='text-md lg:text-lg font-bold transition-all duration-300 text-gray-500'
+          htmlFor={ids.state}
+        >
           State (Optional)
           <input
             data-test='state'
-            className='border-1 border-gray-400 text-dark-text p-2 px-3 focus-visible:outline-dark-gray focus-visible:outline-1 rounded-sm'
+            className='w-full flex items-center gap-2 text-gray-600 border-1 p-3 transition-all duration-250 outline-none rounded-sm group text-lg font-normal border-gray-300 bg-gray-100 focus:border-yellow-500'
             type='text'
             id={ids.state}
             {...register('state')}
           />
         </label>
         <label
-          className='flex-col flex text-dark-text col-span-2'
+          className={`text-md col-span-2 lg:text-lg font-bold transition-all duration-300 ${
+            errors.postCode ? 'text-red-400' : 'text-gray-500'
+          }`}
           htmlFor={ids.postCode}
         >
           *Post/Zip Code
           <input
             data-test='post-code'
-            className='border-1 border-gray-400 text-dark-text p-2 px-3 focus-visible:outline-dark-gray focus-visible:outline-1 rounded-sm'
+            className={`w-full flex items-center gap-2 text-gray-600 border-1 p-3 transition-all duration-250 outline-none rounded-sm group text-lg font-normal ${
+              errors.postCode
+                ? 'bg-red-200 border-red-500 focus:border-red-500'
+                : 'border-gray-300 bg-gray-100 focus:border-yellow-500'
+            }`}
             type='text'
             id={ids.postCode}
             {...register('postCode')}
           />
           {errors.postCode && (
-            <span className='text-red-800'>{errors.postCode.message}</span>
+            <span className='text-red-500 font-normal'>
+              {errors.postCode.message}
+            </span>
           )}
         </label>
         <label
-          className='flex-col flex text-dark-text col-span-2'
+          className={`text-md col-span-2 lg:text-lg font-bold transition-all duration-300 ${
+            errors.addressLine1 ? 'text-red-400' : 'text-gray-500'
+          }`}
           htmlFor={ids.addressLine1}
         >
           *Address Line 1
           <input
             data-test='address'
-            className='border-1 border-gray-400 text-dark-text p-2 px-3 focus-visible:outline-dark-gray focus-visible:outline-1 rounded-sm'
+            className={`w-full flex items-center gap-2 text-gray-600 border-1 p-3 transition-all duration-250 outline-none rounded-sm group text-lg font-normal ${
+              errors.addressLine1
+                ? 'bg-red-200 border-red-500 focus:border-red-500'
+                : 'border-gray-300 bg-gray-100 focus:border-yellow-500'
+            }`}
             type='text'
             id={ids.addressLine1}
             {...register('addressLine1')}
           />
           {errors.addressLine1 && (
-            <span className='text-red-800'>{errors.addressLine1.message}</span>
+            <span className='text-red-500 font-normal'>
+              {errors.addressLine1.message}
+            </span>
           )}
         </label>
         <label
-          className='flex-col flex text-dark-text col-span-2'
+          className='text-md lg:text-lg col-span-2 font-bold transition-all duration-300 text-gray-500'
           htmlFor={ids.addressLine2}
         >
           Address Line 2
           <input
-            className='border-1 border-gray-400 text-dark-text p-2 px-3 focus-visible:outline-dark-gray focus-visible:outline-1 rounded-sm'
+            className='w-full flex items-center gap-2 text-gray-600 border-1 p-3 transition-all duration-250 outline-none rounded-sm group text-lg font-normal border-gray-300 bg-gray-100 focus:border-yellow-500'
             type='text'
             id={ids.addressLine2}
             {...register('addressLine2')}

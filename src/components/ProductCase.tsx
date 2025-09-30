@@ -9,7 +9,7 @@ interface Props {
 export function ProductCase({ filteredProducts }: Props) {
   useSyncFilters();
   return (
-    <section className='gap-2 grid grid-cols-2 px-3 md:grid-cols-3 xl:grid-cols-4 flex-1 mt-5 lg:pl-3'>
+    <section className='gap-2 grid grid-cols-2 px-3 md:grid-cols-3 xl:grid-cols-4 flex-1 mt-5 '>
       {filteredProducts.map((item) => (
         <ProductCard key={item.id} {...item} />
       ))}
