@@ -63,13 +63,13 @@ export const useFilterStore = create<FilterStore>()(
           });
         },
         resetFilters: () => {
-          set(() => ({
+          set((state) => ({
             filters: {
+              ...state.filters,
               category: null,
               color: null,
               minPrice: 0,
               brand: [],
-              search: '',
             },
           }));
         },
