@@ -33,7 +33,7 @@ export const AddToCartButton: React.FC<Props> = ({ itemId, text }) => {
 
   return (
     <>
-      {showPopUp && <PopUp text='Product added to shopping cart' />}
+      {showPopUp && <PopUp text='Added to cart' />}
       {user ? (
         <button
           data-test='add-to-cart-button'
