@@ -37,3 +37,17 @@ jobs:
           start: pnpm dev
           wait-on: http://localhost:3000
           wait-on-timeout: 120
+
+  deploy:
+    runs-on: ubuntu-24.04
+    needs: cypress-run
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy to Vercel
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          working-directory: ./
