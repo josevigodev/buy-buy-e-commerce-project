@@ -8,9 +8,16 @@ interface Props {
 
 export function Filters({ onOpenFilterAction, productsFound }: Props) {
   const resetFilters = useFilterStore((state) => state.resetFilters);
+  const filters = useFilterStore((state) => state.filters);
   const handleOpenClick = () => {
     onOpenFilterAction(true);
   };
+
+  const noFilters =
+    (filters.category === null || filters.category === '') &&
+    (filters.color === null || filters.color === '') &&
+    filters.brand.length < 1 &&
+    filters.minPrice === 0;
 
   return (
     <>
@@ -22,8 +29,9 @@ export function Filters({ onOpenFilterAction, productsFound }: Props) {
 
           <div className='flex items-center gap-1 text-black'>
             <button
+              disabled={noFilters}
               onClick={() => resetFilters()}
-              className='flex items-center rounded-md bg-gray-200 cursor-pointer justify-center gap-1 py-1 px-2 sm:py-2 sm:px-4 hover:bg-gray-300 transition-colors duration-200'
+              className='flex items-center rounded-md bg-gray-300 cursor-pointer justify-center gap-1 py-1 px-2 sm:py-2 sm:px-4 hover:bg-gray-400 transition-colors duration-200 disabled:bg-gray-200 disabled:hover:bg-gray-200 disabled:text-gray-400 disabled:cursor-auto'
             >
               <span>Clear all</span>
             </button>
