@@ -6,7 +6,7 @@ const shippingForm = [
   ['city', 'Jose'],
   ['state', 'Habana'],
   ['post-code', '12123'],
-  ['address', 'Jose'],
+  ['address', 'edif 32 apto b-9'],
 ];
 
 const paymentForm = [
