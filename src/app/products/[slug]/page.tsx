@@ -6,15 +6,14 @@ import { AddToCartButton } from '../../../components/AddToCartButton';
 import { AddToWishListButton } from '../../../components/AddToWishListButton';
 import { slugify } from '@/utils/slugify';
 import { ProductCard } from '@/components/ProductCard';
-// import type { Metadata } from 'next';
 
-export interface PageProps {
-  params: { slug: string };
-}
-
-export default function ProductPage(props: any) {
-  const { params } = props as { params: { slug: string } };
-  const product = products.find((p) => slugify(p.title) === params.slug);
+export default async function ProductPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const product = products.find((p) => slugify(p.title) === slug);
 
   if (!product) return notFound();
 
