@@ -21,7 +21,7 @@ export const metadata: Metadata = {
       'Buy Buy is your fun, fast, and easy online store — shop trendy products, add to cart in seconds, and enjoy a smooth, hassle-free shopping experience!',
     url: 'https://buy-buy-e-commerce-project.vercel.app/',
     siteName: 'BUY-BUY',
-    images: '/og.webp',
+    images: '/opengraph-image.webp',
     locale: 'en_US',
     type: 'website',
   },
