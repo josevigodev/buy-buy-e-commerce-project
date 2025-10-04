@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛒 Buy-Buy
 
-## Getting Started
+Buy-Buy is a modern _e-commerce web application_ built with _Next.js, React, Tailwind CSS, and TypeScript_.  
+It provides a smooth shopping experience with features such as product browsing, cart management, wishlist, and authentication.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## ✨ Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- 🛍 Browse a catalog of products
+- 🔍 Search and filter products
+- ❤ Add products to wishlist
+- 🛒 Add products to cart with quantity control
+- 👤 User authentication (Firebase)
+- 📦 Place and review orders
+- 🌙 Modern responsive design with Tailwind CSS
+- 🚀 Deployed with Vercel & GitHub Actions (CI/CD)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🖼 Screenshots
 
-## Learn More
+![Homepage Preview](/home-page-screenshot.png)  
+![Product Page](/market-page-screenshot.png)
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🛠 Tech Stack
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- _Framework_: [Next.js](https://nextjs.org/)
+- _Language_: [TypeScript](https://www.typescriptlang.org/)
+- _UI_: [React](https://react.dev/) + [Tailwind CSS](https://tailwindcss.com/)
+- _Auth_: [Firebase Authentication](https://firebase.google.com/)
+- _Deployment_: [Vercel](https://vercel.com/)
+- _Testing_: [Cypress](https://www.cypress.io/)
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📦 Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project uses Vercel for hosting.
+Every push to the main branch triggers a new deployment automatically via CI/CD.
+
+## 👨‍💻 Author
+
+Developed by Jose (VigoDev) 🚀
+Frontend developer passionate about building modern, performant, and user-friendly applications.
+
+🔗 [Portfolio](https://josevigodev.github.io/personal-portfolio-web/) · [LinkedIn](https://www.linkedin.com/in/josevigodev/)
