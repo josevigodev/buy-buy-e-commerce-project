@@ -1,6 +1,5 @@
-import { useProducts } from '@/hooks/useProducts';
+import { products } from '@/mocks/products.json';
 
 export const getProductsByCategory = (category: string) => {
-  const { products } = useProducts();
   return products.filter((product) => product.category === category);
 };
