@@ -15,6 +15,7 @@ export const metadata: Metadata = {
   creator: 'Jose Vigo',
   keywords: ['buy', 'shop', 'electronics'],
   metadataBase: new URL('https://buy-buy-e-commerce-project.vercel.app/'),
+  icons: '/favicon.png',
   openGraph: {
     title: 'BUY-BUY',
     description:
