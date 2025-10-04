@@ -43,7 +43,7 @@ export const ProductCard: React.FC<Props> = function ({
       } ${isCheckout || isPayment ? 'flex' : ''}`}
     >
       <div
-        className={`relative p-2 pt-0 min-h-45 flex items-center justify-center bg-white ${
+        className={`relative p-2 min-h-45 flex items-center justify-center bg-white ${
           isCheckout || isPayment ? 'w-1/3 p-0' : ''
         }`}
         style={{
@@ -58,7 +58,7 @@ export const ProductCard: React.FC<Props> = function ({
           alt={title}
           width={200}
           height={200}
-          className='object-cover mix-blend-multiply h-h-auto opacity-95'
+          className='object-cover mix-blend-multiply h-auto w-auto opacity-95'
         />
         {isCheckout || isPayment || isOrderConfirmed || isWishes || (
           <AddToWishListButton itemId={id} />

@@ -1,12 +1,13 @@
 'use client';
 import { useWishesStore } from '@/store/wishes';
-import { products } from '@/mocks/products.json';
 import { ProductInWishes } from '../../components/ProductInWishes';
 import { ProductCard } from '@/components/ProductCard';
 import ProtectedClient from '@/components/ProtectedClient';
+import { useProducts } from '@/hooks/useProducts';
 
 export default function WishesPage() {
   const wishes = useWishesStore((state) => state.wishes);
+  const { products } = useProducts();
 
   return (
     <main className='flex-1 mb-20 px-3 min-h-dvh md:flex-row lg:px-15'>

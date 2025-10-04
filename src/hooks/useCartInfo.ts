@@ -1,8 +1,9 @@
 import { useShoppingCartStore } from '@/store/shoppingCart';
-import { products } from '@/mocks/products.json';
+import { useProducts } from './useProducts';
 
 export function useCartInfo() {
   const cart = useShoppingCartStore((state) => state.cart);
+  const { products } = useProducts();
 
   const productsInCart = cart.map((item) => {
     const product = products.find((product) => product.id === item.id);

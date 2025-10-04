@@ -2,9 +2,10 @@
 import { useShoppingCartStore } from '@/store/shoppingCart';
 import { ProductCard } from './ProductCard';
 import { ProductInCart } from './ProductInCart';
-import { products } from '@/mocks/products.json';
+import { useProducts } from '@/hooks/useProducts';
 
 export function Cart() {
+  const { products } = useProducts();
   const cart = useShoppingCartStore((state) => state.cart);
 
   return (

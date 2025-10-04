@@ -1,35 +1,19 @@
 'use client';
 import { Filters } from '@/components/Filters';
-import { products } from '@/mocks/products.json';
 import { useFilterStore } from '@/store/filters';
 import { ProductCase } from '../../components/ProductCase';
 import { Suspense, useState } from 'react';
 import { FiltersAside } from '@/components/FiltersAside';
+import { useProducts } from '@/hooks/useProducts';
+import { Loading } from '@/components/Loading';
 
 export default function Marcket() {
   const [openFilter, setOpenFilter] = useState(false);
-  // const response = await fetch('https://fakestoreapi.in/api/products?limit=23');
-  // const data = (await response.json()) as FakeStoreAPIResponse;
-  // const products = data.products;
-
-  const mappedItems = [...products]?.map((item) => ({
-    id: item.id,
-    title: item.title,
-    image: item.image,
-    price: item.price,
-    description: item.description,
-    brand: item.brand,
-    model: item.model,
-    color: item.color,
-    category: item.category,
-    discount: item.discount,
-    popular: item.popular,
-    onSale: item.onSale,
-  }));
+  const { products } = useProducts();
 
   const filters = useFilterStore((state) => state.filters);
 
-  const filteredProducts = mappedItems
+  const filteredProducts = products
     .filter((item) =>
       filters.search
         ? item.title.toLowerCase().includes(filters.search.toLowerCase())
@@ -55,12 +39,12 @@ export default function Marcket() {
           openFilter={openFilter}
           onOpenFilterAction={setOpenFilter}
         />
-        {filteredProducts.length < 1 && (
+        {filteredProducts && filteredProducts.length < 1 && (
           <h2 className='text-center text-2xl font-bold text-gray-500 w-full mt-20'>
             No matched products found
           </h2>
         )}
-        <Suspense>
+        <Suspense fallback={<Loading color='#48e' />}>
           <ProductCase filteredProducts={filteredProducts} />
         </Suspense>
       </div>

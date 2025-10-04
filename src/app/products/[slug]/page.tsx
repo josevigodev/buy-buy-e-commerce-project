@@ -2,10 +2,10 @@ import { products } from '@/mocks/products.json';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import React from 'react';
-import { AddToCartButton } from '../../../components/AddToCartButton';
-import { AddToWishListButton } from '../../../components/AddToWishListButton';
 import { slugify } from '@/utils/slugify';
 import { ProductCard } from '@/components/ProductCard';
+import { AddToWishListButton } from '@/components/AddToWishListButton';
+import { AddToCartButton } from '@/components/AddToCartButton';
 
 export default async function ProductPage({
   params,

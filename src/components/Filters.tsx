@@ -2,7 +2,7 @@ import { useFilterStore } from '@/store/filters';
 import { ActiveFilters } from './ActiveFilters';
 import { FilterIcon } from './Icons';
 interface Props {
-  productsFound: number;
+  productsFound?: number;
   onOpenFilterAction: (value: boolean) => void;
 }
 
@@ -24,7 +24,8 @@ export function Filters({ onOpenFilterAction, productsFound }: Props) {
       <aside className='flex flex-col p-2 shadow-md sticky top-25 lg:top-16.5 bg-white text-dark-text z-5'>
         <div className='flex items-center justify-between lg:px-4'>
           <p className='font-bold text-lg text-nowrap select-none lg:text-xl'>
-            {productsFound} {productsFound <= 1 ? 'product' : 'products'} found
+            {productsFound}{' '}
+            {productsFound && productsFound <= 1 ? 'product' : 'products'} found
           </p>
 
           <div className='flex items-center gap-1 text-black'>
