@@ -23,7 +23,7 @@ It provides a smooth shopping experience with features such as product browsing,
 <!-- ![Homepage Preview](./public/home-page-screenshot.png)
 ![Product Page](./public/market-page-screenshot.png) -->
 
-[<img src="./public/market-page-screenshot.png" width="350"]
+<img src="./public/market-page-screenshot.png" width="350" />
 
 ---
 
