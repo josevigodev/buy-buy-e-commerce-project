@@ -1,6 +1,4 @@
-import Image from 'next/image';
 import { Rating } from './Rating';
-import Profile from '../../public/computer.png';
 import { UserIcon } from './Icons';
 
 interface Props {
