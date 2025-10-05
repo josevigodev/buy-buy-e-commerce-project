@@ -5,6 +5,7 @@ import { SignOutButton } from '@/components/SignOutButton';
 import { useAuthStore } from '@/store/user';
 import { getOrders, UserOrder } from '@/services/order';
 import { Loading } from '@/components/Loading';
+import Image from 'next/image';
 
 interface DBOrder extends UserOrder {
   id: string;
@@ -40,22 +41,34 @@ export default function MyAccountPage() {
             ) : orders.length > 0 ? (
               <ul className='space-y-4'>
                 {orders.map((order) => (
-                  <li key={order.id} className='border p-4 rounded-lg bg-white'>
-                    <p className='text-sm text-gray-500'>
-                      Order ID: {order.id}
-                    </p>
-                    <p className='text-lg font-bold'>Total: ${order.total}</p>
-                    <p className='text-sm text-gray-700'>
-                      Status: {order.status}
+                  <li
+                    key={order.id}
+                    className='p-4 rounded-lg bg-white shadow-md'
+                  >
+                    <div className='flex justify-between items-center'>
+                      <p className='text-sm text-gray-500'>
+                        Order ID: {order.id}
+                      </p>
+                      <p className='text-lg font-bold'>Total: ${order.total}</p>
+                    </div>
+                    <p className='text-sm text-gray-700 font-semibold '>
+                      Status:{' '}
+                      <strong className='text-green-600'>{order.status}</strong>
                     </p>
                     <div className='mt-2 space-y-1'>
                       {order.items?.map((item) => (
                         <div
                           key={item.id}
-                          className='flex gap-2 justify-between text-sm'
+                          className='flex gap-2 items-center justify-between text-sm'
                         >
-                          <span>
-                            {item.title} x{item.qty}
+                          <Image
+                            src={item.image}
+                            alt='item image'
+                            width={100}
+                            height={100}
+                          />
+                          <span className='font-semibold'>
+                            {item.title} <strong>x{item.qty}</strong>
                           </span>
                           <span>${item.price}</span>
                         </div>
