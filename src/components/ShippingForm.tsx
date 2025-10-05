@@ -86,7 +86,7 @@ export function ShippingForm() {
           *First Name
           <input
             data-test='first-name'
-            className={`w-full flex items-center gap-2 text-gray-600 border-1 p-2 transition-all duration-250 outline-none rounded-sm group text-lg font-normal ${
+            className={`w-full flex items-center gap-2 text-gray-600 border-1 p-3 transition-all duration-250 outline-none rounded-sm group text-lg font-normal ${
               errors.firstName
                 ? 'bg-red-200 border-red-500 focus:border-red-500'
                 : 'border-gray-300 bg-gray-100 focus:border-yellow-500'
