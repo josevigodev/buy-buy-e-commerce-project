@@ -20,8 +20,7 @@ It provides a smooth shopping experience with features such as product browsing,
 
 ## Screenshots
 
-<img src="./public/home-page-screenshot.png" width="350" />
-<img src="./public/market-page-screenshot.png" width="350" />
+<img src="./public/home-page-screenshot.png" width="350" /> <img src="./public/market-page-screenshot.png" width="350" />
 
 ---
 
