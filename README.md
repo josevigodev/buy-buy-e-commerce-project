@@ -1,11 +1,11 @@
-# 🛒 Buy-Buy
+# BUY-BUY
 
 Buy-Buy is a modern _e-commerce web application_ built with _Next.js, React, Tailwind CSS, and TypeScript_.  
 It provides a smooth shopping experience with features such as product browsing, cart management, wishlist, and authentication.
 
 ---
 
-## ✨ Features
+## Features
 
 - 🛍 Browse a catalog of products
 - 🔍 Search and filter products
@@ -18,14 +18,14 @@ It provides a smooth shopping experience with features such as product browsing,
 
 ---
 
-## 🖼 Screenshots
+## Screenshots
 
 <img src="./public/home-page-screenshot.png" width="350" />
 <img src="./public/market-page-screenshot.png" width="350" />
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
 - _Framework_: [Next.js](https://nextjs.org/)
 - _Language_: [TypeScript](https://www.typescriptlang.org/)
@@ -36,14 +36,9 @@ It provides a smooth shopping experience with features such as product browsing,
 
 ---
 
-## 📦 Deployment
+## Deployment
 
 This project uses Vercel for hosting.
 Every push to the main branch triggers a new deployment automatically via CI/CD.
-
-## 👨‍💻 Author
-
-Developed by Jose (VigoDev) 🚀
-Frontend developer passionate about building modern, performant, and user-friendly applications.
 
 🔗 [Portfolio](https://josevigodev.github.io/personal-portfolio-web/) · [LinkedIn](https://www.linkedin.com/in/josevigodev/)
