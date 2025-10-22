@@ -1,4 +1,4 @@
-import { PaymentFormInputs } from '@/components/PaymentForm';
+import { PaymentFormInputs } from '@/components/forms/PaymentForm';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
