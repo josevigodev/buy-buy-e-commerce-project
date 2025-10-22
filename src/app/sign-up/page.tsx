@@ -1,6 +1,6 @@
-import { SignUp } from '@/components/SignUp';
+import { SignUp } from '@/components/forms/SignUp';
 
-export default function LogInPage() {
+export default function SignUpPage() {
   return (
     <main className='flex-1 min-h-dvh mx-auto max-w-lg p-6'>
       <SignUp />

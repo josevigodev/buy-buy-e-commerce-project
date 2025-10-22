@@ -1,8 +1,8 @@
 'use client';
-import { XIcon } from './Icons';
-import { CategoryFilters } from './CategoryFilters';
-import { BrandFilters } from './BrandFilters';
-import { ColorFilters } from './ColorFilters';
+import { XIcon } from '@/components/ui/Icons';
+import { CategoryFilters } from '@/components/filters/CategoryFilters';
+import { BrandFilters } from '@/components/filters/BrandFilters';
+import { ColorFilters } from '@/components/filters/ColorFilters';
 import { useFilterStore } from '@/store/filters';
 import { useEffect, useState } from 'react';
 

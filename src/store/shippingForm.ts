@@ -1,7 +1,7 @@
-import { ShippingFormInputs } from '@/components/ShippingForm';
+import { ShippingFormInputs } from '@/components/forms/ShippingForm';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { ShippingForm } from '../components/ShippingForm';
+import { ShippingForm } from '@/components/forms/ShippingForm';
 
 interface ShippingForm {
   shippingForm: ShippingFormInputs;

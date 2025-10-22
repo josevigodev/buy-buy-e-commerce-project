@@ -1,10 +1,10 @@
 'use client';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { AddToCartButton } from './AddToCartButton';
+import { AddToCartButton } from '@/components/product/AddToCartButton';
 import { slugify } from '@/utils/slugify';
 import Link from 'next/link';
-import { AddToWishListButton } from './AddToWishListButton';
+import { AddToWishListButton } from '@/components/product/AddToWishListButton';
 
 interface Props {
   title: string;

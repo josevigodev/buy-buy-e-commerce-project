@@ -4,7 +4,7 @@ import ProtectedClient from '@/components/ProtectedClient';
 import { SignOutButton } from '@/components/SignOutButton';
 import { useAuthStore } from '@/store/user';
 import { getOrders, UserOrder } from '@/services/order';
-import { Loading } from '@/components/Loading';
+import { Loading } from '@/components/ui/Loading';
 import Image from 'next/image';
 
 interface DBOrder extends UserOrder {

@@ -10,7 +10,7 @@ import {
   TV,
   UserIcon,
   XIcon,
-} from './Icons';
+} from '@/components/ui/Icons';
 import { useAuthStore } from '@/store/user';
 import { usePathname } from 'next/navigation';
 

@@ -1,6 +1,6 @@
 import ProtectedClient from '@/components/ProtectedClient';
-import { OrderSummary } from '../../components/OrderSummary';
-import { PaymentForm } from '@/components/PaymentForm';
+import { OrderSummary } from '@/components/OrderSummary';
+import { PaymentForm } from '@/components/forms/PaymentForm';
 
 export default function PlaceOrderPage() {
   return (

@@ -2,8 +2,8 @@
 import { useShoppingCartStore } from '@/store/shoppingCart';
 import { useWishesStore } from '@/store/wishes';
 import { ReactNode, useState } from 'react';
-import { ShoppingCartIcon, Trash } from './Icons';
-import { ConfirmPopUp } from './ConfirmPopUp';
+import { ShoppingCartIcon, Trash } from '@/components/ui/Icons';
+import { ConfirmPopUp } from '@/components/ui/ConfirmPopUp';
 
 interface Props {
   children: ReactNode;

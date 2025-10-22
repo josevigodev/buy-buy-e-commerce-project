@@ -1,10 +1,10 @@
 'use client';
 import { useShoppingCartStore } from '@/store/shoppingCart';
-import { PopUp } from './PopUp';
+import { PopUp } from '@/components/ui/PopUp';
 import { useEffect, useState } from 'react';
 import { useAuthStore } from '@/store/user';
 import Link from 'next/link';
-import { ShoppingCartIcon, UserIcon } from './Icons';
+import { ShoppingCartIcon, UserIcon } from '@/components/ui/Icons';
 
 interface Props {
   itemId: number;

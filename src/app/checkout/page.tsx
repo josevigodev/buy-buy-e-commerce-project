@@ -1,5 +1,5 @@
-import { ShippingForm } from '@/components/ShippingForm';
-import { OrderSummary } from '../../components/OrderSummary';
+import { ShippingForm } from '@/components/forms/ShippingForm';
+import { OrderSummary } from '@/components/OrderSummary';
 import ProtectedClient from '@/components/ProtectedClient';
 
 export default function CheckoutPage() {

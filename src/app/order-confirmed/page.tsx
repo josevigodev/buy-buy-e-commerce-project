@@ -1,6 +1,6 @@
 'use client';
 
-import { ProductCard } from '@/components/ProductCard';
+import { ProductCard } from '@/components/product/ProductCard';
 import ProtectedClient from '@/components/ProtectedClient';
 import { useOrderStore } from '@/store/order';
 

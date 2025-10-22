@@ -2,7 +2,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuthStore } from '@/store/user';
-import { Loading } from './Loading';
+import { Loading } from '@/components/ui/Loading';
 
 export default function ProtectedClient({
   children,

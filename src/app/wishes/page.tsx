@@ -1,7 +1,7 @@
 'use client';
 import { useWishesStore } from '@/store/wishes';
-import { ProductInWishes } from '../../components/ProductInWishes';
-import { ProductCard } from '@/components/ProductCard';
+import { ProductInWishes } from '@/components/product/ProductInWishes';
+import { ProductCard } from '@/components/product/ProductCard';
 import ProtectedClient from '@/components/ProtectedClient';
 import { useProducts } from '@/hooks/useProducts';
 

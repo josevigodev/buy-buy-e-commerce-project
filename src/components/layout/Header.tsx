@@ -1,12 +1,17 @@
 'use client';
 import Link from 'next/link';
-import { HeaderHeartIcon, MenuIcon, ShoppingCartIcon, UserIcon } from './Icons';
+import {
+  HeaderHeartIcon,
+  MenuIcon,
+  ShoppingCartIcon,
+  UserIcon,
+} from '@/components/ui/Icons';
 import { useEffect, useState } from 'react';
-import { SideBar } from './SideBar';
+import { SideBar } from '@/components/layout/SideBar';
 import { usePathname } from 'next/navigation';
 import { useAuthStore } from '@/store/user';
 import { useShoppingCartStore } from '@/store/shoppingCart';
-import { SearchForm } from './SearchForm';
+import { SearchForm } from '@/components/forms/SearchForm';
 
 export function Header() {
   const user = useAuthStore((state) => state.user);

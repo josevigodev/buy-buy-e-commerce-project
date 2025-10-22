@@ -1,5 +1,5 @@
 import { EventHandler, FormEvent, useState } from 'react';
-import { SearchIcon, XIcon } from './Icons';
+import { SearchIcon, XIcon } from '@/components/ui/Icons';
 import { useFilterStore } from '@/store/filters';
 import { useRouter } from 'next/navigation';
 

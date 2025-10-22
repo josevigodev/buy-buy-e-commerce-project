@@ -1,4 +1,4 @@
-import { UserIcon } from './Icons';
+import { UserIcon } from '@/components/ui/Icons';
 import Link from 'next/link';
 
 export function LogInButton() {

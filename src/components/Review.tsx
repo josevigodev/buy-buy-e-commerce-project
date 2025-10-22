@@ -1,5 +1,5 @@
-import { Rating } from './Rating';
-import { UserIcon } from './Icons';
+import { Rating } from '@/components/Rating';
+import { UserIcon } from '@/components/ui/Icons';
 
 interface Props {
   user: string;

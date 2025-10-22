@@ -1,6 +1,6 @@
 import { useFilterStore } from '@/store/filters';
-import { ActiveFilters } from './ActiveFilters';
-import { FilterIcon } from './Icons';
+import { ActiveFilters } from '@/components/filters/ActiveFilters';
+import { FilterIcon } from '@/components/ui/Icons';
 interface Props {
   productsFound?: number;
   onOpenFilterAction: (value: boolean) => void;

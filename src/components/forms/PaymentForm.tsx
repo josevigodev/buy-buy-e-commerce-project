@@ -4,8 +4,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
-import { PopUp } from './PopUp';
-import { Loading } from './Loading';
+import { PopUp } from '@/components/ui/PopUp';
+import { Loading } from '@/components/ui/Loading';
 
 const validateCardNumber = (cardNumber: string): boolean => {
   const sanitized = cardNumber.replace(/[\s-]/g, '');

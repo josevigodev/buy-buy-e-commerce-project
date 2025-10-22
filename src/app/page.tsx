@@ -3,7 +3,7 @@ import { ReviewsSection } from '@/components/ReviewsSection';
 import { slugify } from '@/utils/slugify';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRightIcon } from '../components/Icons';
+import { ArrowRightIcon } from '@/components/ui/Icons';
 import { getProductsByCategory } from '@/utils/getProductsByCategory';
 
 const categories = [

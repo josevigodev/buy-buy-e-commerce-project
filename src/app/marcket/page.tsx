@@ -1,11 +1,11 @@
 'use client';
-import { Filters } from '@/components/Filters';
+import { Filters } from '@/components/filters/Filters';
 import { useFilterStore } from '@/store/filters';
-import { ProductCase } from '../../components/ProductCase';
+import { ProductCase } from '@/components/product/ProductCase';
 import { Suspense, useState } from 'react';
-import { FiltersAside } from '@/components/FiltersAside';
+import { FiltersAside } from '@/components/filters/FiltersAside';
 import { useProducts } from '@/hooks/useProducts';
-import { Loading } from '@/components/Loading';
+import { Loading } from '@/components/ui/Loading';
 
 export default function Marcket() {
   const [openFilter, setOpenFilter] = useState(false);

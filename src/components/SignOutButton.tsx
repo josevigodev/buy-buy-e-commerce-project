@@ -1,6 +1,6 @@
 'use client';
 import { signOut } from 'firebase/auth';
-import { DoorExit } from './Icons';
+import { DoorExit } from '@/components/ui/Icons';
 import { auth } from '@/firebase/client';
 import { redirect } from 'next/navigation';
 

@@ -1,6 +1,6 @@
 'use client';
 import { useShoppingCartStore } from '@/store/shoppingCart';
-import { ProductCard } from './ProductCard';
+import { ProductCard } from '@/components/product/ProductCard';
 import { useCartInfo } from '@/hooks/useCartInfo';
 import Link from 'next/link';
 import { useShippingForm } from '@/store/shippingForm';

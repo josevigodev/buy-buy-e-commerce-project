@@ -1,6 +1,4 @@
-// import { SignIn } from '@/components/SignIn';
-
-import { SignIn } from '@/components/SignIn';
+import { SignIn } from '@/components/forms/SignIn';
 
 export default function LogInPage() {
   return (

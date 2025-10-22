@@ -3,7 +3,7 @@ import { signIn } from '@/firebase/client';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { EyeClosed, EyeOpen, Lock, Mail } from './Icons';
+import { EyeClosed, EyeOpen, Lock, Mail } from '@/components/ui/Icons';
 
 interface Errors {
   root?: string;

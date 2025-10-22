@@ -1,7 +1,7 @@
 'use client';
 import { useShoppingCartStore } from '@/store/shoppingCart';
-import { ProductCard } from './ProductCard';
-import { ProductInCart } from './ProductInCart';
+import { ProductCard } from '@/components/product/ProductCard';
+import { ProductInCart } from '@/components/product/ProductInCart';
 import { useProducts } from '@/hooks/useProducts';
 
 export function Cart() {

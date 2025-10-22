@@ -3,9 +3,9 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import React from 'react';
 import { slugify } from '@/utils/slugify';
-import { ProductCard } from '@/components/ProductCard';
-import { AddToWishListButton } from '@/components/AddToWishListButton';
-import { AddToCartButton } from '@/components/AddToCartButton';
+import { ProductCard } from '@/components/product/ProductCard';
+import { AddToWishListButton } from '@/components/product/AddToWishListButton';
+import { AddToCartButton } from '@/components/product/AddToCartButton';
 
 export default async function ProductPage({
   params,

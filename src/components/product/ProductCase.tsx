@@ -1,4 +1,4 @@
-import { ProductCard } from './ProductCard';
+import { ProductCard } from '@/components/product/ProductCard';
 import { Product } from '@/types/fakeStoreApi';
 import { useSyncFilters } from '@/hooks/useSyncFilters';
 

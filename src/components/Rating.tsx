@@ -1,4 +1,4 @@
-import { StarHalf, StarOff, Star } from './Icons';
+import { StarHalf, StarOff, Star } from '@/components/ui/Icons';
 
 interface Props {
   size: number;

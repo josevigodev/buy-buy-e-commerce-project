@@ -1,5 +1,5 @@
 import { Filters, useFilterStore } from '@/store/filters';
-import { XIcon } from './Icons';
+import { XIcon } from '@/components/ui/Icons';
 import { MouseEvent, TouchEvent, useRef, useState } from 'react';
 
 export function ActiveFilters() {

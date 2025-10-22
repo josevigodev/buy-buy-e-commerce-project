@@ -1,6 +1,6 @@
 'use client';
 import { useAuthStore } from '@/store/user';
-import { HeartIcon } from './Icons';
+import { HeartIcon } from '@/components/ui/Icons';
 import { useWishesStore } from '@/store/wishes';
 import { redirect } from 'next/navigation';
 import { useState } from 'react';

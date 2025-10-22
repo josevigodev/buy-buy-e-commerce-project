@@ -1,8 +1,8 @@
 'use client';
 import { useShoppingCartStore } from '@/store/shoppingCart';
 import { ReactNode, useState } from 'react';
-import { Trash } from './Icons';
-import { ConfirmPopUp } from './ConfirmPopUp';
+import { Trash } from '@/components/ui/Icons';
+import { ConfirmPopUp } from '@/components/ui/ConfirmPopUp';
 
 interface Props {
   children: ReactNode;
